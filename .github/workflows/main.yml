@@ -17,8 +17,6 @@ jobs:
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - uses: pnpm/action-setup@v2.2.1
         with:
