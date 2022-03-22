@@ -7,7 +7,7 @@ on:
 
 jobs:
   lint:
-    name: ESLint and TypeScript Checks
+    name: Lint, test, and build apps and packages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
