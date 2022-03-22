@@ -4,16 +4,15 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix"
-    ]
+  "scripts": {
+    "lint": "eslint . --fix"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "config": "workspace:*",
-    "lint-staged": "^12.3.7",
-    "tsconfig": "workspace:*"
+    "eslint": "^8.11.0",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.6.2"
   }
 }

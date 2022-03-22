@@ -7,6 +7,7 @@ import {
   ErrorFallbackProps,
   useQueryErrorResetBoundary,
 } from "blitz";
+
 import LoginForm from "app/auth/components/LoginForm";
 
 export default function App({ Component, pageProps }: AppProps) {

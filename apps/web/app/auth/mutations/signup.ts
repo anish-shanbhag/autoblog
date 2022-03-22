@@ -1,4 +1,5 @@
 import { resolver, SecurePassword } from "blitz";
+
 import db from "db";
 import { Signup } from "app/auth/validations";
 import { Role } from "types";

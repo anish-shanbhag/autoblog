@@ -1,4 +1,5 @@
 module.exports = (directory) => ({
+  root: true,
   parser: "@typescript-eslint/parser",
   ignorePatterns: [".eslintrc.js", "babel.config.js", "blitz-env.d.ts"],
   settings: {
