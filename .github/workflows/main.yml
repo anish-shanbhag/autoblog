@@ -9,19 +9,22 @@ jobs:
   lint:
     name: Lint, test, and build apps and packages
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16]
     steps:
       - uses: actions/checkout@v2
-
-      - name: Cache pnpm packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - uses: pnpm/action-setup@v2.2.1
         with:
           run_install: |
             - args: [--frozen-lockfile, --strict-peer-dependencies]
 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - run: pnpm i --frozen-lockfile --strict-peer-dependencies
       - run: pnpm run ci
       - run: pnpm run build
