@@ -3,7 +3,7 @@
  */
 module.exports = {
   parser: "@typescript-eslint/parser",
-  ignorePatterns: [".eslintrc.js", "next.config.js"],
+  ignorePatterns: [".eslintrc.js", "babel.config.js", "blitz-env.d.ts"],
   settings: {
     next: {
       rootDir: ["apps/*/", "packages/*/"],
