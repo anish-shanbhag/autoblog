@@ -1,13 +1,23 @@
-/**
- * @type {import("eslint").Linter.Config}
- */
-module.exports = {
+module.exports = (directory) => ({
   parser: "@typescript-eslint/parser",
   ignorePatterns: [".eslintrc.js", "babel.config.js", "blitz-env.d.ts"],
   settings: {
     next: {
       rootDir: ["apps/*/", "packages/*/"],
     },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
+    "import/resolver": {
+      typescript: {
+        alwaysTryTypes: true,
+        project: directory,
+      },
+    },
+  },
+  parserOptions: {
+    tsconfigRootDir: directory,
+    project: ["./tsconfig.json"],
   },
   plugins: ["promise"],
   extends: [
@@ -77,4 +87,4 @@ module.exports = {
     "import/no-anonymous-default-export": 2,
     "promise/prefer-await-to-then": 1,
   },
-};
+});
