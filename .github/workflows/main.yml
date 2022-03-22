@@ -25,5 +25,5 @@ jobs:
           run_install: |
             - args: [--frozen-lockfile, --strict-peer-dependencies]
 
-      - run: pnpm run lint
+      - run: pnpm run ci
       - run: pnpm run build
