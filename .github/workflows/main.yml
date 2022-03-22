@@ -11,9 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Cache pnpm packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
       - uses: pnpm/action-setup@v2.2.1
         with:
           run_install: |
             - args: [--frozen-lockfile, --strict-peer-dependencies]
-      - run: npm run lint
-      - run: npm run build
+
+      - run: pnpm run lint
+      - run: pnpm run build
