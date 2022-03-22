@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: ESLint and TypeScript Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          run_install:
+            -args: [--frozen-lockfile, --strict-peer-dependencies]
+      - run: npm run lint
+      - run: npm run build
