@@ -1,6 +1,7 @@
+import { render } from "test/utils";
+
 import Home from "./index";
 
-import { render } from "test/utils";
 import { useCurrentUser } from "app/core/hooks/useCurrentUser";
 
 jest.mock("app/core/hooks/useCurrentUser");
