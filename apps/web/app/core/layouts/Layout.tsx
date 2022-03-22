@@ -1,6 +1,6 @@
-import { Head, BlitzLayout } from "blitz"
+import { Head, BlitzLayout } from "blitz";
 
-const Layout: BlitzLayout<{title?: string}> = ({ title, children }) => {
+const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
   return (
     <>
       <Head>
@@ -10,7 +10,7 @@ const Layout: BlitzLayout<{title?: string}> = ({ title, children }) => {
 
       {children}
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

@@ -44,6 +44,7 @@ module.exports = {
     "func-style": [2, "declaration", { allowArrowFunctions: true }],
     "no-constant-condition": [2, { checkLoops: false }],
     "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/no-misused-promises": 0,
     "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/no-floating-promises": 0,
     "@typescript-eslint/restrict-plus-operands": 0,

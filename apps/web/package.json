@@ -6,17 +6,13 @@
     "build": "blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
-    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "lint": "eslint . --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "husky install"
   },
   "prisma": {
     "schema": "db/schema.prisma"
-  },
-  "prettier": {
-    "semi": false,
-    "printWidth": 100
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
