@@ -3,14 +3,11 @@
  */
 module.exports = {
   parser: "@typescript-eslint/parser",
-  ignorePatterns: [".eslintrc.js", "next.config.js", "next-env.d.ts"],
+  ignorePatterns: [".eslintrc.js", "next.config.js"],
   settings: {
     next: {
       rootDir: ["apps/*/", "packages/*/"],
     },
-  },
-  parserOptions: {
-    project: ["apps/*/tsconfig.json", "packages/*/tsconfig.json"],
   },
   plugins: ["promise"],
   extends: [
