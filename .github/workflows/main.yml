@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2.2.1
         with:
-          run_install:
-            -args: [--frozen-lockfile, --strict-peer-dependencies]
+          run_install: |
+            - args: [--frozen-lockfile, --strict-peer-dependencies]
       - run: npm run lint
       - run: npm run build
