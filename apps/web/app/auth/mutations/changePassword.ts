@@ -11,7 +11,7 @@ export default resolver.pipe(
   resolver.authorize(),
   async ({ currentPassword, newPassword }, ctx) => {
     const user = await db.user.findFirst({
-      where: { id: ctx.session.userId! },
+      where: { id: ctx.session.userId },
     });
     if (!user) throw new NotFoundError();
 
