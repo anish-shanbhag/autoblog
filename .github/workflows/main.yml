@@ -25,5 +25,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
+      - run: prisma generate
+        working-directory: "./apps/web"
       - run: yarn ci
       - run: yarn build
