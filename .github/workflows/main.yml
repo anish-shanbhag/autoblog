@@ -25,5 +25,5 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
-      - run: pnpm run ci
-      - run: pnpm run build
+      - run: yarn ci
+      - run: yarn build
