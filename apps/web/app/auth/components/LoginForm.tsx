@@ -15,7 +15,7 @@ type LoginFormProps = {
   onSuccess?: (user: PromiseReturnType<typeof login>) => void;
 };
 
-export function LoginForm(props: LoginFormProps) {
+export default function LoginForm(props: LoginFormProps) {
   const [loginMutation] = useMutation(login);
 
   return (
@@ -30,7 +30,7 @@ export function LoginForm(props: LoginFormProps) {
           try {
             const user = await loginMutation(values);
             props.onSuccess?.(user);
-          } catch (error: any) {
+          } catch (error: unknown) {
             if (error instanceof AuthenticationError) {
               return { [FORM_ERROR]: "Sorry, those credentials are invalid" };
             }
@@ -62,5 +62,3 @@ export function LoginForm(props: LoginFormProps) {
     </div>
   );
 }
-
-export default LoginForm;

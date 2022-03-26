@@ -9,7 +9,7 @@ type SignupFormProps = {
   onSuccess?: () => void;
 };
 
-export function SignupForm(props: SignupFormProps) {
+export default function SignupForm(props: SignupFormProps) {
   const [signupMutation] = useMutation(signup);
 
   return (
@@ -32,7 +32,7 @@ export function SignupForm(props: SignupFormProps) {
               // This error comes from Prisma
               return { email: "This email is already being used" };
             }
-            return { [FORM_ERROR]: error.toString() };
+            return { [FORM_ERROR]: error.toString() as string };
           }
         }}
       >
@@ -47,5 +47,3 @@ export function SignupForm(props: SignupFormProps) {
     </div>
   );
 }
-
-export default SignupForm;

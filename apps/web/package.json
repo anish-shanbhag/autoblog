@@ -8,6 +8,7 @@
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "generate": "blitz prisma generate",
+    "codegen": "blitz codegen",
     "lint": "prettier --write --plugin=prettier-plugin-prisma **/*.prisma && eslint . --fix",
     "ci": "eslint ."
   },

@@ -36,7 +36,7 @@ const ResetPasswordPage: BlitzPage = () => {
             } catch (error: any) {
               if (error.name === "ResetPasswordError") {
                 return {
-                  [FORM_ERROR]: error.message,
+                  [FORM_ERROR]: error.message as string,
                 };
               }
               return {

@@ -36,7 +36,7 @@ function RootErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
   }
   return (
     <ErrorComponent
-      statusCode={error.statusCode || 400}
+      statusCode={(error.statusCode as number) ?? 400}
       title={error.message || error.name}
     />
   );

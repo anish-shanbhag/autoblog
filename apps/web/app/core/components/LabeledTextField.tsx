@@ -13,17 +13,18 @@ export interface LabeledTextFieldProps
   labelProps?: ComponentPropsWithoutRef<"label">;
 }
 
+// eslint-disable-next-line react/display-name
 export const LabeledTextField = forwardRef<
   HTMLInputElement,
   LabeledTextFieldProps
->(({ label, outerProps, labelProps, name, ...props }, ref) => {
+>(({ label, outerProps, labelProps, name, ...props }, _ref) => {
   const {
     register,
     formState: { isSubmitting, errors },
   } = useFormContext();
   const error = Array.isArray(errors[name])
-    ? errors[name].join(", ")
-    : errors[name]?.message || errors[name];
+    ? (errors[name] as string[]).join(", ")
+    : (errors[name]?.message as string) ?? (errors[name] as string);
 
   return (
     <div {...outerProps}>
