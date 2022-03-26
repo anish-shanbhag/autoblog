@@ -9,8 +9,7 @@
     "studio": "blitz prisma studio",
     "generate": "blitz prisma generate",
     "codegen": "blitz codegen",
-    "lint": "prettier --write --plugin=prettier-plugin-prisma **/*.prisma && eslint . --fix",
-    "ci": "eslint ."
+    "lint": "prettier --write --plugin=prettier-plugin-prisma **/*.prisma && eslint . --fix"
   },
   "prisma": {
     "schema": "db/schema.prisma"
