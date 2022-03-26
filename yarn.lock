@@ -13058,7 +13058,6 @@ __metadata:
     blitz: 0.45.3
     config: "workspace:*"
     eslint: ^7.32.0
-    husky: ^7.0.4
     prettier: ^2.6.0
     prettier-plugin-prisma: ^3.11.0
     preview-email: ^3.0.5
