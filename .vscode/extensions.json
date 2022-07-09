@@ -5,7 +5,8 @@
     "esbenp.prettier-vscode",
     "mikestead.dotenv",
     "mgmcdermott.vscode-language-babel",
-    "prisma.prisma"
+    "prisma.prisma",
+    "amodio.tsl-problem-matcher"
   ],
   "unwantedRecommendations": []
 }
