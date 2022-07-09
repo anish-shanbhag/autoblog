@@ -1,0 +1,47 @@
+{
+  "name": "scaffolding-recipes",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Anish Shanbhag",
+  "main": "dist/index.js",
+  "module": "dist/recipes.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "analyze": "size-limit --why",
+    "build": "dts build",
+    "lint": "dts lint",
+    "prepare": "dts build",
+    "size": "size-limit",
+    "start": "dts watch",
+    "test": "dts test"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "size-limit": [
+    {
+      "path": "dist/recipes.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/recipes.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@tsconfig/recommended": "^1.0.1",
+    "dts-cli": "^1.5.2",
+    "husky": "^8.0.1",
+    "size-limit": "^7.0.8",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  }
+}
