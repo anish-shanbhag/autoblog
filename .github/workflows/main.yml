@@ -10,11 +10,13 @@ jobs:
     name: lint/build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - run: npm i -g yarn
-
-      - run: yarn --immutable
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+          install-command: yarn --immutable
 
       - run: yarn codegen
         working-directory: "./apps/web"
