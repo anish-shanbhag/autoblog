@@ -7,16 +7,20 @@ on:
 
 jobs:
   CI:
-    name: lint/build
+    name: Lint and Build Apps and Packages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          useRollingCache: true
-          install-command: yarn --immutable
+          path: .yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn --immutable
 
       - run: yarn codegen
         working-directory: "./apps/web"
