@@ -1,7 +1,7 @@
-module.exports = (directory) => ({
+module.exports = (directory, allowConsole = true, isNextJS = false) => ({
   root: true,
   parser: "@typescript-eslint/parser",
-  ignorePatterns: ["*.js", "blitz-env.d.ts"],
+  ignorePatterns: ["*.js", "*.d.ts"],
   settings: {
     next: {
       rootDir: ["apps/*/", "packages/*/"],
@@ -28,13 +28,13 @@ module.exports = (directory) => ({
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:prettier/recommended",
-    "next/core-web-vitals",
+    ...(isNextJS ? ["next/core-web-vitals"] : []),
   ],
   rules: {
     "no-warning-comments": 1,
     "no-await-in-loop": 1,
     "no-bitwise": 1,
-    "no-console": 1,
+    "no-console": allowConsole ? 0 : 1,
     "array-callback-return": 2,
     "no-self-compare": 2,
     "no-template-curly-in-string": 2,
@@ -84,11 +84,14 @@ module.exports = (directory) => ({
       },
       { selector: ["typeParameter", "interface"], format: ["PascalCase"] },
     ],
-    "react/jsx-boolean-value": 2,
-    "react/function-component-definition": 2,
-    "react/jsx-pascal-case": 2,
-    "react/jsx-curly-brace-presence": 2,
-    "react/self-closing-comp": 2,
+    ...(isNextJS && {
+      "@next/next/no-html-link-for-pages": [2, directory],
+      "react/jsx-boolean-value": 2,
+      "react/function-component-definition": 2,
+      "react/jsx-pascal-case": 2,
+      "react/jsx-curly-brace-presence": 2,
+      "react/self-closing-comp": 2,
+    }),
     "import/order": [2, { "newlines-between": "always" }],
     "import/newline-after-import": 2,
     "import/no-duplicates": 2,

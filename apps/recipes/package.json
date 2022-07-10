@@ -1,5 +1,5 @@
 {
-  "name": "scaffolding-recipes",
+  "name": "recipes",
   "version": "0.1.0",
   "license": "MIT",
   "author": "Anish Shanbhag",
@@ -12,8 +12,8 @@
   ],
   "scripts": {
     "analyze": "size-limit --why",
-    "build": "dts build",
-    "lint": "dts lint",
+    "build": "eslint . && dts build",
+    "lint": "eslint . --fix",
     "prepare": "dts build",
     "size": "size-limit",
     "start": "dts watch",

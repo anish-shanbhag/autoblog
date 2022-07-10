@@ -6,6 +6,7 @@ import { Form, FORM_ERROR } from "app/core/components/Form";
 import { ResetPassword } from "app/auth/validations";
 import resetPassword from "app/auth/mutations/resetPassword";
 
+// eslint-disable-next-line
 const ResetPasswordPage: BlitzPage = () => {
   const query = useRouterQuery();
   const [resetPasswordMutation, { isSuccess }] = useMutation(resetPassword);

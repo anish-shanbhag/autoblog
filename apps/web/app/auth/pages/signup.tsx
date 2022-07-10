@@ -3,6 +3,7 @@ import { useRouter, BlitzPage, Routes } from "blitz";
 import Layout from "app/core/layouts/Layout";
 import SignupForm from "app/auth/components/SignupForm";
 
+// eslint-disable-next-line
 const SignupPage: BlitzPage = () => {
   const router = useRouter();
 

@@ -1,5 +1,6 @@
 import { Head, BlitzLayout } from "blitz";
 
+// eslint-disable-next-line
 const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
   return (
     <>

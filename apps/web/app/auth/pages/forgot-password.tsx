@@ -6,6 +6,7 @@ import { Form, FORM_ERROR } from "app/core/components/Form";
 import { ForgotPassword } from "app/auth/validations";
 import forgotPassword from "app/auth/mutations/forgotPassword";
 
+// eslint-disable-next-line
 const ForgotPasswordPage: BlitzPage = () => {
   const [forgotPasswordMutation, { isSuccess }] = useMutation(forgotPassword);
 

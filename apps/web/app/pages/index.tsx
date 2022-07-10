@@ -50,6 +50,7 @@ function UserInfo() {
   );
 }
 
+// eslint-disable-next-line
 const Home: BlitzPage = () => {
   return (
     <div className="container">
