@@ -1,4 +1,4 @@
-import { useMutation } from "blitz";
+import { useMutation } from "@blitzjs/rpc";
 
 import { LabeledTextField } from "app/core/components/LabeledTextField";
 import { Form, FORM_ERROR } from "app/core/components/Form";
@@ -9,9 +9,8 @@ type SignupFormProps = {
   onSuccess?: () => void;
 };
 
-export default function SignupForm(props: SignupFormProps) {
+export function SignupForm(props: SignupFormProps) {
   const [signupMutation] = useMutation(signup);
-
   return (
     <div>
       <h1>Create an Account</h1>
@@ -32,7 +31,7 @@ export default function SignupForm(props: SignupFormProps) {
               // This error comes from Prisma
               return { email: "This email is already being used" };
             }
-            return { [FORM_ERROR]: error.toString() as string };
+            return { [FORM_ERROR]: error.toString() };
           }
         }}
       >
@@ -47,3 +46,5 @@ export default function SignupForm(props: SignupFormProps) {
     </div>
   );
 }
+
+export default SignupForm;

@@ -9,6 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "web": "cd apps/web && yarn codegen && yarn dev",
     "lint": "turbo run lint",
     "remote-cache": "turbo link",
     "prepare": "husky install"

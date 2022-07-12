@@ -1,4 +1,6 @@
-import { resolver, SecurePassword, AuthenticationError } from "blitz";
+import { SecurePassword } from "@blitzjs/auth";
+import { resolver } from "@blitzjs/rpc";
+import { AuthenticationError } from "blitz";
 
 import { Login } from "../validations";
 

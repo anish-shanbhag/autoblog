@@ -43,11 +43,11 @@ export function Form<S extends z.ZodType<any, any>>({
           const result = (await onSubmit(values)) || {};
           for (const [key, value] of Object.entries(result)) {
             if (key === FORM_ERROR) {
-              setFormError(value as string);
+              setFormError(value);
             } else {
               ctx.setError(key as any, {
                 type: "submit",
-                message: value as string,
+                message: value,
               });
             }
           }

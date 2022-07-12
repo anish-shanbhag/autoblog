@@ -1,7 +1,10 @@
-import { Head, BlitzLayout } from "blitz";
+import Head from "next/head";
+import React, { FC } from "react";
 
-// eslint-disable-next-line
-const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
+const Layout: FC<{ title?: string; children?: React.ReactNode }> = ({
+  title,
+  children,
+}) => {
   return (
     <>
       <Head>

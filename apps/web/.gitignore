@@ -18,7 +18,6 @@ web_modules/
 .now
 .blitz**
 blitz-log.log
-build
 
 # misc
 .DS_Store

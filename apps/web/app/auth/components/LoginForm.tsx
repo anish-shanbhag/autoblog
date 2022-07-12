@@ -1,10 +1,7 @@
-import {
-  AuthenticationError,
-  Link,
-  useMutation,
-  Routes,
-  PromiseReturnType,
-} from "blitz";
+import { AuthenticationError, PromiseReturnType } from "blitz";
+import Link from "next/link";
+import { useMutation } from "@blitzjs/rpc";
+import { Routes } from "@blitzjs/next";
 
 import { LabeledTextField } from "app/core/components/LabeledTextField";
 import { Form, FORM_ERROR } from "app/core/components/Form";
@@ -15,9 +12,8 @@ type LoginFormProps = {
   onSuccess?: (user: PromiseReturnType<typeof login>) => void;
 };
 
-export default function LoginForm(props: LoginFormProps) {
+export function LoginForm(props: LoginFormProps) {
   const [loginMutation] = useMutation(login);
-
   return (
     <div>
       <h1>Login</h1>
@@ -30,7 +26,7 @@ export default function LoginForm(props: LoginFormProps) {
           try {
             const user = await loginMutation(values);
             props.onSuccess?.(user);
-          } catch (error: unknown) {
+          } catch (error: any) {
             if (error instanceof AuthenticationError) {
               return { [FORM_ERROR]: "Sorry, those credentials are invalid" };
             }
@@ -57,8 +53,13 @@ export default function LoginForm(props: LoginFormProps) {
       </Form>
 
       <div style={{ marginTop: "1rem" }}>
-        Or <Link href={Routes.SignupPage()}>Sign Up</Link>
+        Or{" "}
+        <Link href={Routes.SignupPage()}>
+          <a>Sign Up</a>
+        </Link>
       </div>
     </div>
   );
 }
+
+export default LoginForm;

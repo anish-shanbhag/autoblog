@@ -2,7 +2,7 @@
 
 This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
 
-# **web**
+# ****name****
 
 ## Getting Started
 
@@ -27,6 +27,16 @@ Ensure the `.env.test.local` file has required environment variables:
 ```
 DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/web_test
 ```
+
+## Tests
+
+Runs your tests using Jest.
+
+```
+yarn test
+```
+
+Blitz comes with a test setup using [Jest](https://jestjs.io/) and [react-testing-library](https://testing-library.com/).
 
 ## Commands
 
@@ -110,6 +120,7 @@ web
 ├── .eslintrc.js
 ├── babel.config.js
 ├── blitz.config.ts
+├── jest.config.ts
 ├── package.json
 ├── README.md
 ├── tsconfig.json
@@ -135,6 +146,8 @@ These files are:
 - `.babel.config.js`, `.eslintrc.js`, `.env`, etc. ("dotfiles") are configuration files for various bits of JavaScript tooling.
 
 - `blitz.config.ts` is for advanced custom configuration of Blitz. [Here you can learn how to use it](https://blitzjs.com/docs/blitz-config).
+
+- `jest.config.js` contains config for Jest tests. You can [customize it if needed](https://jestjs.io/docs/en/configuration).
 
 You can read more about it in the [File Structure](https://blitzjs.com/docs/file-structure) section of the documentation.
 
