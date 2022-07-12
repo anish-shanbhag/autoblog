@@ -6373,7 +6373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.11.0, eslint@npm:^8.16.0, eslint@npm:^8.7.0":
+"eslint@npm:^8.11.0, eslint@npm:^8.16.0, eslint@npm:^8.19.0, eslint@npm:^8.7.0":
   version: 8.19.0
   resolution: "eslint@npm:8.19.0"
   dependencies:
@@ -11314,6 +11314,7 @@ __metadata:
     "@tsconfig/recommended": ^1.0.1
     config: "workspace:*"
     dts-cli: ^1.5.2
+    eslint: ^8.19.0
     husky: ^8.0.1
     size-limit: ^7.0.8
     tsconfig: "workspace:*"
