@@ -13,10 +13,10 @@ export interface LabeledTextFieldProps
   labelProps?: ComponentPropsWithoutRef<"label">;
 }
 
-export const LabeledTextField = forwardRef<
-  HTMLInputElement,
-  LabeledTextFieldProps
->(({ label, outerProps, labelProps, name, ...props }, ref) => {
+function LabeledTextField(
+  { label, outerProps, labelProps, name, ...props },
+  ref
+) {
   const {
     register,
     formState: { isSubmitting, errors },
@@ -56,6 +56,8 @@ export const LabeledTextField = forwardRef<
       `}</style>
     </div>
   );
-});
+}
 
-export default LabeledTextField;
+export default forwardRef<HTMLInputElement, LabeledTextFieldProps>(
+  LabeledTextField
+);
