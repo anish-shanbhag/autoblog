@@ -12,6 +12,7 @@
     "web": "cd apps/web && yarn codegen && yarn dev",
     "lint": "turbo run lint",
     "remote-cache": "turbo link",
+    "clean": "find . -type d -name node_modules -prune -exec rm -rf \\{\\} ';'",
     "prepare": "husky install"
   },
   "devDependencies": {
