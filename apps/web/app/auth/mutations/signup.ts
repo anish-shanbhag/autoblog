@@ -5,7 +5,7 @@ import db from "db";
 import { Role } from "types";
 
 export default async function signup(
-  input: { email: string; password: string },
+  input: { email?: string; password?: string },
   ctx: Ctx
 ) {
   const blitzContext = ctx;

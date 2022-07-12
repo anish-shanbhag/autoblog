@@ -12,7 +12,7 @@ export class ResetPasswordError extends Error {
 }
 
 export default async function resetPassword(
-  input: { token: string; password: string },
+  input: { token?: string; password?: string },
   ctx
 ) {
   ResetPassword.parse(input);
