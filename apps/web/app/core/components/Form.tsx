@@ -47,7 +47,7 @@ export function Form<S extends z.ZodType<any, any>>({
             } else {
               ctx.setError(key as any, {
                 type: "submit",
-                message: value,
+                message: value as string,
               });
             }
           }
@@ -70,6 +70,7 @@ export function Form<S extends z.ZodType<any, any>>({
           </button>
         )}
 
+        {/* @ts-ignore */}
         <style global jsx>{`
           .form > * + * {
             margin-top: 1rem;

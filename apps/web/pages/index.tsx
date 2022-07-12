@@ -15,10 +15,10 @@ import logo from "public/logo.png";
  */
 
 function UserInfo() {
-  // const currentUser = useCurrentUser();
+  const currentUser = useCurrentUser();
   const [logoutMutation] = useMutation(logout);
 
-  if (false) {
+  if (currentUser) {
     return (
       <>
         <button
@@ -145,7 +145,7 @@ function Home() {
             Powered by Blitz.js
           </a>
         </footer>
-
+        {/* @ts-ignore */}
         <style jsx global>{`
           @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700&display=swap");
 

@@ -11,7 +11,10 @@ export class ResetPasswordError extends Error {
   message = "Reset password link is invalid or it has expired.";
 }
 
-export default async function resetPassword(input, ctx) {
+export default async function resetPassword(
+  input: { token: string; password: string },
+  ctx
+) {
   ResetPassword.parse(input);
   // 1. Try to find this token in the database
   const hashedToken = hash256(input.token);

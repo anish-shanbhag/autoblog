@@ -22,7 +22,7 @@ function RootErrorFallback({ error }: ErrorFallbackProps) {
   }
   return (
     <ErrorComponent
-      statusCode={(error as any)?.statusCode || 400}
+      statusCode={((error as any)?.statusCode as number) || 400}
       title={error.message || error.name}
     />
   );

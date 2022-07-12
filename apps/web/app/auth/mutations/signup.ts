@@ -1,15 +1,19 @@
 import { SecurePassword } from "@blitzjs/auth";
+import { Ctx } from "@blitzjs/next";
 
 import db from "db";
 import { Role } from "types";
 
-export default async function signup(input, ctx) {
+export default async function signup(
+  input: { email: string; password: string },
+  ctx: Ctx
+) {
   const blitzContext = ctx;
 
   const hashedPassword = await SecurePassword.hash(
-    (input.password as string) || "test-password"
+    input.password || "test-password"
   );
-  const email = (input.email as string) || "test" + Math.random() + "@test.com";
+  const email = input.email || "test" + Math.random() + "@test.com";
   const user = await db.user.create({
     data: { email, hashedPassword, role: "user" },
     select: { id: true, name: true, email: true, role: true },

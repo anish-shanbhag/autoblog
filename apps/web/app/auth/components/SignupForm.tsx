@@ -31,7 +31,7 @@ export function SignupForm(props: SignupFormProps) {
               // This error comes from Prisma
               return { email: "This email is already being used" };
             }
-            return { [FORM_ERROR]: error.toString() };
+            return { [FORM_ERROR]: (error as object).toString() };
           }
         }}
       >
