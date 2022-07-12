@@ -28,7 +28,4 @@ jobs:
       - run: yarn generate
         working-directory: "./apps/web"
 
-      - run: yarn codegen # codegen is likely bugged and only one of generate/codegen should be needed
-        working-directory: "./apps/web"
-
       - run: yarn build
