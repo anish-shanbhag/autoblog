@@ -5,6 +5,5 @@ WORKDIR /app
 COPY . .
 RUN yarn --immutable
 WORKDIR /app/apps/web
-RUN yarn generate
 EXPOSE 3000
 CMD [ "yarn", "watch" ]

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "docker compose up --build --no-log-prefix",
-    "watch": "chokidar ../../yarn.lock -c yarn --polling & blitz dev",
+    "watch": "chokidar \"../../yarn.lock\" -c \"yarn\" --polling & chokidar \"db/schema.prisma\" -c \"yarn generate\" --polling & blitz dev",
     "build": "blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
