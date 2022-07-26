@@ -1,7 +1,18 @@
-import { sum } from "../src/index";
+import { createRecipe } from "../src";
 
-describe("sum", () => {
-  it("adds two numbers together", () => {
-    expect(sum(1, 1)).toEqual(2);
+describe("createRecipe", () => {
+  it("creates a new recipe", () => {
+    expect(
+      createRecipe({
+        title: "",
+        description: "",
+        compatible: [],
+        dependencies: [],
+        incompatible: [],
+        private: false,
+        unlisted: false,
+        async run() {},
+      })
+    ).toBe(null); // TODO: fix this
   });
 });
