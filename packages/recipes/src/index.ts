@@ -42,9 +42,13 @@ export function createRecipe({
 
 // TODO: should this even be a thing? Could be pretty dangerous since you can accidentally delete files
 // TODO: rename to `runWithScaffolding` since the parameter isn't actually a Recipe?
-export function runRecipe(recipe: RecipeStep): void {
+export function runRecipe(
+  recipe: RecipeStep,
+  { confirmDirectory = false, ...options }: { confirmDirectory?: boolean } // eslint-disable-line @typescript-eslint/no-unused-vars
+): void {
   // TODO: options for running in the context of a different directory
   running = true;
+  // TODO: implement confirmDirectory functionality, which should prompt for the directory context for the Recipe if true
   recipe();
   running = false;
 }
