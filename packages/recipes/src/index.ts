@@ -1,11 +1,7 @@
-import {
-  NamedStep,
-  RecipeParameters,
-  RecipeStep,
-  UnpublishedRecipe,
-} from "./types";
+import { RecipeParameters, RecipeStep, UnpublishedRecipe } from "./types";
 
 let running = false;
+const steps: Record<string, string> = {};
 
 // TODO: implement a `ctx` object which is available to Recipes that contain additional info
 // like previous step names, whether the Recipe is running in a Template, etc.
@@ -53,12 +49,15 @@ export function runRecipe(
   running = false;
 }
 
-export function namedStep({
+export async function namedStep({
   name,
+  enableUndo = false, // eslint-disable-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   outputMode = "hidden", // TODO: should this default to condensed instead?
   run,
 }: {
   name: string;
+  enableUndo?: boolean;
   // there might be a better way to do this, but at least in terms of CLI:
   // collapsed would only show the step name and its progress
   // condensed would show the same thing as collapsed but also some greyed-out command output when the step is running
@@ -67,7 +66,16 @@ export function namedStep({
   // TODO: separate this out into multiple functions instead?
   outputMode: "collapsed" | "condensed" | "alert" | "hidden";
   run: RecipeStep;
-}): NamedStep {
-  // eslint-disable-next-line prefer-object-spread
-  return Object.assign({}, run, { name, outputMode });
+}): Promise<void> {
+  if (steps[name]) {
+    throw Error(
+      `Trying to create a step named ${name}, but that name has already been used.`
+    );
+  } else {
+    // TODO: implement outputMode
+    await run();
+    steps[name] = "step";
+    // TODO: need to save the current directory context/diffs so that we can undo to this step
+    // but only do this if enableUndo is true, since this would probably be an expensive operation
+  }
 }

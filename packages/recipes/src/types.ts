@@ -27,10 +27,6 @@ export type Recipe = PublishedRecipe | UnpublishedRecipe;
 
 export type RecipeStep = (() => void) | (() => Promise<void>);
 
-export type NamedStep = RecipeStep & {
-  name: string; // description of the step, e.g. "Install NPM dependencies for new project"
-};
-
 // TODO: need a way to safeguard against recipes running inside of the dev environment (e.g. from calling a recipe directly inside the file instead of inside functions)
 
 /*
