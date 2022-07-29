@@ -1,3 +1,5 @@
+import fs from "fs/promises";
+
 import { RecipeParameters, RecipeStep, UnpublishedRecipe } from "./types";
 
 let running = false;
@@ -79,3 +81,21 @@ export async function namedStep({
     // but only do this if enableUndo is true, since this would probably be an expensive operation
   }
 }
+
+// the below methods should print messages to the console (extra functionality over regular fs call)
+// TODO: move these to their own file?
+export async function createFile(path: string, contents?: string) {
+  // TODO: reimplement with fs.createWriteStream() for more performance? (hover fs.writeFile())
+  await fs.writeFile(path, contents ?? "");
+  // TODO: check mark emoji, etc.
+  console.log("Created file " + path);
+}
+
+export async function deleteFile(path: string) {
+  // TODO: red X emoji, etc.
+  await fs.rm(path);
+  console.log("Deleted file" + path);
+}
+
+// TODO: file operations with directories
+// TODO: file operations on globs/arrays of paths (might just integrate into the above functions)
