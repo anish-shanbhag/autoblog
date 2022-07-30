@@ -39,8 +39,7 @@ export function createRecipe({
 }
 
 // TODO: should this even be a thing? Could be pretty dangerous since you can accidentally delete files
-// TODO: rename to `runWithScaffolding` since the parameter isn't actually a Recipe?
-export async function runRecipe(
+export async function runWithRecipeContext(
   recipe: RecipeStep,
   { confirmDirectory = false, ...options }: { confirmDirectory?: boolean } // eslint-disable-line @typescript-eslint/no-unused-vars
 ): Promise<void> {
