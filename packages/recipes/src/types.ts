@@ -12,18 +12,9 @@ export interface RecipeParameters {
   run: RecipeStep; // TODO: this should be able to accept parameters as an object (see Notion)
 }
 
-export type UnpublishedRecipe = RecipeStep &
-  Omit<RecipeParameters, "run"> & {
-    fromNPM: boolean; // distinguishes between GUI-created vs. imported from NPM
-    official: boolean;
-  };
-
-export type PublishedRecipe = UnpublishedRecipe & {
-  id: string | null; // decided that this will only be non-null if published/built
-  author: string | null; // same as above
-};
-
-export type Recipe = PublishedRecipe | UnpublishedRecipe;
+// decided to omit fields like author, id, fromNPM, official, etc. and leave those for the website only
+// there is basically no use for those fields in a programmatic context
+export type Recipe = RecipeStep & Omit<RecipeParameters, "run">;
 
 export type RecipeStep = (() => void) | (() => Promise<void>);
 

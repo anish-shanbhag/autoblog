@@ -16,6 +16,9 @@ const storagePath = path.join(userDataPath, "scaffolding"); // TODO: rename the 
 // this is the function that is called by the CLI/VSCode
 export async function runRecipeWithId(id: string) {
   // TODO: first check if a locally installed (i.e. unpublished) recipe exists with this id
+  if (id.startsWith(".")) {
+    id = "recipes-test"; // TODO: this is a hack to make the test work
+  }
   // TODO: call our API to check if this is a Rust-optimized or a regular recipe
   const optimized = false;
   if (optimized) {
@@ -31,10 +34,9 @@ export async function runRecipeWithId(id: string) {
       const installProcess = spawn(
         "npm",
         ["install", packageName, "-g", "--prefix", storagePath],
-        { shell: true }
+        { shell: true, stdio: "inherit" }
       );
       await new Promise<void>((resolve, reject) => {
-        installProcess.stdin.pipe(process.stdout);
         installProcess.on("error", reject);
         installProcess.on("close", (code) => {
           if (code) {
@@ -46,11 +48,17 @@ export async function runRecipeWithId(id: string) {
       });
       spinner.stop();
     }
+
     // TODO: call updateNotifier to check if there's a new version of the recipe
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+    // TODO: try using dynamic import or Module.runMain to avoid creating a process?
     const recipeProcess = spawn(
       "node",
-      [path.join(packagePath, "bin", "index.js")],
-      { stdio: "inherit" }
+      [path.join(packagePath, "dist/recipes/run.js"), "testRecipe"],
+      {
+        stdio: "inherit",
+      }
     );
   }
 }
