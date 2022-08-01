@@ -4,10 +4,12 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "**/fixtures/*"
   ],
   "scripts": {
     "build": "turbo run build",
+    "test": "turbo run test",
     "dev": "turbo run dev --parallel",
     "web": "cd apps/web && yarn dev",
     "lint": "turbo run lint",

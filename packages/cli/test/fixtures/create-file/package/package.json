@@ -1,0 +1,10 @@
+{
+  "name": "create-file",
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "recipes": "workspace:*"
+  }
+}

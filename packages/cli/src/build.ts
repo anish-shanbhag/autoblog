@@ -1,27 +1,18 @@
 import fs from "fs/promises";
 import path from "path";
-import { spawn } from "child_process";
 
 import { build } from "esbuild";
 import ora from "ora";
 import chalk from "chalk";
 
+import { runProcess } from "./utils";
+
 export async function buildRecipes() {
   await fs.rm("dist", { recursive: true, force: true });
   let spinner = ora("Checking validity of types...\n").start();
   try {
-    await new Promise<void>((resolve, reject) => {
-      // it looks like spawn() only works if typescript is installed as a dependency in the recipe package
-      const tsc = spawn("tsc", { stdio: "inherit", shell: true });
-      tsc.on("error", reject);
-      tsc.on("close", (code) => {
-        if (code) {
-          reject(code);
-        } else {
-          resolve();
-        }
-      });
-    });
+    // it looks like spawn() only works if typescript is installed as a dependency in the recipe package
+    await runProcess("tsc", [], { stdio: "inherit", shell: true });
   } catch {
     spinner.fail("Type checking failed.");
     return;

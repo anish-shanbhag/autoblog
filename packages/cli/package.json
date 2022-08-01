@@ -11,15 +11,20 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc --noEmit && esbuild src/index.ts --bundle --minify --platform=node --sourcemap --outfile=dist/index.js --external:esbuild",
+    "build": "tsc -p tsconfig.build.json && rimraf dist && esbuild src/index.ts --bundle --minify --platform=node --sourcemap --outfile=dist/index.js --external:esbuild",
+    "test": "jest",
     "lint": "eslint . --fix"
   },
   "engines": {
     "node": ">=12"
   },
   "devDependencies": {
+    "@types/jest": "^28.1.6",
     "config": "workspace:*",
+    "esbuild-jest": "^0.5.0",
     "eslint": "^8.19.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.7",
     "tsconfig": "workspace:*",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
@@ -28,6 +33,7 @@
     "chalk": "^5.0.1",
     "commander": "^9.4.0",
     "esbuild": "^0.14.51",
+    "jest": "^28.1.3",
     "ora": "^6.1.2",
     "update-notifier": "^6.0.2"
   }
