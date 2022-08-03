@@ -9,7 +9,6 @@ import pkg from "./package.json" assert { type: "json" };
   await build({
     entryPoints: ["src/index.ts"],
     bundle: true,
-    minify: true,
     platform: "node",
     format: "esm",
     sourcemap: true,
