@@ -7,7 +7,8 @@ import ora from "ora";
 
 import { runProcess, recipeInstallPath } from "./utils";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// TODO: what if there's no internet connection?
+
 // this is the function that is called by the CLI/VSCode
 export async function runRecipeWithId(id: string) {
   // TODO: first check if a locally installed (i.e. unpublished) recipe exists with this id
