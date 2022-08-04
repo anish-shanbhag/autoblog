@@ -7,49 +7,31 @@ import { build, BuildOptions } from "esbuild";
 import ora, { Ora } from "ora";
 import chalk from "chalk";
 
-import { runProcess } from "./utils";
+import {
+  getPackageJson,
+  getPackageRoot,
+  getRecipesEntryPointFromPath,
+  getRecipesFromImport,
+  runProcess,
+} from "./utils";
 
 export async function buildRecipes({ clean }: { clean?: string }) {
-  let packageRoot = process.cwd();
-  while (!existsSync(path.join(packageRoot, "package.json"))) {
-    if (packageRoot === path.parse(process.cwd()).root) {
-      throw new Error(
-        "Couldn't find a package.json file. Try running this command again from inside a package."
-      );
-    }
-    packageRoot = path.dirname(packageRoot);
-  }
+  const { packageRoot, fromRoot } = getPackageRoot();
+  const pkg = await getPackageJson();
 
-  function fromRoot(relativePath: string) {
-    return path.join(packageRoot, relativePath);
-  }
-
-  const pkg = JSON.parse(
-    (await fs.readFile(fromRoot("package.json"))).toString()
-  ) as Record<string, unknown>;
-
-  let recipesEntryPoint; // TODO: allow this to be overriden and skip the checks below if it is
-  let hasTypeScriptEntryPoint = false;
-  if (existsSync(fromRoot("recipes/index.ts"))) {
-    recipesEntryPoint = fromRoot("recipes/index.ts");
-    hasTypeScriptEntryPoint = true;
-  } else if (existsSync(fromRoot("recipes/index.js"))) {
-    recipesEntryPoint = fromRoot("recipes/index.js");
-  } else {
-    throw Error("Couldn't find a entry point for recipes.");
-  }
+  const { recipesEntryPoint, hasTypeScriptEntryPoint } =
+    await getRecipesEntryPointFromPath(packageRoot);
 
   // TODO: make sure file:// works on all platforms
-  const recipes = (await import(
-    // TODO: type the main and module fields properly before this
-    "file://" + recipesEntryPoint
-  )) as Record<string, unknown>;
-  // TODO: use a runtime check (e.g. Zod) to filter which exports are actually Recipes
-  const recipeNames = Object.keys(recipes);
+  const recipes = await getRecipesFromImport("file://" + recipesEntryPoint);
+
+  if (Object.keys(recipes).length === 0) {
+    throw Error("No recipes were found to be built");
+  }
   const relativeEntryPoint = path
     .relative(packageRoot, recipesEntryPoint)
     .replace(/\\/g, "/");
-  const formattedRecipeNames = recipeNames
+  const formattedRecipeNames = Object.keys(recipes)
     .map((name) => chalk.blue(name))
     .join(", ");
   console.log(
@@ -60,6 +42,7 @@ export async function buildRecipes({ clean }: { clean?: string }) {
   if (clean) {
     spinner = ora(`Cleaning up ${chalk.yellow(clean)}...\n`).start();
     if (existsSync(fromRoot(clean))) {
+      // TODO: support globs for the path to clean up
       await fs.rm(fromRoot(clean), { recursive: true, force: true });
     } else {
       throw Error("The path provided for --clean doesn't exist.");

@@ -22,7 +22,15 @@ export function createTest(
       uncache: async (id) =>
         runProcess(
           "npm",
-          ["uninstall", id, "-g", "--prefix", recipeInstallPath], // TODO: change id to packageName depending on how input is handled
+          [
+            "uninstall",
+            id, // TODO: change id to packageName depending on how input is handled
+            "-g",
+            "--prefix",
+            recipeInstallPath,
+            "--loglevel",
+            "error",
+          ],
           { shell: true }
         ),
       build: () => {

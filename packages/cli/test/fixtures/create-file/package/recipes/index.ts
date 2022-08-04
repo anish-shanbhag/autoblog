@@ -1,7 +1,7 @@
 import { createFile, createRecipe } from "recipes";
 
 export const testRecipe = createRecipe({
-  title: "",
+  title: "Create file test.txt",
   description: "",
   compatible: [],
   dependencies: [],

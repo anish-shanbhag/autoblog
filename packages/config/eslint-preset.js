@@ -1,7 +1,10 @@
 module.exports = (directory, allowConsole = true, isNextJS = false) => ({
   root: true,
+  env: {
+    node: true,
+  },
   parser: "@typescript-eslint/parser",
-  ignorePatterns: ["*.js", "*.d.ts"],
+  ignorePatterns: ["*.js", "*.cjs", "*.d.ts"],
   settings: {
     next: {
       rootDir: ["apps/*/", "packages/*/"],

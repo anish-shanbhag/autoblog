@@ -1,5 +1,6 @@
 {
   "name": "create-file",
+  "version": "0.1.0",
   "type": "module",
   "module": "dist/index.js",
   "dependencies": {
