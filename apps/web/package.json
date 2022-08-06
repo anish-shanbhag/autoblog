@@ -8,7 +8,7 @@
     "build": "blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
-    "generate": "blitz prisma generate",
+    "generate": "blitz codegen && blitz prisma generate",
     "lint": "prettier --write --plugin=prettier-plugin-prisma --loglevel warn **/*.prisma && eslint . --fix",
     "test": "jest",
     "test:watch": "jest --watch"
