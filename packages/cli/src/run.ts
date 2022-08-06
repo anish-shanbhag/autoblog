@@ -153,7 +153,7 @@ export async function runRecipeWithId(
       newMetadata[packageName] = {
         ...newMetadata[packageName],
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        cliVersion: cliPkg.version as string,
+        cliVersion: cliPkg.version,
         lastInstalled: Date.now(),
         isLocal: Boolean(localPackage),
       };

@@ -12,8 +12,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && node esbuild.js",
-    "test": "jest",
+    "build": "tsc -p tsconfig.build.json && node esbuild.js",
+    "test": "tsc && jest",
     "lint": "eslint . --fix"
   },
   "engines": {
@@ -32,6 +32,7 @@
     "tslib": "^2.4.0"
   },
   "dependencies": {
+    "@swc/core": "^1.2.223",
     "chalk": "^4.1.2",
     "commander": "^9.4.0",
     "esbuild": "^0.14.51",

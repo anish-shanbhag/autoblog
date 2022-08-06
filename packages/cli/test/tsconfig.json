@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "tsconfig/base.json",
+  "include": ["**/*.ts"],
   "compilerOptions": {
     "module": "esnext",
     "target": "es2022",
@@ -8,5 +9,11 @@
     "emitDeclarationOnly": true,
     "declarationDir": "dist",
     "importHelpers": true
+  },
+  // important: the TSConfig in recipe packages must include the below option
+  // (or "transpileOnly": true) in order to skip type checking during the
+  // `local run` command
+  "ts-node": {
+    "swc": true
   }
 }

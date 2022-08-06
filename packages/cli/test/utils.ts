@@ -8,7 +8,7 @@ export function createTest(
     relativePath: (path: string) => string;
     uncache: (id: string) => Promise<void>;
     build: () => void;
-    run: (id: string) => Promise<void>;
+    command: (...args: string[]) => Promise<void>;
   }) => void | Promise<void>
 ) {
   const name = path.basename(dir);
@@ -24,7 +24,7 @@ export function createTest(
           "npm",
           [
             "uninstall",
-            id, // TODO: change id to packageName depending on how input is handled
+            id,
             "-g",
             "--prefix",
             recipeInstallPath,
@@ -38,7 +38,8 @@ export function createTest(
           await runProcess("scaffold", ["build"], shellOptions);
         });
       },
-      run: (id) => runProcess("scaffold", ["run", id], shellOptions),
+      command: (...args: string[]) =>
+        runProcess("scaffold", args, shellOptions),
     });
   });
 }
