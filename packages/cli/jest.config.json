@@ -1,6 +1,5 @@
 {
   "transform": {
     "^.+\\.tsx?$": "esbuild-jest"
-  },
-  "extensionsToTreatAsEsm": [".ts"]
+  }
 }
