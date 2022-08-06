@@ -1,7 +1,6 @@
 import fs from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
-import { execSync } from "child_process";
 
 import { build, BuildOptions } from "esbuild";
 import ora, { Ora } from "ora";
@@ -71,18 +70,9 @@ export async function buildRecipes({ clean }: { clean?: string }) {
   if (hasTSConfig) {
     spinner = ora("Checking validity of types...\n").start();
     try {
-      const binPath = execSync("npm bin").toString().trim();
-      await runProcess("tsc", [], {
-        stdio: "inherit",
-        shell: true,
-        env: {
-          ...process.env,
-          PATH: process.env.PATH + ";" + binPath,
-        },
-      });
-    } catch (e) {
+      await runProcess("tsc", [], { fullOutput: true });
+    } catch {
       // TODO: properly check for and print errors that aren't actually due to incorrect types
-      console.error(e);
       spinner.fail("Type checking failed.");
       return;
     }

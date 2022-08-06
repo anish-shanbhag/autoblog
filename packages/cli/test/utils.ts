@@ -8,38 +8,33 @@ export function createTest(
     relativePath: (path: string) => string;
     uncache: (id: string) => Promise<void>;
     build: () => void;
-    command: (...args: string[]) => Promise<void>;
+    runCommand: (...args: Parameters<typeof runProcess>) => Promise<void>;
   }) => void | Promise<void>
 ) {
   const name = path.basename(dir);
-  const shellOptions = {
-    cwd: `./test/fixtures/${name}/package`,
-    shell: true,
-  };
+  async function runCommand(...args: Parameters<typeof runProcess>) {
+    await runProcess(args[0], args[1], {
+      cwd: `./test/fixtures/${name}/package`,
+      ...args[2],
+    });
+  }
   describe(name, () => {
     runTest({
       relativePath: (pathName) => path.join(dir, "package", pathName),
       uncache: async (id) =>
-        runProcess(
-          "npm",
-          [
-            "uninstall",
-            id,
-            "-g",
-            "--prefix",
-            recipeInstallPath,
-            "--loglevel",
-            "error",
-          ],
-          { shell: true }
-        ),
+        runProcess("npm", [
+          "uninstall",
+          id,
+          "-g",
+          "--prefix",
+          recipeInstallPath,
+          "--loglevel",
+          "error",
+        ]),
       build: () => {
-        it("builds without errors", async () => {
-          await runProcess("scaffold", ["build"], shellOptions);
-        });
+        it("builds without errors", () => runCommand("scaffold build"));
       },
-      command: (...args: string[]) =>
-        runProcess("scaffold", args, shellOptions),
+      runCommand,
     });
   });
 }

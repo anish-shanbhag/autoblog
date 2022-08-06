@@ -1,4 +1,4 @@
-import { spawn } from "child_process";
+import { execSync, spawn } from "child_process";
 import fs from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
@@ -108,13 +108,34 @@ export async function getRecipesFromImport(importString: string): Promise<{
   return (await import(importString)) as { [name: string]: Recipe };
 }
 
-export function runProcess(...args: Parameters<typeof spawn>): Promise<void> {
+let binPath: string;
+
+export function runProcess(
+  command: string,
+  args?: string[],
+  options: { cwd?: string; fullOutput?: boolean } = {}
+): Promise<void> {
+  if (!binPath) {
+    binPath = execSync("npm bin").toString().trim();
+  }
   return new Promise<void>((resolve, reject) => {
-    const process = spawn(...args);
-    process.on("error", reject);
-    process.on("close", (code) => {
+    const childProcess = spawn(command, args ?? [], {
+      shell: true,
+      cwd: options.cwd,
+      stdio: options.fullOutput ? "inherit" : "pipe",
+      env: {
+        ...process.env,
+        PATH: process.env.PATH + ";" + binPath,
+      },
+    });
+    let error = "";
+    childProcess.stderr?.on("data", (data) => {
+      error += data;
+    });
+    childProcess.on("error", reject);
+    childProcess.on("close", (code) => {
       if (code) {
-        reject(code);
+        reject(error || code);
       } else {
         resolve();
       }

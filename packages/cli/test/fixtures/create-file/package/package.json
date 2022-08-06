@@ -5,5 +5,8 @@
   "module": "dist/index.js",
   "dependencies": {
     "recipes": "workspace:*"
+  },
+  "devDependencies": {
+    "cli": "workspace:*"
   }
 }

@@ -141,11 +141,13 @@ export async function runRecipeWithId(
 
     const installSpec = localPackage ? localPackage.path : id;
 
-    await runProcess(
-      "npm",
-      ["install", installSpec, "-g", "--prefix", recipeInstallPath],
-      { shell: true }
-    );
+    await runProcess("npm", [
+      "install",
+      installSpec,
+      "-g",
+      "--prefix",
+      recipeInstallPath,
+    ]);
 
     if (!packageVersion) {
       // write metadata
@@ -179,11 +181,13 @@ export async function runRecipeWithId(
     // TODO: only handle the error this way if it was from a missing entry
     // point or from no Recipes being exported - actual errors from the Recipe
     // should be handled differently
-    await runProcess(
-      "npm",
-      ["uninstall", packageName, "-g", "--prefix", recipeInstallPath],
-      { shell: true }
-    );
+    await runProcess("npm", [
+      "uninstall",
+      packageName,
+      "-g",
+      "--prefix",
+      recipeInstallPath,
+    ]);
     throw e;
   }
 }
