@@ -8,4 +8,7 @@ module.exports = withBlitz({
     };
     return config;
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 });
