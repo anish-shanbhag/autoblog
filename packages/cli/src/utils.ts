@@ -116,13 +116,9 @@ export function runProcess(
   options: { cwd?: string; fullOutput?: boolean } = {}
 ): Promise<void> {
   const cwd = options.cwd ?? process.cwd();
-  console.log(command, args, options);
   if (!binPaths[cwd]) {
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
-  console.log("binPaths:", binPaths);
-  console.log(execSync("ls", { cwd }).toString());
-
   return new Promise<void>((resolve, reject) => {
     const childProcess = spawn(command, args ?? [], {
       shell: true,
@@ -133,8 +129,6 @@ export function runProcess(
         PATH: process.env.PATH + ";" + binPaths[cwd],
       },
     });
-    console.log("childProcess:", childProcess);
-
     let error = "";
     childProcess.stderr?.on("data", (data) => {
       error += data;
