@@ -119,6 +119,11 @@ export function runProcess(
   if (!binPaths[cwd]) {
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
+  console.log(
+    "binPaths dir:",
+    execSync("ls", { cwd: binPaths[cwd] }).toString()
+  );
+
   return new Promise<void>((resolve, reject) => {
     const childProcess = spawn(command, args ?? [], {
       shell: true,
