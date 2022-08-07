@@ -119,8 +119,10 @@ export function runProcess(
   if (!binPaths[cwd]) {
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
+  console.log("Running", command, args);
   console.log(
-    "binPaths dir:",
+    "binPaths dir for ",
+    cwd,
     execSync("ls", { cwd: binPaths[cwd] }).toString()
   );
 
