@@ -119,15 +119,19 @@ export function runProcess(
     binPath = execSync("npm bin").toString().trim();
   }
   return new Promise<void>((resolve, reject) => {
-    const childProcess = spawn(command, args ?? [], {
-      shell: true,
-      cwd: options.cwd,
-      stdio: options.fullOutput ? "inherit" : "pipe",
-      env: {
-        ...process.env,
-        PATH: process.env.PATH + ";" + binPath,
-      },
-    });
+    const childProcess = spawn(
+      command === "npm" ? "npm" : path.join(binPath, command),
+      args ?? [],
+      {
+        shell: true,
+        cwd: options.cwd,
+        stdio: options.fullOutput ? "inherit" : "pipe",
+        env: {
+          ...process.env,
+          PATH: process.env.PATH + ";" + binPath,
+        },
+      }
+    );
     let error = "";
     childProcess.stderr?.on("data", (data) => {
       error += data;
