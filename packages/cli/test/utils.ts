@@ -20,6 +20,7 @@ export function createTest(
   const packageDir = path.join(dir, "package");
   const relativePath = (pathName: string) => path.join(packageDir, pathName);
   async function runCommand(...args: Parameters<typeof runProcess>) {
+    console.log("runCommand:", ...args);
     await runProcess(args[0], args[1], {
       cwd: packageDir,
       ...args[2],
