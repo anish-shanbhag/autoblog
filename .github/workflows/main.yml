@@ -32,4 +32,7 @@ jobs:
 
       - run: yarn --immutable # run a second time to create CLI executable
 
+      - run: xvfb-run -a yarn test
+        if: runner.os == 'Linux'
       - run: yarn test
+        if: runner.os != 'Linux'
