@@ -28,9 +28,9 @@ jobs:
       - run: yarn generate
         working-directory: "./apps/web"
 
-      - run: yarn lint
-
       - run: yarn build
+
+      - run: yarn lint
 
       - run: yarn --immutable # run a second time to create CLI executable
 
