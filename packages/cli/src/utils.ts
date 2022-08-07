@@ -124,21 +124,15 @@ export function runProcess(
   console.log(execSync("ls", { cwd }).toString());
 
   return new Promise<void>((resolve, reject) => {
-    const childProcess = spawn(
-      ["npm", "yarn", "pnpm"].includes(command)
-        ? command
-        : path.join(binPaths[cwd], command),
-      args ?? [],
-      {
-        shell: true,
-        cwd: options.cwd,
-        stdio: options.fullOutput ? "inherit" : "pipe",
-        env: {
-          ...process.env,
-          PATH: process.env.PATH + ";" + binPaths[cwd],
-        },
-      }
-    );
+    const childProcess = spawn(command, args ?? [], {
+      shell: true,
+      cwd: options.cwd,
+      stdio: options.fullOutput ? "inherit" : "pipe",
+      env: {
+        ...process.env,
+        PATH: process.env.PATH + ";" + binPaths[cwd],
+      },
+    });
     console.log("childProcess:", childProcess);
 
     let error = "";
