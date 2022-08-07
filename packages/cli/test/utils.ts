@@ -1,6 +1,11 @@
 import path from "path";
+import fs from "fs/promises";
 
-import { runProcess, recipeInstallPath } from "../src/utils";
+import {
+  runProcess,
+  recipeInstallPath,
+  getPackageManagerFromPath,
+} from "../src/utils";
 
 export function createTest(
   dir: string,
@@ -12,15 +17,25 @@ export function createTest(
   }) => void | Promise<void>
 ) {
   const name = path.basename(dir);
+  const packageDir = path.join(dir, "package");
+  const relativePath = (pathName: string) => path.join(packageDir, pathName);
   async function runCommand(...args: Parameters<typeof runProcess>) {
     await runProcess(args[0], args[1], {
-      cwd: `./test/fixtures/${name}/package`,
+      cwd: packageDir,
       ...args[2],
     });
   }
   describe(name, () => {
+    it("can install dependencies", async () => {
+      const packageManager = await getPackageManagerFromPath(packageDir);
+      await fs.rm(relativePath("node_modules"), {
+        recursive: true,
+        force: true,
+      });
+      await runCommand(packageManager, ["install"]);
+    });
     runTest({
-      relativePath: (pathName) => path.join(dir, "package", pathName),
+      relativePath,
       uncache: async (id) =>
         runProcess("npm", [
           "uninstall",
@@ -32,7 +47,7 @@ export function createTest(
           "error",
         ]),
       build: () => {
-        it("builds without errors", () => runCommand("scaffold build"));
+        it("builds without errors", () => runCommand("scaffold build -c dist"));
       },
       runCommand,
     });

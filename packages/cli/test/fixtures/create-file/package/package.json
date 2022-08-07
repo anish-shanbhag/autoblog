@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "type": "module",
   "module": "dist/index.js",
+  "resolutions": {
+    "recipes": "link:../../../../../recipes"
+  },
   "dependencies": {
-    "recipes": "workspace:*"
+    "recipes": "*"
   },
   "devDependencies": {
-    "cli": "workspace:*"
+    "cli": "portal:../../../../"
   }
 }

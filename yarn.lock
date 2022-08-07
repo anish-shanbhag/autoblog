@@ -4665,7 +4665,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli@workspace:*, cli@workspace:packages/cli":
+"cli@workspace:packages/cli":
   version: 0.0.0-use.local
   resolution: "cli@workspace:packages/cli"
   dependencies:
@@ -5025,15 +5025,6 @@ __metadata:
   checksum: 9de8597363a8e9b9952491ebe18167e3b36e7707569eed0ebf14f8bba773611376466ae34575bca8cfe3c767890c859c74056084738f09d4e4a6f902b2ad7d99
   languageName: node
   linkType: hard
-
-"create-file@workspace:packages/cli/test/fixtures/create-file/package":
-  version: 0.0.0-use.local
-  resolution: "create-file@workspace:packages/cli/test/fixtures/create-file/package"
-  dependencies:
-    cli: "workspace:*"
-    recipes: "workspace:*"
-  languageName: unknown
-  linkType: soft
 
 "create-require@npm:^1.1.0":
   version: 1.1.1

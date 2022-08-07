@@ -116,11 +116,13 @@ export function runProcess(
   options: { cwd?: string; fullOutput?: boolean } = {}
 ): Promise<void> {
   if (!binPath) {
-    binPath = execSync("npm bin").toString().trim();
+    binPath = execSync("npm bin", { cwd: options.cwd }).toString().trim();
   }
   return new Promise<void>((resolve, reject) => {
     const childProcess = spawn(
-      command === "npm" ? "npm" : path.join(binPath, command),
+      ["npm", "yarn", "pnpm"].includes(command)
+        ? command
+        : path.join(binPath, command),
       args ?? [],
       {
         shell: true,
