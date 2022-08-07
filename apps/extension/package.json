@@ -46,12 +46,11 @@
     "vscode:prepublish": "npm run build",
     "compile": "webpack",
     "watch": "webpack --watch",
-    "build": "eslint . && webpack --mode production --devtool hidden-source-map",
+    "build": "webpack --mode production --devtool hidden-source-map",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint . --fix",
-    "test": "node ./out/test/runTest.js"
+    "test": "npm run compile-tests && npm run compile && node ./out/test/runTest.js"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
