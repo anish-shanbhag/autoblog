@@ -120,6 +120,7 @@ export function runProcess(
   if (!binPaths[cwd]) {
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
+  console.log("binPaths:", binPaths);
   return new Promise<void>((resolve, reject) => {
     const childProcess = spawn(
       ["npm", "yarn", "pnpm"].includes(command)
@@ -136,6 +137,8 @@ export function runProcess(
         },
       }
     );
+    console.log("childProcess:", childProcess);
+
     let error = "";
     childProcess.stderr?.on("data", (data) => {
       error += data;
