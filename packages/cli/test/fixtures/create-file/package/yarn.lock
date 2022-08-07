@@ -356,7 +356,7 @@ __metadata:
     "@swc/core": ^1.2.223
     chalk: ^4.1.2
     commander: ^9.4.0
-    esbuild: ^0.14.51
+    esbuild: ^0.14.53
     ora: ^6.1.2
     recipes: "workspace:*"
     semver: ^7.3.7
@@ -570,7 +570,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.14.51":
+"esbuild@npm:^0.14.53":
   version: 0.14.53
   resolution: "esbuild@npm:0.14.53"
   dependencies:
