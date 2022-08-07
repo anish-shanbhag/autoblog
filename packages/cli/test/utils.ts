@@ -26,6 +26,7 @@ export function createTest(
     });
   }
   describe(name, () => {
+    jest.setTimeout(30000);
     it("can install dependencies", async () => {
       const packageManager = await getPackageManagerFromPath(packageDir);
       await fs.rm(relativePath("node_modules"), {
