@@ -120,7 +120,20 @@ export function runProcess(
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
   console.log("Running", command, args, "in:", cwd);
+  console.log("process.execArgv", process.execArgv);
   console.log("binPaths dir for ", cwd, "is", binPaths[cwd]);
+  if (existsSync(binPaths[cwd])) {
+    console.log(
+      "binPaths dir for ",
+      cwd,
+      "is",
+      binPaths[cwd],
+      "and contains",
+      execSync("ls", {
+        cwd: binPaths[cwd],
+      }).toString()
+    );
+  }
   return new Promise<void>((resolve, reject) => {
     const childProcess = spawn(command, args ?? [], {
       shell: true,

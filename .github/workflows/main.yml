@@ -23,10 +23,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - run: node --version
-      - run: npm --version
-      - run: yarn --version
-
       - run: yarn --immutable
 
       - run: yarn generate
