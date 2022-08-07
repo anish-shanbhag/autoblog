@@ -121,6 +121,8 @@ export function runProcess(
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
   console.log("binPaths:", binPaths);
+  console.log(execSync("ls", { cwd }).toString());
+
   return new Promise<void>((resolve, reject) => {
     const childProcess = spawn(
       ["npm", "yarn", "pnpm"].includes(command)
