@@ -40,12 +40,8 @@ export async function buildRecipes({ clean }: { clean?: string }) {
   let spinner: Ora;
   if (clean) {
     spinner = ora(`Cleaning up ${chalk.yellow(clean)}...\n`).start();
-    if (existsSync(fromRoot(clean))) {
-      // TODO: support globs for the path to clean up
-      await fs.rm(fromRoot(clean), { recursive: true, force: true });
-    } else {
-      throw Error("The path provided for --clean doesn't exist.");
-    }
+    // TODO: support globs for the path to clean up
+    await fs.rm(fromRoot(clean), { recursive: true, force: true });
     spinner.succeed(`Deleted old files in ${chalk.yellow(clean)}`);
   }
 
