@@ -28,4 +28,8 @@ jobs:
       - run: yarn generate
         working-directory: "./apps/web"
 
+      - run: yarn build
+
+      - run: yarn --immutable # run a second time to create CLI executable
+
       - run: yarn test
