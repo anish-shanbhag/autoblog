@@ -4,8 +4,11 @@ import { createTest } from "../../utils";
 
 createTest(__dirname, (ctx) => {
   ctx.build();
-  const uncache = ctx.uncache("create-file");
+  let uncache: Promise<void>;
   async function runTest(command: string) {
+    if (!uncache) {
+      uncache = ctx.uncache("create-file");
+    }
     await uncache;
     await ctx.runCommand(command);
     expect(fs.existsSync(ctx.relativePath("test.txt"))).toBe(true);

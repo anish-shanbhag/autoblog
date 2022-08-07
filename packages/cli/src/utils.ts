@@ -119,17 +119,12 @@ export function runProcess(
   if (!binPaths[cwd]) {
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
-  console.log("Running", command, args);
-  console.log(
-    "binPaths dir for ",
-    cwd,
-    execSync("ls", { cwd: binPaths[cwd] }).toString()
-  );
-
+  console.log("Running", command, args, "in:", cwd);
+  console.log("binPaths dir for ", cwd, "is", binPaths[cwd]);
   return new Promise<void>((resolve, reject) => {
     const childProcess = spawn(command, args ?? [], {
       shell: true,
-      cwd: options.cwd,
+      cwd,
       stdio: options.fullOutput ? "inherit" : "pipe",
       env: {
         ...process.env,
