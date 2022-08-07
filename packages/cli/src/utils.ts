@@ -108,21 +108,22 @@ export async function getRecipesFromImport(importString: string): Promise<{
   return (await import(importString)) as { [name: string]: Recipe };
 }
 
-let binPath: string;
+const binPaths: Record<string, string> = {};
 
 export function runProcess(
   command: string,
   args?: string[],
   options: { cwd?: string; fullOutput?: boolean } = {}
 ): Promise<void> {
-  if (!binPath) {
-    binPath = execSync("npm bin", { cwd: options.cwd }).toString().trim();
+  const cwd = options.cwd ?? process.cwd();
+  if (!binPaths[cwd]) {
+    binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
   return new Promise<void>((resolve, reject) => {
     const childProcess = spawn(
       ["npm", "yarn", "pnpm"].includes(command)
         ? command
-        : path.join(binPath, command),
+        : path.join(binPaths[cwd], command),
       args ?? [],
       {
         shell: true,
@@ -130,7 +131,7 @@ export function runProcess(
         stdio: options.fullOutput ? "inherit" : "pipe",
         env: {
           ...process.env,
-          PATH: process.env.PATH + ";" + binPath,
+          PATH: process.env.PATH + ";" + binPaths[cwd],
         },
       }
     );
