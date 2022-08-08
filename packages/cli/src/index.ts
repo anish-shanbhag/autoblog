@@ -1,4 +1,4 @@
-#!/usr/bin/env node --loader ts-node/esm --experimental-specifier-resolution=node --no-warnings
+#!/usr/bin/env -S 'node --loader=ts-node/esm --experimental-specifier-resolution=node --no-warnings'
 // TODO: figure out when the loader API used above will become stable
 
 import { Command } from "commander";

@@ -135,7 +135,7 @@ export function runProcess(
   //   );
   // }
   if (existsSync(binPaths[cwd])) {
-    if (existsSync(binPaths[cwd])) {
+    if (existsSync(path.join(binPaths[cwd], "scaffold"))) {
       console.log(
         "contents of scaffold:\n",
         execSync("cat scaffold", {
@@ -149,10 +149,12 @@ export function runProcess(
       shell: true,
       cwd,
       stdio: options.fullOutput ? "inherit" : "pipe",
-      env: {
-        ...process.env,
-        PATH: process.env.PATH + ";" + binPaths[cwd],
-      },
+      ...(existsSync(binPaths[cwd]) && {
+        env: {
+          ...process.env,
+          PATH: process.env.PATH + ";" + binPaths[cwd],
+        },
+      }),
     });
     let error = "";
     childProcess.stderr?.on("data", (data) => {
