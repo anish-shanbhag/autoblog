@@ -28,11 +28,17 @@ export function createTest(
   describe(name, () => {
     jest.setTimeout(120000);
     it("can install dependencies", async () => {
+      await Promise.all(
+        ["node_modules", ".yalc", "yalc.lock"].map((file) =>
+          fs.rm(relativePath(file), {
+            recursive: true,
+            force: true,
+          })
+        )
+      );
+      await runCommand("yalc add recipes --pure");
+      await runCommand("yalc add cli -D --pure");
       const packageManager = await getPackageManagerFromPath(packageDir);
-      await fs.rm(relativePath("node_modules"), {
-        recursive: true,
-        force: true,
-      });
       await runCommand(packageManager, ["install"]);
     });
     runTest({

@@ -349,24 +349,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli@portal:../../../../::locator=create-file%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "cli@portal:../../../../::locator=create-file%40workspace%3A."
+"cli@file:.yalc/cli::locator=create-file-yarn%40workspace%3A.":
+  version: 0.1.0
+  resolution: "cli@file:.yalc/cli#.yalc/cli::hash=c9acf1&locator=create-file-yarn%40workspace%3A."
   dependencies:
     "@swc/core": ^1.2.223
     chalk: ^4.1.2
     commander: ^9.4.0
     esbuild: ^0.14.53
     ora: ^6.1.2
-    recipes: "workspace:*"
+    recipes: 0.1.0
     semver: ^7.3.7
     ts-node: ^10.9.1
     typescript: ^4.7.4
     validate-npm-package-name: ^4.0.0
   bin:
     scaffold: dist/index.js
+  checksum: 04f56937eb7c8badc77e48b76e4735e0907f5fd94cc283cb3531d02cbaff533c7c914a86bdb8d64187d77b44013c0ec085bf40cbfd25371b86cdff6c1183ae7f
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "clone@npm:^1.0.2":
   version: 1.0.4
@@ -398,12 +399,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"create-file@workspace:.":
+"create-file-yarn@workspace:.":
   version: 0.0.0-use.local
-  resolution: "create-file@workspace:."
+  resolution: "create-file-yarn@workspace:."
   dependencies:
-    cli: "portal:../../../../"
-    recipes: "*"
+    cli: "file:.yalc/cli"
+    recipes: "file:.yalc/recipes"
   languageName: unknown
   linkType: soft
 
@@ -749,11 +750,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recipes@link:../../../../../recipes::locator=create-file%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "recipes@link:../../../../../recipes::locator=create-file%40workspace%3A."
+"recipes@file:.yalc/recipes::locator=create-file-yarn%40workspace%3A.":
+  version: 0.1.0
+  resolution: "recipes@file:.yalc/recipes#.yalc/recipes::hash=a4995c&locator=create-file-yarn%40workspace%3A."
+  checksum: 4cabd447fb6c651ee06a67fe2ae20d856b39a10f45489b65b20b2b6cbc7f3a77c192ee6a839e3eda983d32ccab90d49a84a1bd4e64b0f2d0e9566d3c3d5e522a
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "restore-cursor@npm:^4.0.0":
   version: 4.0.0

@@ -1,15 +1,15 @@
 {
-  "name": "create-file",
+  "name": "create-file-yarn",
   "version": "0.1.0",
   "type": "module",
   "module": "dist/index.js",
   "resolutions": {
-    "recipes": "link:../../../../../recipes"
+    "recipes": "file:.yalc/recipes"
   },
   "dependencies": {
-    "recipes": "*"
+    "recipes": "file:.yalc/recipes"
   },
   "devDependencies": {
-    "cli": "portal:../../../../"
+    "cli": "file:.yalc/cli"
   }
 }

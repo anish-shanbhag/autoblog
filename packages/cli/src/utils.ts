@@ -130,14 +130,18 @@ export function runProcess(
       cwd,
       stdio: options.fullOutput ? "inherit" : "pipe",
     });
-    let error = "";
+    let stdout = "";
+    let stderr = "";
+    childProcess.stdout?.on("data", (data) => {
+      stdout += data;
+    });
     childProcess.stderr?.on("data", (data) => {
-      error += data;
+      stderr += data;
     });
     childProcess.on("error", reject);
-    childProcess.on("close", (code) => {
-      if (code) {
-        reject(error || code);
+    childProcess.on("close", (code, signal) => {
+      if (code || signal) {
+        reject(stderr || stdout || code);
       } else {
         resolve();
       }

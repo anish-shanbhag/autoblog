@@ -1,0 +1,16 @@
+{
+  "name": "create-file-pnpm",
+  "version": "0.1.0",
+  "type": "module",
+  "module": "dist/index.js",
+  "dependencies": {
+    "recipes": "link:.yalc/recipes"
+  },
+  "scripts": {
+    "build": "scaffold build"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.4",
+    "cli": "link:.yalc/cli"
+  }
+}

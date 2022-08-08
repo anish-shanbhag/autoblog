@@ -28,7 +28,7 @@ export function createRecipe({ run, ...params }: RecipeParameters): Recipe {
     () => {
       if (!running) {
         throw Error(
-          "It looks like you're trying to run this Recipe without the CLI or the `runRecipe` function, which probably isn't what you're trying to do."
+          "It looks like you're trying to run this Recipe without the CLI or the `runRecipe` function, which isn't allowed because it might be dangerous."
         );
       } else {
         run();

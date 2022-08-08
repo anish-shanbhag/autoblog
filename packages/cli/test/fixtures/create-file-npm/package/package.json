@@ -1,0 +1,12 @@
+{
+  "name": "create-file-npm",
+  "version": "0.1.0",
+  "type": "module",
+  "module": "dist/index.js",
+  "dependencies": {
+    "recipes": "file:.yalc/recipes"
+  },
+  "devDependencies": {
+    "cli": "file:.yalc/cli"
+  }
+}
