@@ -43,6 +43,7 @@ jobs:
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      NODE_VERSION: ${{ matrix.node-version }}
     steps:
       - uses: actions/checkout@v3
 
