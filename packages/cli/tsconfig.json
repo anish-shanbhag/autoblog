@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "tsconfig/base.json",
   "include": ["**/*.ts"],
+  "exclude": ["**/node_modules", "**/fixtures"],
   "compilerOptions": {
     "module": "esnext",
     "target": "es2020",
