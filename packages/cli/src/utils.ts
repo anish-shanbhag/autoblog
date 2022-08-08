@@ -119,42 +119,16 @@ export function runProcess(
   if (!binPaths[cwd]) {
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
   }
-  console.log("Running", command, args, "in:", cwd);
-  // console.log("process.execArgv", process.execArgv);
-  // console.log("binPaths dir for ", cwd, "is", binPaths[cwd]);
-  // if (existsSync(binPaths[cwd])) {
-  //   console.log(
-  //     "binPaths dir for ",
-  //     cwd,
-  //     "is",
-  //     binPaths[cwd],
-  //     "and contains",
-  //     execSync("ls", {
-  //       cwd: binPaths[cwd],
-  //     }).toString()
-  //   );
-  // }
-  if (existsSync(binPaths[cwd])) {
-    if (existsSync(path.join(binPaths[cwd], "scaffold"))) {
-      console.log(
-        "contents of scaffold:\n",
-        execSync("cat scaffold", {
-          cwd: binPaths[cwd],
-        }).toString()
-      );
-    }
+  let commandPath = path.join(binPaths[cwd], command);
+  if (!existsSync(commandPath)) {
+    // fall back to the command name if it's not in the NPM bin path
+    commandPath = command;
   }
   return new Promise<void>((resolve, reject) => {
-    const childProcess = spawn(command, args ?? [], {
+    const childProcess = spawn(commandPath, args ?? [], {
       shell: true,
       cwd,
       stdio: options.fullOutput ? "inherit" : "pipe",
-      ...(existsSync(binPaths[cwd]) && {
-        env: {
-          ...process.env,
-          PATH: process.env.PATH + ";" + binPaths[cwd],
-        },
-      }),
     });
     let error = "";
     childProcess.stderr?.on("data", (data) => {

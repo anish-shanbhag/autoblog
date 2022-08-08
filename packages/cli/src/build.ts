@@ -15,17 +15,6 @@ import {
 } from "./utils";
 
 export async function buildRecipes({ clean }: { clean?: string }) {
-  console.log(
-    "in build:",
-    clean,
-    ";",
-    process.cwd(),
-    ";",
-    process.execArgv,
-    ";",
-    process.argv
-  );
-
   const { packageRoot, fromRoot } = getPackageRoot();
   const pkg = await getPackageJson();
 

@@ -16,16 +16,13 @@ export function createTest(
     runCommand: (...args: Parameters<typeof runProcess>) => Promise<void>;
   }) => void | Promise<void>
 ) {
-  const start = Date.now();
   const name = path.basename(dir);
   const packageDir = path.join(dir, "package");
   const relativePath = (pathName: string) => path.join(packageDir, pathName);
   async function runCommand(...args: Parameters<typeof runProcess>) {
-    console.log("runCommand:", Date.now() - start, ...args);
     await runProcess(args[0], args[1] ?? [], {
       cwd: packageDir,
       ...args[2],
-      fullOutput: true,
     });
   }
   describe(name, () => {
@@ -51,7 +48,8 @@ export function createTest(
           "error",
         ]),
       build: () => {
-        it("builds without errors", () => runCommand("scaffold build -c dist"));
+        it("builds without errors", () =>
+          runCommand("scaffold", ["build", "-c", "dist"]));
       },
       runCommand,
     });

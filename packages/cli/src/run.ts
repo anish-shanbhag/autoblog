@@ -89,7 +89,10 @@ export async function runRecipeWithId(
   }
 
   let matched = false;
-  const nodeModules = path.join(recipeInstallPath, "node_modules");
+  const nodeModules = path.join(
+    recipeInstallPath,
+    process.platform === "win32" ? "node_modules" : "lib/node_modules"
+  );
   const packagePath = path.join(nodeModules, packageName);
   if (packageVersion === "latest") packageVersion = null;
   const metadataPath = path.join(
