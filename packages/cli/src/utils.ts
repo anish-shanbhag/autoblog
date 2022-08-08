@@ -113,7 +113,11 @@ const binPaths: Record<string, string> = {};
 export function runProcess(
   command: string,
   args?: string[],
-  options: { cwd?: string; fullOutput?: boolean } = {}
+  options: {
+    cwd?: string;
+    env?: Record<string, string>;
+    fullOutput?: boolean;
+  } = {}
 ): Promise<void> {
   const cwd = options.cwd ?? process.cwd();
   if (!binPaths[cwd]) {
@@ -128,6 +132,7 @@ export function runProcess(
     const childProcess = spawn(commandPath, args ?? [], {
       shell: true,
       cwd,
+      env: options.env,
       stdio: options.fullOutput ? "inherit" : "pipe",
     });
     let stdout = "";

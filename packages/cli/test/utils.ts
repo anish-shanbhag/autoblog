@@ -39,7 +39,9 @@ export function createTest(
       await runCommand("yalc add recipes --pure");
       await runCommand("yalc add cli -D --pure");
       const packageManager = await getPackageManagerFromPath(packageDir);
-      await runCommand(packageManager, ["install"]);
+      await runCommand(packageManager, ["install"], {
+        env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "0" },
+      });
     });
     runTest({
       relativePath,

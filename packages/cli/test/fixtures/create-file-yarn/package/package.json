@@ -4,10 +4,10 @@
   "type": "module",
   "module": "dist/index.js",
   "resolutions": {
-    "recipes": "link:.yalc/recipes"
+    "recipes": "file:.yalc/recipes"
   },
   "dependencies": {
-    "recipes": "link:.yalc/recipes"
+    "recipes": "file:.yalc/recipes"
   },
   "devDependencies": {
     "cli": "file:.yalc/cli"
