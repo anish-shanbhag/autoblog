@@ -1,13 +1,12 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": ["$NODE_VERSION", "$RUNNER_OS"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "build/**", ".next/**"]
     },
     "test": {
-      "dependsOn": ["build"]
+      "dependsOn": ["build", "$NODE_VERSION", "$RUNNER_OS"]
     },
     "lint": {
       "outputs": []
