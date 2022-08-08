@@ -32,6 +32,8 @@ jobs:
 
       - run: yarn lint
 
+      - run: npm i pnpm -g
+
       - run: xvfb-run -a -s '-terminate' yarn test
         if: runner.os == 'Linux'
       - run: yarn test
