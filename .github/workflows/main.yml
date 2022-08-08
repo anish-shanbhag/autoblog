@@ -32,7 +32,7 @@ jobs:
 
       - run: yarn lint
 
-      - run: yarn test --filter=cli
+      - run: xvfb-run -a -s '-terminate' yarn test
         if: runner.os == 'Linux'
       - run: yarn test
         if: runner.os != 'Linux'
