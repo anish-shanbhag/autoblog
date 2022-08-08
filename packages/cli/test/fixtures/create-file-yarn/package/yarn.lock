@@ -404,7 +404,7 @@ __metadata:
   resolution: "create-file-yarn@workspace:."
   dependencies:
     cli: "file:.yalc/cli"
-    recipes: "file:.yalc/recipes"
+    recipes: "link:.yalc/recipes"
   languageName: unknown
   linkType: soft
 
@@ -750,12 +750,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recipes@file:.yalc/recipes::locator=create-file-yarn%40workspace%3A.":
-  version: 0.1.0
-  resolution: "recipes@file:.yalc/recipes#.yalc/recipes::hash=fdd947&locator=create-file-yarn%40workspace%3A."
-  checksum: 1775e7d30cca60050297a6c7cab5aebad58e403d65b21e9ee455bf5c59eff41ed476eb105d3d4a1db7c6252e1008f958f1a5bd0575487ec12f088c351c9e463e
+"recipes@link:.yalc/recipes::locator=create-file-yarn%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "recipes@link:.yalc/recipes::locator=create-file-yarn%40workspace%3A."
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "restore-cursor@npm:^4.0.0":
   version: 4.0.0
