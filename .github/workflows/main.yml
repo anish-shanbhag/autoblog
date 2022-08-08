@@ -57,6 +57,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - run: yarn --immutable
+
       - run: npm i pnpm -g
 
       - run: xvfb-run -a -s '-terminate' yarn test
