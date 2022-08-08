@@ -351,7 +351,7 @@ __metadata:
 
 "cli@file:.yalc/cli::locator=create-file-yarn%40workspace%3A.":
   version: 0.1.0
-  resolution: "cli@file:.yalc/cli#.yalc/cli::hash=77c3da&locator=create-file-yarn%40workspace%3A."
+  resolution: "cli@file:.yalc/cli#.yalc/cli::hash=8501d6&locator=create-file-yarn%40workspace%3A."
   dependencies:
     "@swc/core": ^1.2.223
     chalk: ^4.1.2
@@ -365,7 +365,7 @@ __metadata:
     validate-npm-package-name: ^4.0.0
   bin:
     scaffold: dist/index.js
-  checksum: c0508fa1defed55bbfd68c786592bb25fe9719802d20c16872ded6da4341a97f39cf03f88742c5db6f41d3097614492cb10ad6e2a7d34fe69695e20615d702eb
+  checksum: de20394948430cf72a184c7e025b53abeff5ee0a41dd971bd7b7dd0394b6728dee8c653bb41126b2634d1459d0067e9ad8a5dd8fc17ae2875fd07b1299c37c8e
   languageName: node
   linkType: hard
 
@@ -752,8 +752,8 @@ __metadata:
 
 "recipes@file:.yalc/recipes::locator=create-file-yarn%40workspace%3A.":
   version: 0.1.0
-  resolution: "recipes@file:.yalc/recipes#.yalc/recipes::hash=a4995c&locator=create-file-yarn%40workspace%3A."
-  checksum: 4cabd447fb6c651ee06a67fe2ae20d856b39a10f45489b65b20b2b6cbc7f3a77c192ee6a839e3eda983d32ccab90d49a84a1bd4e64b0f2d0e9566d3c3d5e522a
+  resolution: "recipes@file:.yalc/recipes#.yalc/recipes::hash=fdd947&locator=create-file-yarn%40workspace%3A."
+  checksum: 1775e7d30cca60050297a6c7cab5aebad58e403d65b21e9ee455bf5c59eff41ed476eb105d3d4a1db7c6252e1008f958f1a5bd0575487ec12f088c351c9e463e
   languageName: node
   linkType: hard
 
