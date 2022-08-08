@@ -351,7 +351,7 @@ __metadata:
 
 "cli@file:.yalc/cli::locator=create-file-yarn%40workspace%3A.":
   version: 0.1.0
-  resolution: "cli@file:.yalc/cli#.yalc/cli::hash=832c5c&locator=create-file-yarn%40workspace%3A."
+  resolution: "cli@file:.yalc/cli#.yalc/cli::hash=11ac91&locator=create-file-yarn%40workspace%3A."
   dependencies:
     "@swc/core": ^1.2.223
     chalk: ^4.1.2
@@ -365,7 +365,7 @@ __metadata:
     validate-npm-package-name: ^4.0.0
   bin:
     scaffold: dist/index.js
-  checksum: 18da1513a0bf26ea55334af83484cc49abd27407fc8b88711ec77a60d559e73d0a9babeb6ab4e36ea8fc70b16e9bf116daedf49a72d1cbd964e567ce6944ffc7
+  checksum: 7fc3dff317c221b2bc7391b38264a94a721f88b86fe7fdaedec8dd43a1d75408740c4ee3d5e91247b99bce9a0a4861d3bab2d29dceaccb8f6cf7358939741a21
   languageName: node
   linkType: hard
 

@@ -6,7 +6,7 @@ const options = {
   entryPoints: ["src/index.ts"],
   bundle: true,
   platform: "node",
-  target: ["node16"],
+  target: ["node14", "es2020"],
   logLevel: "info",
 };
 

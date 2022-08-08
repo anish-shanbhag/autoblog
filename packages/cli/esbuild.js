@@ -11,6 +11,7 @@ import pkg from "./package.json" assert { type: "json" };
     bundle: true,
     platform: "node",
     format: "esm",
+    target: ["node14", "es2020"],
     sourcemap: true,
     outfile: "dist/index.js",
     external: Object.keys(pkg.dependencies),
