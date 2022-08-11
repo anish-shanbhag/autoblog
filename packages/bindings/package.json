@@ -4,13 +4,12 @@
   "main": "index.js",
   "types": "index.d.ts",
   "napi": {
-    "name": "rust-test",
+    "name": "bindings",
     "triples": {}
   },
   "license": "MIT",
   "devDependencies": {
-    "@napi-rs/cli": "^2.11.0",
-    "ava": "^4.3.0"
+    "@napi-rs/cli": "^2.11.0"
   },
   "engines": {
     "node": ">= 10"
@@ -20,7 +19,6 @@
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
     "prepublishOnly": "napi prepublish -t npm",
-    "test": "ava",
     "version": "napi version"
   }
 }
