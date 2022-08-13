@@ -46,11 +46,8 @@ export async function updateMetadata<T extends object = PackageMetadata>(
   const metadataPath = getMetadataPath(packageName);
   const oldMetadata: Partial<T> = (await getMetadata(packageName)) ?? {};
 
-  if (!existsSync(scaffoldingPath)) {
-    await fs.mkdir(scaffoldingPath);
-  }
   if (!existsSync(path.dirname(metadataPath))) {
-    await fs.mkdir(path.dirname(metadataPath));
+    await fs.mkdir(path.dirname(metadataPath), { recursive: true });
   }
   await fs.writeFile(
     metadataPath,
