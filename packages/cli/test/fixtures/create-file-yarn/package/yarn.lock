@@ -256,10 +256,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-regex@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "ansi-regex@npm:6.0.1"
-  checksum: 1ff8b7667cded1de4fa2c9ae283e979fc87036864317da86a2e546725f96406746411d0d85e87a2d12fa5abd715d90006de7fa4fa0477c92321ad3b4c7d4e169
+"ansi-regex@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "ansi-regex@npm:5.0.1"
+  checksum: 2aa4bb54caf2d622f1afdad09441695af2a83aa3fe8b8afa581d205e57ed4261c183c4d3877cee25794443fde5876417d859c108078ab788d6af7e4fe52eb66b
   languageName: node
   linkType: hard
 
@@ -286,24 +286,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bl@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "bl@npm:5.0.0"
+"bl@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "bl@npm:4.1.0"
   dependencies:
-    buffer: ^6.0.3
+    buffer: ^5.5.0
     inherits: ^2.0.4
     readable-stream: ^3.4.0
-  checksum: 5dbbcf9cbcf55221dc21f48968bc8cd6d78faea3c653d496ff8e0c382b95e8b6c4b9e818fe67de2f97ed0cd0c219c350ccce42aca91be33e0ad12e698c615061
+  checksum: 9e8521fa7e83aa9427c6f8ccdcba6e8167ef30cc9a22df26effcc5ab682ef91d2cbc23a239f945d099289e4bbcfae7a192e9c28c84c6202e710a0dfec3722662
   languageName: node
   linkType: hard
 
-"buffer@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "buffer@npm:6.0.3"
+"buffer@npm:^5.5.0":
+  version: 5.7.1
+  resolution: "buffer@npm:5.7.1"
   dependencies:
     base64-js: ^1.3.1
-    ieee754: ^1.2.1
-  checksum: 5ad23293d9a731e4318e420025800b42bf0d264004c0286c8cc010af7a270c7a0f6522e84f54b9ad65cbd6db20b8badbfd8d2ebf4f80fa03dab093b89e68c3f9
+    ieee754: ^1.1.13
+  checksum: e2cf8429e1c4c7b8cbd30834ac09bd61da46ce35f5c22a78e6c2f04497d6d25541b16881e30a019c6fd3154150650ccee27a308eff3e26229d788bbdeb08ab84
   languageName: node
   linkType: hard
 
@@ -316,7 +316,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.1.2":
+"chalk@npm:^4.1.0, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -326,23 +326,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "chalk@npm:5.0.1"
-  checksum: 7b45300372b908f0471fbf7389ce2f5de8d85bb949026fd51a1b95b10d0ed32c7ed5aab36dd5e9d2bf3191867909b4404cef75c5f4d2d1daeeacd301dd280b76
-  languageName: node
-  linkType: hard
-
-"cli-cursor@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "cli-cursor@npm:4.0.0"
+"cli-cursor@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "cli-cursor@npm:3.1.0"
   dependencies:
-    restore-cursor: ^4.0.0
-  checksum: ab3f3ea2076e2176a1da29f9d64f72ec3efad51c0960898b56c8a17671365c26e67b735920530eaf7328d61f8bd41c27f46b9cf6e4e10fe2fa44b5e8c0e392cc
+    restore-cursor: ^3.1.0
+  checksum: 2692784c6cd2fd85cfdbd11f53aea73a463a6d64a77c3e098b2b4697a20443f430c220629e1ca3b195ea5ac4a97a74c2ee411f3807abf6df2b66211fec0c0a29
   languageName: node
   linkType: hard
 
-"cli-spinners@npm:^2.6.1":
+"cli-spinners@npm:^2.5.0":
   version: 2.7.0
   resolution: "cli-spinners@npm:2.7.0"
   checksum: a9afaf73f58d1f951fb23742f503631b3cf513f43f4c7acb1b640100eb76bfa16efbcd1994d149ffc6603a6d75dd3d4a516a76f125f90dce437de9b16fd0ee6f
@@ -351,21 +344,22 @@ __metadata:
 
 "cli@file:.yalc/cli::locator=create-file-yarn%40workspace%3A.":
   version: 0.1.0
-  resolution: "cli@file:.yalc/cli#.yalc/cli::hash=11ac91&locator=create-file-yarn%40workspace%3A."
+  resolution: "cli@file:.yalc/cli#.yalc/cli::hash=7ac65a&locator=create-file-yarn%40workspace%3A."
   dependencies:
     "@swc/core": ^1.2.223
     chalk: ^4.1.2
     commander: ^9.4.0
     esbuild: ^0.14.53
-    ora: ^6.1.2
-    recipes: 0.1.0
+    ora: ^5.4.1
+    recipes: "file:../recipes"
     semver: ^7.3.7
     ts-node: ^10.9.1
     typescript: ^4.7.4
+    utils: "file:../utils"
     validate-npm-package-name: ^4.0.0
   bin:
     scaffold: dist/index.js
-  checksum: 7fc3dff317c221b2bc7391b38264a94a721f88b86fe7fdaedec8dd43a1d75408740c4ee3d5e91247b99bce9a0a4861d3bab2d29dceaccb8f6cf7358939741a21
+  checksum: fe8337e816b147fa870bbd83a59bab02f95116cf0050dbece5b49b84e472176f5b8317416508bd83a7b7eee33176442d70d22bfe1057dcf74a5fb5b950eed2fc
   languageName: node
   linkType: hard
 
@@ -652,7 +646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ieee754@npm:^1.2.1":
+"ieee754@npm:^1.1.13":
   version: 1.2.1
   resolution: "ieee754@npm:1.2.1"
   checksum: 5144c0c9815e54ada181d80a0b810221a253562422e7c6c3a60b1901154184f49326ec239d618c416c1c5945a2e197107aee8d986a3dd836b53dffefd99b5e7e
@@ -666,27 +660,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-interactive@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "is-interactive@npm:2.0.0"
-  checksum: e8d52ad490bed7ae665032c7675ec07732bbfe25808b0efbc4d5a76b1a1f01c165f332775c63e25e9a03d319ebb6b24f571a9e902669fc1e40b0a60b5be6e26c
+"is-interactive@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "is-interactive@npm:1.0.0"
+  checksum: 824808776e2d468b2916cdd6c16acacebce060d844c35ca6d82267da692e92c3a16fdba624c50b54a63f38bdc4016055b6f443ce57d7147240de4f8cdabaf6f9
   languageName: node
   linkType: hard
 
-"is-unicode-supported@npm:^1.1.0":
-  version: 1.2.0
-  resolution: "is-unicode-supported@npm:1.2.0"
-  checksum: 2d90b4b3ce622c1ecf7414b8954cc8f0483576d4d8e6892cbbdc1e2dd33d6126b1cf0319cf1549bee03d45f989b8b0de3309c879a9388a4fe6b8836f866ed86c
+"is-unicode-supported@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "is-unicode-supported@npm:0.1.0"
+  checksum: a2aab86ee7712f5c2f999180daaba5f361bdad1efadc9610ff5b8ab5495b86e4f627839d085c6530363c6d6d4ecbde340fb8e54bdb83da4ba8e0865ed5513c52
   languageName: node
   linkType: hard
 
-"log-symbols@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "log-symbols@npm:5.1.0"
+"log-symbols@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "log-symbols@npm:4.1.0"
   dependencies:
-    chalk: ^5.0.0
-    is-unicode-supported: ^1.1.0
-  checksum: 7291b6e7f1b3df6865bdaeb9b59605c832668ac2fa0965c63b1e7dd3700349aec09c1d7d40c368d5041ff58b7f89461a56e4009471921301af7b3609cbff9a29
+    chalk: ^4.1.0
+    is-unicode-supported: ^0.1.0
+  checksum: fce1497b3135a0198803f9f07464165e9eb83ed02ceb2273930a6f8a508951178d8cf4f0378e9d28300a2ed2bc49050995d2bd5f53ab716bb15ac84d58c6ef74
   languageName: node
   linkType: hard
 
@@ -722,20 +716,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ora@npm:^6.1.2":
-  version: 6.1.2
-  resolution: "ora@npm:6.1.2"
+"ora@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "ora@npm:5.4.1"
   dependencies:
-    bl: ^5.0.0
-    chalk: ^5.0.0
-    cli-cursor: ^4.0.0
-    cli-spinners: ^2.6.1
-    is-interactive: ^2.0.0
-    is-unicode-supported: ^1.1.0
-    log-symbols: ^5.1.0
-    strip-ansi: ^7.0.1
+    bl: ^4.1.0
+    chalk: ^4.1.0
+    cli-cursor: ^3.1.0
+    cli-spinners: ^2.5.0
+    is-interactive: ^1.0.0
+    is-unicode-supported: ^0.1.0
+    log-symbols: ^4.1.0
+    strip-ansi: ^6.0.0
     wcwidth: ^1.0.1
-  checksum: d5af3d67ad7affcf3029ffe3ef547f3335fb72abdc382040ae8bd75ad5c629f5d165ed9e398fd4fb08100701eafbec34bb9dc3f29e919f6f75c443290faa1db2
+  checksum: 28d476ee6c1049d68368c0dc922e7225e3b5600c3ede88fade8052837f9ed342625fdaa84a6209302587c8ddd9b664f71f0759833cbdb3a4cf81344057e63c63
   languageName: node
   linkType: hard
 
@@ -750,20 +744,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recipes@file:.yalc/recipes::locator=create-file-yarn%40workspace%3A.":
+"recipes@file:../recipes::locator=cli%40file%3A.yalc%2Fcli%23.yalc%2Fcli%3A%3Ahash%3D7ac65a%26locator%3Dcreate-file-yarn%2540workspace%253A.":
   version: 0.1.0
-  resolution: "recipes@file:.yalc/recipes#.yalc/recipes::hash=a4995c&locator=create-file-yarn%40workspace%3A."
-  checksum: 4cabd447fb6c651ee06a67fe2ae20d856b39a10f45489b65b20b2b6cbc7f3a77c192ee6a839e3eda983d32ccab90d49a84a1bd4e64b0f2d0e9566d3c3d5e522a
+  resolution: "recipes@file:../recipes#../recipes::hash=f4236d&locator=cli%40file%3A.yalc%2Fcli%23.yalc%2Fcli%3A%3Ahash%3D7ac65a%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  dependencies:
+    utils: "file:../utils"
+  checksum: 5e934d09e74392fd92fbe5dae088b68ac24a5e08f3786db4c25054e8829ef5756e8750e30fcf9a09b74e479901aa0f9b782ec4583a127aea42340d945da4d44b
   languageName: node
   linkType: hard
 
-"restore-cursor@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "restore-cursor@npm:4.0.0"
+"recipes@file:.yalc/recipes::locator=create-file-yarn%40workspace%3A.":
+  version: 0.1.0
+  resolution: "recipes@file:.yalc/recipes#.yalc/recipes::hash=f4236d&locator=create-file-yarn%40workspace%3A."
+  dependencies:
+    utils: "file:../utils"
+  checksum: 5e934d09e74392fd92fbe5dae088b68ac24a5e08f3786db4c25054e8829ef5756e8750e30fcf9a09b74e479901aa0f9b782ec4583a127aea42340d945da4d44b
+  languageName: node
+  linkType: hard
+
+"restore-cursor@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "restore-cursor@npm:3.1.0"
   dependencies:
     onetime: ^5.1.0
     signal-exit: ^3.0.2
-  checksum: 5b675c5a59763bf26e604289eab35711525f11388d77f409453904e1e69c0d37ae5889295706b2c81d23bd780165084d040f9b68fffc32cc921519031c4fa4af
+  checksum: f877dd8741796b909f2a82454ec111afb84eb45890eb49ac947d87991379406b3b83ff9673a46012fca0d7844bb989f45cc5b788254cf1a39b6b5a9659de0630
   languageName: node
   linkType: hard
 
@@ -801,12 +806,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strip-ansi@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "strip-ansi@npm:7.0.1"
+"strip-ansi@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "strip-ansi@npm:6.0.1"
   dependencies:
-    ansi-regex: ^6.0.1
-  checksum: 257f78fa433520e7f9897722731d78599cb3fce29ff26a20a5e12ba4957463b50a01136f37c43707f4951817a75e90820174853d6ccc240997adc5df8f966039
+    ansi-regex: ^5.0.1
+  checksum: f3cd25890aef3ba6e1a74e20896c21a46f482e93df4a06567cebf2b57edabb15133f1f94e57434e0a958d61186087b1008e89c94875d019910a213181a14fc8c
   languageName: node
   linkType: hard
 
@@ -869,7 +874,7 @@ __metadata:
 
 "typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
   version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=f456af"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -881,6 +886,27 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 474acf1146cb2701fe3b074892217553dfcf9a031280919ba1b8d651a068c9b15d863b7303cb15bd00a862b498e6cf4ad7b4a08fb134edd5a6f7641681cb54a2
+  languageName: node
+  linkType: hard
+
+"utils@file:../utils::locator=cli%40file%3A.yalc%2Fcli%23.yalc%2Fcli%3A%3Ahash%3D7ac65a%26locator%3Dcreate-file-yarn%2540workspace%253A.":
+  version: 0.1.0
+  resolution: "utils@file:../utils#../utils::hash=7e9fdc&locator=cli%40file%3A.yalc%2Fcli%23.yalc%2Fcli%3A%3Ahash%3D7ac65a%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  checksum: 89ec01f97a8f0fd7afd0ad3ee3ad6ed34a5917e43aa87fcdbb05e8214987030c7405fdab2a00e03c478b9fecd270a742c6c539f843825bffeecc0e0b77e8a569
+  languageName: node
+  linkType: hard
+
+"utils@file:../utils::locator=recipes%40file%3A..%2Frecipes%23..%2Frecipes%3A%3Ahash%3Df4236d%26locator%3Dcli%2540file%253A.yalc%252Fcli%2523.yalc%252Fcli%253A%253Ahash%253D7ac65a%2526locator%253Dcreate-file-yarn%252540workspace%25253A.":
+  version: 0.1.0
+  resolution: "utils@file:../utils#../utils::hash=7e9fdc&locator=recipes%40file%3A..%2Frecipes%23..%2Frecipes%3A%3Ahash%3Df4236d%26locator%3Dcli%2540file%253A.yalc%252Fcli%2523.yalc%252Fcli%253A%253Ahash%253D7ac65a%2526locator%253Dcreate-file-yarn%252540workspace%25253A."
+  checksum: 89ec01f97a8f0fd7afd0ad3ee3ad6ed34a5917e43aa87fcdbb05e8214987030c7405fdab2a00e03c478b9fecd270a742c6c539f843825bffeecc0e0b77e8a569
+  languageName: node
+  linkType: hard
+
+"utils@file:../utils::locator=recipes%40file%3A.yalc%2Frecipes%23.yalc%2Frecipes%3A%3Ahash%3Df4236d%26locator%3Dcreate-file-yarn%2540workspace%253A.":
+  version: 0.1.0
+  resolution: "utils@file:../utils#../utils::hash=7e9fdc&locator=recipes%40file%3A.yalc%2Frecipes%23.yalc%2Frecipes%3A%3Ahash%3Df4236d%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  checksum: 89ec01f97a8f0fd7afd0ad3ee3ad6ed34a5917e43aa87fcdbb05e8214987030c7405fdab2a00e03c478b9fecd270a742c6c539f843825bffeecc0e0b77e8a569
   languageName: node
   linkType: hard
 

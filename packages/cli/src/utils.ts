@@ -1,21 +1,13 @@
 import { execSync, spawn } from "child_process";
-import fs from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
 
 import { Recipe } from "recipes";
 import chalk from "chalk";
+import { deleteMetadata, readJson, recipeInstallPath } from "utils";
 
 // TODO: allow this to be customized
 export const CACHE_DURATION = 1000 * 60 * 60 * 24; // 1 day
-
-export const recipeInstallPath = path.join(
-  process.env.APPDATA ??
-    (process.platform === "darwin"
-      ? process.env.HOME + "/Library/Preferences"
-      : process.env.HOME + "/.local/share"),
-  "scaffolding/packages" // TODO: rename scaffolding
-);
 
 export function getPackageRootFromPath(filePath: string) {
   let packageRoot = filePath;
@@ -37,9 +29,12 @@ export function getPackageRoot() {
   return getPackageRootFromPath(process.cwd());
 }
 
-export async function readJson(filePath: string) {
-  const fileContents = await fs.readFile(filePath, "utf8");
-  return JSON.parse(fileContents) as Record<string, unknown>;
+export function getInstalledPackagePath(packageName: string) {
+  const nodeModules = path.join(
+    recipeInstallPath,
+    process.platform === "win32" ? "node_modules" : "lib/node_modules"
+  );
+  return path.join(nodeModules, packageName);
 }
 
 export async function getPackageJsonFromDirectory(packageRoot: string) {
@@ -108,6 +103,21 @@ export async function getRecipesFromImport(importString: string): Promise<{
   return (await import(importString)) as { [name: string]: Recipe };
 }
 
+export async function uncachePackage(packageName: string) {
+  if (existsSync(getInstalledPackagePath(packageName))) {
+    await runProcess("npm", [
+      "uninstall",
+      packageName,
+      "-g",
+      "--prefix",
+      recipeInstallPath,
+      "--loglevel",
+      "error",
+    ]);
+  }
+  await deleteMetadata(packageName);
+}
+
 const binPaths: Record<string, string> = {};
 
 export function runProcess(
@@ -118,7 +128,7 @@ export function runProcess(
     env?: Record<string, string>;
     fullOutput?: boolean;
   } = {}
-): Promise<void> {
+): Promise<string> {
   const cwd = options.cwd ?? process.cwd();
   if (!binPaths[cwd]) {
     binPaths[cwd] = execSync("npm bin", { cwd }).toString().trim();
@@ -128,12 +138,18 @@ export function runProcess(
     // fall back to the command name if it's not in the NPM bin path
     commandPath = command;
   }
-  return new Promise<void>((resolve, reject) => {
+  if (process.env.FULL_OUTPUT) {
+    const padding = "=".repeat(30);
+    process.stdout.write(
+      `${padding} RUN COMMAND ${command} ${args?.join(" ") ?? ""} ${padding}\n`
+    );
+  }
+  return new Promise((resolve, reject) => {
     const childProcess = spawn(commandPath, args ?? [], {
       shell: true,
       cwd,
       env: options.env,
-      stdio: options.fullOutput ? "inherit" : "pipe",
+      stdio: process.env.FULL_OUTPUT || options.fullOutput ? "inherit" : "pipe",
     });
     let stdout = "";
     let stderr = "";
@@ -148,7 +164,7 @@ export function runProcess(
       if (code || signal) {
         reject(stderr || stdout || code);
       } else {
-        resolve();
+        resolve(stdout);
       }
     });
   });

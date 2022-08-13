@@ -13,12 +13,25 @@ import { runRecipeWithId } from "./run";
 // or, just update without asking since there's few cases where users wouldn't
 // want the latest version
 
+let program: Command;
+
+function showErrors(action: (...args: any[]) => Promise<void>) {
+  // this is needed for Node 14 specifically since Promises don't throw errors
+  return async (...args: any[]) => {
+    try {
+      await action(...args);
+    } catch (e) {
+      program.error((e as { stack: string }).stack);
+    }
+  };
+}
+
 if (process.execArgv.length === 0) {
   // restart the script with the necessary Node flags
   // TODO: if importing the CLI package directly in the extension then these flags
   // will need to be set in the extension itself
   // TODO: figure out when the loader API used below will become stable
-  fork(fileURLToPath(import.meta.url), process.argv, {
+  fork(fileURLToPath(import.meta.url), process.argv.slice(2), {
     execArgv: [
       "--loader=ts-node/esm",
       "--experimental-specifier-resolution=node",
@@ -26,7 +39,7 @@ if (process.execArgv.length === 0) {
     ],
   });
 } else {
-  const program = new Command();
+  program = new Command();
   program.name("scaffold").description("").version("0.1.0"); // TODO
 
   program
@@ -36,7 +49,7 @@ if (process.execArgv.length === 0) {
       "<id>",
       "ID of the Recipe to run, in the form of [@scope]package[@version][/name]"
     )
-    .action((id: string) => runRecipeWithId(id));
+    .action(showErrors((id: string) => runRecipeWithId(id)));
 
   program
     .command("local")
@@ -53,7 +66,7 @@ if (process.execArgv.length === 0) {
       "-i, --install",
       "Installs the Recipe to the cache before running it, just like a non-local Recipe"
     )
-    .action(runLocalRecipe);
+    .action(showErrors(runLocalRecipe));
 
   program
     .command("build")
@@ -62,7 +75,7 @@ if (process.execArgv.length === 0) {
       "-c, --clean <path>",
       "Delete files at the given path before building"
     )
-    .action(buildRecipes);
+    .action(showErrors(buildRecipes));
 
-  program.parse(process.argv.slice(2));
+  program.parse();
 }

@@ -1,19 +1,14 @@
 import fs from "fs/promises";
 
-import { RecipeParameters, RecipeStep, Recipe } from "./types";
+import { getMetadata } from "utils";
 
-let running = false;
-let initialized = false;
+import { RecipeParameters, RecipeStep, Recipe } from "./types";
+import { isNestedDirectory, updateRunning } from "./utils";
+
 const steps: Record<string, string> = {};
 
 // TODO: implement a `ctx` object which is available to Recipes that contain additional info
 // like previous step names, whether the Recipe is running in a Template, etc.
-
-export async function initializeRecipes() {
-  // TODO: use `await import(process.cwd() + "/recipes")` to load all recipes
-  // then, set their IDs and authors to the proper values
-  initialized = true;
-}
 
 // TODO: should this not be an actually implemented function, but rather just a build step when packaging?
 // this may make it easier to dynamically get id and author
@@ -25,13 +20,14 @@ export function createRecipe({ run, ...params }: RecipeParameters): Recipe {
   // right now this is an anonymous function so it won't have a name when printed
   // eslint-disable-next-line prefer-object-spread
   return Object.assign(
-    () => {
-      if (!running) {
+    async () => {
+      const running = await getMetadata<Record<string, boolean>>("_running");
+      if (!running?.[process.cwd()]) {
         throw Error(
-          "It looks like you're trying to run this Recipe without the CLI or the `runRecipe` function, which isn't allowed because it might be dangerous."
+          "It looks like you're trying to run a Recipe without the CLI or the `runWithRecipeContext` function, which isn't allowed because it might be dangerous."
         );
       } else {
-        run();
+        await run();
       }
     },
     {
@@ -52,11 +48,22 @@ export async function runWithRecipeContext(
 ): Promise<void> {
   // TODO: options for running in the context of a different directory
   // TODO: prompt to install the extension if it's not installed
-  if (!initialized) initializeRecipes();
-  running = true;
   // TODO: implement confirmDirectory functionality, which should prompt for the directory context for the Recipe if true
-  recipe();
-  running = false;
+  const running = await getMetadata<Record<string, boolean>>("_running");
+  for (const dir in running) {
+    // TODO: this should use the directory context, not process.cwd()
+    if (isNestedDirectory(process.cwd(), dir)) {
+      throw Error(
+        "A Recipe is already running in this directory. Please wait until the other Recipe has finished running."
+      );
+    }
+  }
+  await updateRunning(true);
+  try {
+    await recipe();
+  } finally {
+    await updateRunning(undefined);
+  }
 }
 
 export async function namedStep({

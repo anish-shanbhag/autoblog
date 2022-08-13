@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "type": "module",
   "module": "dist/index.js",
-  "resolutions": {
-    "recipes": "file:.yalc/recipes"
-  },
   "dependencies": {
     "recipes": "file:.yalc/recipes"
   },

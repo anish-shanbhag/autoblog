@@ -9,6 +9,6 @@ export const testRecipe = createRecipe({
   private: false,
   unlisted: false,
   async run() {
-    createFile("test.txt", "test");
+    await createFile("test.txt", "test");
   },
 });

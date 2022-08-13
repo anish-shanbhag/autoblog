@@ -1,26 +1,25 @@
 import fs from "fs/promises";
 import { existsSync } from "fs";
-import path from "path";
 
 import chalk from "chalk";
 import ora from "ora";
 import semver from "semver";
 import validate from "validate-npm-package-name";
 import { Recipe, runWithRecipeContext } from "recipes";
+import { getMetadata, recipeInstallPath, updateMetadata } from "utils";
 
 import cliPkg from "../package.json";
 
 import {
   runProcess,
   getPackageJson,
-  recipeInstallPath,
   getPackageJsonFromDirectory,
-  readJson,
   CACHE_DURATION,
   getRecipesFromImport,
   getRecipesEntryPointFromPath,
+  getInstalledPackagePath,
+  uncachePackage,
 } from "./utils";
-import { PackageMetadata } from "./types";
 
 // TODO: what if there's no internet connection?
 
@@ -89,29 +88,20 @@ export async function runRecipeWithId(
   }
 
   let matched = false;
-  const nodeModules = path.join(
-    recipeInstallPath,
-    process.platform === "win32" ? "node_modules" : "lib/node_modules"
-  );
-  const packagePath = path.join(nodeModules, packageName);
+  const packagePath = getInstalledPackagePath(packageName);
   if (packageVersion === "latest") packageVersion = null;
-  const metadataPath = path.join(
-    recipeInstallPath,
-    "../metadata/package-metadata.json"
-  );
-  const metadata = existsSync(metadataPath)
-    ? ((await readJson(metadataPath)) as PackageMetadata)
-    : null;
 
+  const metadata = await getMetadata(packageName);
   if (
     existsSync(packagePath) &&
     (await fs.stat(packagePath)).isDirectory() &&
-    (!metadata ||
-      !metadata[packageName] ||
-      metadata[packageName].isLocal === Boolean(localPackage))
+    // only used the cached package if we're running local and the cached one is
+    // local or we're running from NPM and the cached one is from NPM
+    metadata && // this should always exist - just an assertion for TypeScript
+    metadata.isLocal === Boolean(localPackage)
   ) {
     if (packageVersion) {
-      // check if an installed package matches the requested version
+      // only run the cached package if it matches the requested version
       const pkg = await getPackageJsonFromDirectory(packagePath);
       if (
         pkg.version &&
@@ -120,11 +110,8 @@ export async function runRecipeWithId(
       ) {
         matched = true;
       }
-    } else if (metadata) {
-      if (
-        packageName in metadata &&
-        Date.now() - metadata[packageName].lastInstalled < CACHE_DURATION
-      ) {
+    } else {
+      if (Date.now() - metadata.lastInstalled < CACHE_DURATION) {
         matched = true;
         // TODO: check for updates in the background and write to metadata if there is one
         // don't necessarily install the new package right away (as that might interfere with
@@ -154,20 +141,12 @@ export async function runRecipeWithId(
 
     if (!packageVersion) {
       // write metadata
-      const newMetadata: PackageMetadata = metadata ?? {};
-      newMetadata[packageName] = {
-        ...newMetadata[packageName],
+      await updateMetadata(packageName, {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         cliVersion: cliPkg.version,
         lastInstalled: Date.now(),
         isLocal: Boolean(localPackage),
-      };
-
-      const metadataDirectory = path.dirname(metadataPath);
-      if (!existsSync(metadataDirectory)) {
-        await fs.mkdir(metadataDirectory);
-      }
-      await fs.writeFile(metadataPath, JSON.stringify(newMetadata, null, 2));
+      });
     }
 
     spinner.stop();
@@ -184,13 +163,7 @@ export async function runRecipeWithId(
     // TODO: only handle the error this way if it was from a missing entry
     // point or from no Recipes being exported - actual errors from the Recipe
     // should be handled differently
-    await runProcess("npm", [
-      "uninstall",
-      packageName,
-      "-g",
-      "--prefix",
-      recipeInstallPath,
-    ]);
+    await uncachePackage(packageName);
     throw e;
   }
 }
@@ -229,7 +202,7 @@ export async function runRecipeFromImport(importString: string, name?: string) {
   }
   const spinner = ora({
     text: recipe.title + "\n",
-  });
+  }).start();
   await runWithRecipeContext(recipe);
   spinner.succeed();
 }
