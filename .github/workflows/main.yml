@@ -64,10 +64,7 @@ jobs:
 
       - run: npm i pnpm -g
 
-      - run: yarn build --filter=cli
-        if: runner.os == 'Linux'
-      - run: yarn debug
-        working-directory: ./packages/cli
+      - run: xvfb-run -a -s '-terminate' yarn test
         if: runner.os == 'Linux'
       - run: yarn test
         if: runner.os != 'Linux'
