@@ -2,9 +2,9 @@ import { execSync, spawn } from "child_process";
 import { existsSync } from "fs";
 import path from "path";
 
-import { Recipe } from "recipes";
+import { Recipe } from "@cryo/recipes";
 import chalk from "chalk";
-import { deleteMetadata, readJson, recipeInstallPath } from "utils";
+import { deleteMetadata, readJson, recipeInstallPath } from "@cryo/utils";
 
 // TODO: allow this to be customized
 export const CACHE_DURATION = 1000 * 60 * 60 * 24; // 1 day

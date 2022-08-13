@@ -24,7 +24,7 @@ export type RecipeStep = (() => void) | (() => Promise<void>);
 
 theoretical setup in a recipe package:
 
-import { createRecipe, runCommand, namedStep, cloneRepo, usesComponent, undoToStep } from "@scaffolding/recipes";
+import { createRecipe, runCommand, namedStep, cloneRepo, usesComponent, undoToStep } from "@cryo/recipes";
 
 export const recipe = createRecipe(
   title: "Create Next.js project",
@@ -35,11 +35,11 @@ export const recipe = createRecipe(
     await namedStep({
       name: "Clone GitHub repo",
       async run() {
-        await cloneRepo("https://github.com/anish-shanbhag/scaffolding"));
+        await cloneRepo("https://github.com/anish-shanbhag/cryogen"));
       }
     });
     // or:
-    await namedStep("Clone GitHub repo", () => cloneRepo("https://github.com/anish-shanbhag/scaffolding"));
+    await namedStep("Clone GitHub repo", () => cloneRepo("https://github.com/anish-shanbhag/cryogen"));
     // 2nd one is probably preferable to keep consistency with the other functions that don't use named parameters
 
     if (usesComponent("yarn", { confirm: true })) {

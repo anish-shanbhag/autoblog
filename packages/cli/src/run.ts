@@ -5,8 +5,8 @@ import chalk from "chalk";
 import ora from "ora";
 import semver from "semver";
 import validate from "validate-npm-package-name";
-import { Recipe, runWithRecipeContext } from "recipes";
-import { getMetadata, recipeInstallPath, updateMetadata } from "utils";
+import { Recipe, runWithRecipeContext } from "@cryo/recipes";
+import { getMetadata, recipeInstallPath, updateMetadata } from "@cryo/utils";
 
 import cliPkg from "../package.json";
 
@@ -122,7 +122,7 @@ export async function runRecipeWithId(
 
   if (!matched) {
     // TODO: possibly first call our API instead, which could save network calls and allow for optimization
-    // TODO: install the @scaffolding/recipes package into the storagePath if it's not already there? (might save installs)
+    // TODO: install the @cryo/recipes package into the storagePath if it's not already there? (might save installs)
     const spinner = ora({
       text:
         (localPackage ? "Installing" : "Fetching") +

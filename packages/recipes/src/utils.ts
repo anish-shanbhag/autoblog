@@ -1,6 +1,6 @@
 import path from "path";
 
-import { updateMetadata } from "utils";
+import { updateMetadata } from "@cryo/utils";
 
 export function isNestedDirectory(dir1: string, dir2: string) {
   const originalDir1 = dir1;

@@ -4,9 +4,9 @@
   "type": "module",
   "module": "dist/index.js",
   "dependencies": {
-    "recipes": "file:.yalc/recipes"
+    "@cryo/recipes": "file:.yalc/@cryo/recipes"
   },
   "devDependencies": {
-    "cli": "file:.yalc/cli"
+    "@cryo/cli": "file:.yalc/@cryo/cli"
   }
 }

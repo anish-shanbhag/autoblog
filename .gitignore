@@ -13,8 +13,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-# TODO: remove this and find a better way to debug
-packages/recipes-test
 
 # local env files
 .env.local

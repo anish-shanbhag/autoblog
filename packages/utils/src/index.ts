@@ -2,17 +2,17 @@ import path from "path";
 import fs from "fs/promises";
 import { existsSync } from "fs";
 
-export const scaffoldingPath = path.join(
+export const cryogenPath = path.join(
   process.env.APPDATA ??
     (process.platform === "darwin"
       ? process.env.HOME + "/Library/Preferences"
       : process.env.HOME + "/.local/share"),
-  "scaffolding" // TODO: rename scaffolding
+  "cryogen"
 );
 
-export const recipeInstallPath = path.join(scaffoldingPath, "packages");
+export const recipeInstallPath = path.join(cryogenPath, "packages");
 
-export const metadataPath = path.join(scaffoldingPath, "metadata");
+export const metadataPath = path.join(cryogenPath, "metadata");
 
 export async function readJson(filePath: string) {
   const fileContents = await fs.readFile(filePath, "utf8");

@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 
-import { getMetadata } from "utils";
+import { getMetadata } from "@cryo/utils";
 
 import { RecipeParameters, RecipeStep, Recipe } from "./types";
 import { isNestedDirectory, updateRunning } from "./utils";

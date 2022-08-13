@@ -1,4 +1,4 @@
-import { createFile, createRecipe } from "recipes";
+import { createFile, createRecipe } from "@cryo/recipes";
 
 export const testRecipe = createRecipe({
   title: "Create file test.txt",

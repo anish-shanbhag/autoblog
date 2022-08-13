@@ -25,9 +25,6 @@ jobs:
 
       - run: yarn --immutable
 
-      - run: yarn generate
-        working-directory: "./apps/web"
-
       - run: yarn build
 
       - run: yarn lint-ci

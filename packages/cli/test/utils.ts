@@ -52,9 +52,11 @@ export function createTest(
         })
       );
 
-      await runCommand("yalc", ["add", "utils", "--pure"]);
-      await runCommand("yalc", ["add", "recipes", "--pure"]);
-      await runCommand("yalc", ["add", "cli", "-D", "--pure"]);
+      await runCommand("yalc", ["add", "@cryo/utils", "--pure"]);
+      await runCommand("yalc", ["add", "@cryo/recipes", "--pure"]);
+      await runCommand("yalc", ["add", "@cryo/cli", "-D", "--pure"]);
+
+      const packageManager = await getPackageManagerFromPath(packageDir);
 
       // this is a hack which makes sure that PNPM and Yarn can resolve our
       // local packages' subdependencies
@@ -63,21 +65,24 @@ export function createTest(
         dependencies: string[]
       ) {
         const pkg = await getPackageJsonFromDirectory(
-          relativePath(".yalc/" + packageName)
+          relativePath(".yalc/@cryo/" + packageName)
         );
-        for (const packageName of dependencies) {
-          (pkg.dependencies as Record<string, string>)[packageName] =
-            "file:../" + packageName;
+        for (const dependency of dependencies) {
+          (pkg.dependencies as Record<string, string>)["@cryo/" + dependency] =
+            "file:../" +
+            (packageManager === "npm" ? "" : "../") +
+            "@cryo/" +
+            dependency;
         }
         await fs.writeFile(
-          relativePath(`.yalc/${packageName}/package.json`),
+          relativePath(`.yalc/@cryo/${packageName}/package.json`),
           JSON.stringify(pkg, null, 2)
         );
       }
+
       await patchDependencies("cli", ["recipes", "utils"]);
       await patchDependencies("recipes", ["utils"]);
 
-      const packageManager = await getPackageManagerFromPath(packageDir);
       await runCommand(packageManager, ["install"], {
         env: { ...process.env, YARN_ENABLE_IMMUTABLE_INSTALLS: "0" },
       });
@@ -96,19 +101,19 @@ export function createTest(
     }
 
     it("builds without errors", () =>
-      runCommand("scaffold", ["build", "-c", "dist"]));
+      runCommand("cryo", ["build", "-c", "dist"]));
 
     if (options.testLocalRun) {
       it("runs properly without an install", () =>
-        runTest("scaffold", ["local", "run"]));
+        runTest("cryo", ["local", "run"]));
     }
     if (options.testInstallRun) {
       it("runs properly if installed", () =>
-        runTest("scaffold", ["local", "run", "--install"]));
+        runTest("cryo", ["local", "run", "--install"]));
     }
     if (options.testCachedRun) {
       it("runs properly when cached", () =>
-        runTest("scaffold", ["local", "run", "--install"]));
+        runTest("cryo", ["local", "run", "--install"]));
     }
   });
 }

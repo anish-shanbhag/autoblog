@@ -40,7 +40,7 @@ if (process.execArgv.length === 0) {
   });
 } else {
   program = new Command();
-  program.name("scaffold").description("").version("0.1.0"); // TODO
+  program.name("Cryogen").description("").version("0.1.0"); // TODO
 
   program
     .command("run")

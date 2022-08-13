@@ -1,5 +1,5 @@
 {
-  "name": "scaffolding",
+  "name": "cryogen",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -15,7 +15,7 @@
     "lint-ci": "turbo run lint-ci",
     "remote-cache": "turbo link",
     "clean": "git clean -dfX",
-    "prepare": "husky install"
+    "postinstall": "husky install && cd apps/web && yarn generate"
   },
   "devDependencies": {
     "husky": "^8.0.1",

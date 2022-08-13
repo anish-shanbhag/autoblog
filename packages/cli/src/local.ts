@@ -44,7 +44,7 @@ export async function runLocalRecipe(
     // individually (maybe even recursively). Since that would be pretty complicated
     // it's not implemented for now.
     // TODO: Maybe consider just moving this option's functionality to a
-    // `scaffold test run` command since this has almost no use for anyone
+    // `cryo test run` command since this has almost no use for anyone
     // who isn't developing Recipes.
     await runRecipeWithId(pkg.name + (name ? name + "/" : ""), {
       path: packageRoot,

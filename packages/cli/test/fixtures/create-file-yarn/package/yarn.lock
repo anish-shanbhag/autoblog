@@ -5,6 +5,66 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@cryo/cli@file:.yalc/@cryo/cli::locator=create-file-yarn%40workspace%3A.":
+  version: 0.1.0
+  resolution: "@cryo/cli@file:.yalc/@cryo/cli#.yalc/@cryo/cli::hash=263823&locator=create-file-yarn%40workspace%3A."
+  dependencies:
+    "@cryo/recipes": "file:../../@cryo/recipes"
+    "@cryo/utils": "file:../../@cryo/utils"
+    "@swc/core": ^1.2.223
+    chalk: ^4.1.2
+    commander: ^9.4.0
+    esbuild: ^0.14.53
+    ora: ^5.4.1
+    semver: ^7.3.7
+    ts-node: ^10.9.1
+    typescript: ^4.7.4
+    validate-npm-package-name: ^4.0.0
+  bin:
+    cryo: dist/index.js
+  checksum: 1bbcaa9889b3c1bf892e868ce26b620b365b64f7afd0bed75164eb07cf967e2e11f80a79543a21d36dc1e189f48d22968a83003fcbdb8b70a278130ee3bfff7a
+  languageName: node
+  linkType: hard
+
+"@cryo/recipes@file:../../@cryo/recipes::locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D263823%26locator%3Dcreate-file-yarn%2540workspace%253A.":
+  version: 0.1.0
+  resolution: "@cryo/recipes@file:../../@cryo/recipes#../../@cryo/recipes::hash=15ec70&locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D263823%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  dependencies:
+    "@cryo/utils": "file:../../@cryo/utils"
+  checksum: 74e5eaf825bc2902b57e255be36cb900bd6977b143ae3e46344ad056c6bf9f6e990b5522ab4be7c8138deec1d9649fb7f99438f97df5c35f6877069425ea7e39
+  languageName: node
+  linkType: hard
+
+"@cryo/recipes@file:.yalc/@cryo/recipes::locator=create-file-yarn%40workspace%3A.":
+  version: 0.1.0
+  resolution: "@cryo/recipes@file:.yalc/@cryo/recipes#.yalc/@cryo/recipes::hash=15ec70&locator=create-file-yarn%40workspace%3A."
+  dependencies:
+    "@cryo/utils": "file:../../@cryo/utils"
+  checksum: 74e5eaf825bc2902b57e255be36cb900bd6977b143ae3e46344ad056c6bf9f6e990b5522ab4be7c8138deec1d9649fb7f99438f97df5c35f6877069425ea7e39
+  languageName: node
+  linkType: hard
+
+"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D263823%26locator%3Dcreate-file-yarn%2540workspace%253A.":
+  version: 0.1.0
+  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=587619&locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D263823%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  checksum: 44c6c48d48f1f5bb09c44e487053c9ce18915a59a1338e0527472a0e9a7f5e7c5f14a4461501cdce199308c2ec6b4aef4558900c258ffcbd89e889d2733d020a
+  languageName: node
+  linkType: hard
+
+"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Frecipes%40file%3A..%2F..%2F%40cryo%2Frecipes%23..%2F..%2F%40cryo%2Frecipes%3A%3Ahash%3D15ec70%26locator%3D%2540cryo%252Fcli%2540file%253A.yalc%252F%2540cryo%252Fcli%2523.yalc%252F%2540cryo%252Fcli%253A%253Ahash%253D263823%2526locator%253Dcreate-file-yarn%252540workspace%25253A.":
+  version: 0.1.0
+  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=587619&locator=%40cryo%2Frecipes%40file%3A..%2F..%2F%40cryo%2Frecipes%23..%2F..%2F%40cryo%2Frecipes%3A%3Ahash%3D15ec70%26locator%3D%2540cryo%252Fcli%2540file%253A.yalc%252F%2540cryo%252Fcli%2523.yalc%252F%2540cryo%252Fcli%253A%253Ahash%253D263823%2526locator%253Dcreate-file-yarn%252540workspace%25253A."
+  checksum: 44c6c48d48f1f5bb09c44e487053c9ce18915a59a1338e0527472a0e9a7f5e7c5f14a4461501cdce199308c2ec6b4aef4558900c258ffcbd89e889d2733d020a
+  languageName: node
+  linkType: hard
+
+"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Frecipes%40file%3A.yalc%2F%40cryo%2Frecipes%23.yalc%2F%40cryo%2Frecipes%3A%3Ahash%3D15ec70%26locator%3Dcreate-file-yarn%2540workspace%253A.":
+  version: 0.1.0
+  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=587619&locator=%40cryo%2Frecipes%40file%3A.yalc%2F%40cryo%2Frecipes%23.yalc%2F%40cryo%2Frecipes%3A%3Ahash%3D15ec70%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  checksum: 44c6c48d48f1f5bb09c44e487053c9ce18915a59a1338e0527472a0e9a7f5e7c5f14a4461501cdce199308c2ec6b4aef4558900c258ffcbd89e889d2733d020a
+  languageName: node
+  linkType: hard
+
 "@cspotcode/source-map-support@npm:^0.8.0":
   version: 0.8.1
   resolution: "@cspotcode/source-map-support@npm:0.8.1"
@@ -14,9 +74,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-loong64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "@esbuild/linux-loong64@npm:0.14.53"
+"@esbuild/linux-loong64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "@esbuild/linux-loong64@npm:0.14.54"
   conditions: os=linux & cpu=loong64
   languageName: node
   linkType: hard
@@ -45,126 +105,126 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-android-arm-eabi@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-android-arm-eabi@npm:1.2.224"
+"@swc/core-android-arm-eabi@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-android-arm-eabi@npm:1.2.228"
   dependencies:
     "@swc/wasm": 1.2.122
   conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-android-arm64@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-android-arm64@npm:1.2.224"
+"@swc/core-android-arm64@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-android-arm64@npm:1.2.228"
   dependencies:
     "@swc/wasm": 1.2.130
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-darwin-arm64@npm:1.2.224"
+"@swc/core-darwin-arm64@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-darwin-arm64@npm:1.2.228"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-darwin-x64@npm:1.2.224"
+"@swc/core-darwin-x64@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-darwin-x64@npm:1.2.228"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-freebsd-x64@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-freebsd-x64@npm:1.2.224"
+"@swc/core-freebsd-x64@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-freebsd-x64@npm:1.2.228"
   dependencies:
     "@swc/wasm": 1.2.130
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.224"
+"@swc/core-linux-arm-gnueabihf@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.228"
   dependencies:
     "@swc/wasm": 1.2.130
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.2.224"
+"@swc/core-linux-arm64-gnu@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.2.228"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-linux-arm64-musl@npm:1.2.224"
+"@swc/core-linux-arm64-musl@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-linux-arm64-musl@npm:1.2.228"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-linux-x64-gnu@npm:1.2.224"
+"@swc/core-linux-x64-gnu@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-linux-x64-gnu@npm:1.2.228"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-linux-x64-musl@npm:1.2.224"
+"@swc/core-linux-x64-musl@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-linux-x64-musl@npm:1.2.228"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.2.224"
+"@swc/core-win32-arm64-msvc@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.2.228"
   dependencies:
     "@swc/wasm": 1.2.130
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.2.224"
+"@swc/core-win32-ia32-msvc@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.2.228"
   dependencies:
     "@swc/wasm": 1.2.130
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.2.224":
-  version: 1.2.224
-  resolution: "@swc/core-win32-x64-msvc@npm:1.2.224"
+"@swc/core-win32-x64-msvc@npm:1.2.228":
+  version: 1.2.228
+  resolution: "@swc/core-win32-x64-msvc@npm:1.2.228"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
 "@swc/core@npm:^1.2.223":
-  version: 1.2.224
-  resolution: "@swc/core@npm:1.2.224"
+  version: 1.2.228
+  resolution: "@swc/core@npm:1.2.228"
   dependencies:
-    "@swc/core-android-arm-eabi": 1.2.224
-    "@swc/core-android-arm64": 1.2.224
-    "@swc/core-darwin-arm64": 1.2.224
-    "@swc/core-darwin-x64": 1.2.224
-    "@swc/core-freebsd-x64": 1.2.224
-    "@swc/core-linux-arm-gnueabihf": 1.2.224
-    "@swc/core-linux-arm64-gnu": 1.2.224
-    "@swc/core-linux-arm64-musl": 1.2.224
-    "@swc/core-linux-x64-gnu": 1.2.224
-    "@swc/core-linux-x64-musl": 1.2.224
-    "@swc/core-win32-arm64-msvc": 1.2.224
-    "@swc/core-win32-ia32-msvc": 1.2.224
-    "@swc/core-win32-x64-msvc": 1.2.224
+    "@swc/core-android-arm-eabi": 1.2.228
+    "@swc/core-android-arm64": 1.2.228
+    "@swc/core-darwin-arm64": 1.2.228
+    "@swc/core-darwin-x64": 1.2.228
+    "@swc/core-freebsd-x64": 1.2.228
+    "@swc/core-linux-arm-gnueabihf": 1.2.228
+    "@swc/core-linux-arm64-gnu": 1.2.228
+    "@swc/core-linux-arm64-musl": 1.2.228
+    "@swc/core-linux-x64-gnu": 1.2.228
+    "@swc/core-linux-x64-musl": 1.2.228
+    "@swc/core-win32-arm64-msvc": 1.2.228
+    "@swc/core-win32-ia32-msvc": 1.2.228
+    "@swc/core-win32-x64-msvc": 1.2.228
   dependenciesMeta:
     "@swc/core-android-arm-eabi":
       optional: true
@@ -194,7 +254,7 @@ __metadata:
       optional: true
   bin:
     swcx: run_swcx.js
-  checksum: b6bbdbfcae4e52195f59838d21098e5909256f3bee13a1aea63aec4a58f3fc13718c74a4992bf7749e9b014ad304adcb76f2305b491bf8dbee6d41d9cea8e68a
+  checksum: 04d1bea8a8f7a6d0db9f1186670cb60be61df7729c30b6a9d7e64b0627ceaff6e4b111316098bf2e18d682276a99d93e78b2d06011ffe983cbbd8aa2af84a2e0
   languageName: node
   linkType: hard
 
@@ -342,27 +402,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli@file:.yalc/cli::locator=create-file-yarn%40workspace%3A.":
-  version: 0.1.0
-  resolution: "cli@file:.yalc/cli#.yalc/cli::hash=1e1984&locator=create-file-yarn%40workspace%3A."
-  dependencies:
-    "@swc/core": ^1.2.223
-    chalk: ^4.1.2
-    commander: ^9.4.0
-    esbuild: ^0.14.53
-    ora: ^5.4.1
-    recipes: "file:../recipes"
-    semver: ^7.3.7
-    ts-node: ^10.9.1
-    typescript: ^4.7.4
-    utils: "file:../utils"
-    validate-npm-package-name: ^4.0.0
-  bin:
-    scaffold: dist/index.js
-  checksum: 071b5f72123d389d1109dbe64ce5528776172de19bab88e49ef42284b25a23525eb655a00e2e1cd3d647336951e010cc937d0bd84f38a0a25f7996cfec72236a
-  languageName: node
-  linkType: hard
-
 "clone@npm:^1.0.2":
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
@@ -397,8 +436,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "create-file-yarn@workspace:."
   dependencies:
-    cli: "file:.yalc/cli"
-    recipes: "file:.yalc/recipes"
+    "@cryo/cli": "file:.yalc/@cryo/cli"
+    "@cryo/recipes": "file:.yalc/@cryo/recipes"
   languageName: unknown
   linkType: soft
 
@@ -425,171 +464,171 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild-android-64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-android-64@npm:0.14.53"
+"esbuild-android-64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-android-64@npm:0.14.54"
   conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-android-arm64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-android-arm64@npm:0.14.53"
+"esbuild-android-arm64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-android-arm64@npm:0.14.54"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-darwin-64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-darwin-64@npm:0.14.53"
+"esbuild-darwin-64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-darwin-64@npm:0.14.54"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-darwin-arm64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-darwin-arm64@npm:0.14.53"
+"esbuild-darwin-arm64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-darwin-arm64@npm:0.14.54"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-freebsd-64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-freebsd-64@npm:0.14.53"
+"esbuild-freebsd-64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-freebsd-64@npm:0.14.54"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-freebsd-arm64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-freebsd-arm64@npm:0.14.53"
+"esbuild-freebsd-arm64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-freebsd-arm64@npm:0.14.54"
   conditions: os=freebsd & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-linux-32@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-linux-32@npm:0.14.53"
+"esbuild-linux-32@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-linux-32@npm:0.14.54"
   conditions: os=linux & cpu=ia32
   languageName: node
   linkType: hard
 
-"esbuild-linux-64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-linux-64@npm:0.14.53"
+"esbuild-linux-64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-linux-64@npm:0.14.54"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-linux-arm64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-linux-arm64@npm:0.14.53"
+"esbuild-linux-arm64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-linux-arm64@npm:0.14.54"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-linux-arm@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-linux-arm@npm:0.14.53"
+"esbuild-linux-arm@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-linux-arm@npm:0.14.54"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"esbuild-linux-mips64le@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-linux-mips64le@npm:0.14.53"
+"esbuild-linux-mips64le@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-linux-mips64le@npm:0.14.54"
   conditions: os=linux & cpu=mips64el
   languageName: node
   linkType: hard
 
-"esbuild-linux-ppc64le@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-linux-ppc64le@npm:0.14.53"
+"esbuild-linux-ppc64le@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-linux-ppc64le@npm:0.14.54"
   conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
 
-"esbuild-linux-riscv64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-linux-riscv64@npm:0.14.53"
+"esbuild-linux-riscv64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-linux-riscv64@npm:0.14.54"
   conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
 
-"esbuild-linux-s390x@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-linux-s390x@npm:0.14.53"
+"esbuild-linux-s390x@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-linux-s390x@npm:0.14.54"
   conditions: os=linux & cpu=s390x
   languageName: node
   linkType: hard
 
-"esbuild-netbsd-64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-netbsd-64@npm:0.14.53"
+"esbuild-netbsd-64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-netbsd-64@npm:0.14.54"
   conditions: os=netbsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-openbsd-64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-openbsd-64@npm:0.14.53"
+"esbuild-openbsd-64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-openbsd-64@npm:0.14.54"
   conditions: os=openbsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-sunos-64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-sunos-64@npm:0.14.53"
+"esbuild-sunos-64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-sunos-64@npm:0.14.54"
   conditions: os=sunos & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-windows-32@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-windows-32@npm:0.14.53"
+"esbuild-windows-32@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-windows-32@npm:0.14.54"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"esbuild-windows-64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-windows-64@npm:0.14.53"
+"esbuild-windows-64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-windows-64@npm:0.14.54"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-windows-arm64@npm:0.14.53":
-  version: 0.14.53
-  resolution: "esbuild-windows-arm64@npm:0.14.53"
+"esbuild-windows-arm64@npm:0.14.54":
+  version: 0.14.54
+  resolution: "esbuild-windows-arm64@npm:0.14.54"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
 "esbuild@npm:^0.14.53":
-  version: 0.14.53
-  resolution: "esbuild@npm:0.14.53"
+  version: 0.14.54
+  resolution: "esbuild@npm:0.14.54"
   dependencies:
-    "@esbuild/linux-loong64": 0.14.53
-    esbuild-android-64: 0.14.53
-    esbuild-android-arm64: 0.14.53
-    esbuild-darwin-64: 0.14.53
-    esbuild-darwin-arm64: 0.14.53
-    esbuild-freebsd-64: 0.14.53
-    esbuild-freebsd-arm64: 0.14.53
-    esbuild-linux-32: 0.14.53
-    esbuild-linux-64: 0.14.53
-    esbuild-linux-arm: 0.14.53
-    esbuild-linux-arm64: 0.14.53
-    esbuild-linux-mips64le: 0.14.53
-    esbuild-linux-ppc64le: 0.14.53
-    esbuild-linux-riscv64: 0.14.53
-    esbuild-linux-s390x: 0.14.53
-    esbuild-netbsd-64: 0.14.53
-    esbuild-openbsd-64: 0.14.53
-    esbuild-sunos-64: 0.14.53
-    esbuild-windows-32: 0.14.53
-    esbuild-windows-64: 0.14.53
-    esbuild-windows-arm64: 0.14.53
+    "@esbuild/linux-loong64": 0.14.54
+    esbuild-android-64: 0.14.54
+    esbuild-android-arm64: 0.14.54
+    esbuild-darwin-64: 0.14.54
+    esbuild-darwin-arm64: 0.14.54
+    esbuild-freebsd-64: 0.14.54
+    esbuild-freebsd-arm64: 0.14.54
+    esbuild-linux-32: 0.14.54
+    esbuild-linux-64: 0.14.54
+    esbuild-linux-arm: 0.14.54
+    esbuild-linux-arm64: 0.14.54
+    esbuild-linux-mips64le: 0.14.54
+    esbuild-linux-ppc64le: 0.14.54
+    esbuild-linux-riscv64: 0.14.54
+    esbuild-linux-s390x: 0.14.54
+    esbuild-netbsd-64: 0.14.54
+    esbuild-openbsd-64: 0.14.54
+    esbuild-sunos-64: 0.14.54
+    esbuild-windows-32: 0.14.54
+    esbuild-windows-64: 0.14.54
+    esbuild-windows-arm64: 0.14.54
   dependenciesMeta:
     "@esbuild/linux-loong64":
       optional: true
@@ -635,7 +674,7 @@ __metadata:
       optional: true
   bin:
     esbuild: bin/esbuild
-  checksum: cd62d3bc805c6c2ff2cfe62c2fbe6a6d617783d5095167df861be7ddba464281f719a5ded2e940ba21838abf58cce8259daffa08667515c4396ff7bf683f5b70
+  checksum: 49e360b1185c797f5ca3a7f5f0a75121494d97ddf691f65ed1796e6257d318f928342a97f559bb8eced6a90cf604dd22db4a30e0dbbf15edd9dbf22459b639af
   languageName: node
   linkType: hard
 
@@ -741,24 +780,6 @@ __metadata:
     string_decoder: ^1.1.1
     util-deprecate: ^1.0.1
   checksum: d4ea81502d3799439bb955a3a5d1d808592cf3133350ed352aeaa499647858b27b1c4013984900238b0873ec8d0d8defce72469fb7a83e61d53f5ad61cb80dc8
-  languageName: node
-  linkType: hard
-
-"recipes@file:../recipes::locator=cli%40file%3A.yalc%2Fcli%23.yalc%2Fcli%3A%3Ahash%3D1e1984%26locator%3Dcreate-file-yarn%2540workspace%253A.":
-  version: 0.1.0
-  resolution: "recipes@file:../recipes#../recipes::hash=af9b09&locator=cli%40file%3A.yalc%2Fcli%23.yalc%2Fcli%3A%3Ahash%3D1e1984%26locator%3Dcreate-file-yarn%2540workspace%253A."
-  dependencies:
-    utils: "file:../utils"
-  checksum: eed1ea4ce6d1e5aaef7df413d5294f5604554461bdd36c19e38ee62393d83eb4c9d6b7a9ac4646c4f95ed9929ba0e6bb933dbfed8a490018161278fae7a5dbd2
-  languageName: node
-  linkType: hard
-
-"recipes@file:.yalc/recipes::locator=create-file-yarn%40workspace%3A.":
-  version: 0.1.0
-  resolution: "recipes@file:.yalc/recipes#.yalc/recipes::hash=af9b09&locator=create-file-yarn%40workspace%3A."
-  dependencies:
-    utils: "file:../utils"
-  checksum: eed1ea4ce6d1e5aaef7df413d5294f5604554461bdd36c19e38ee62393d83eb4c9d6b7a9ac4646c4f95ed9929ba0e6bb933dbfed8a490018161278fae7a5dbd2
   languageName: node
   linkType: hard
 
@@ -886,27 +907,6 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 474acf1146cb2701fe3b074892217553dfcf9a031280919ba1b8d651a068c9b15d863b7303cb15bd00a862b498e6cf4ad7b4a08fb134edd5a6f7641681cb54a2
-  languageName: node
-  linkType: hard
-
-"utils@file:../utils::locator=cli%40file%3A.yalc%2Fcli%23.yalc%2Fcli%3A%3Ahash%3D1e1984%26locator%3Dcreate-file-yarn%2540workspace%253A.":
-  version: 0.1.0
-  resolution: "utils@file:../utils#../utils::hash=908799&locator=cli%40file%3A.yalc%2Fcli%23.yalc%2Fcli%3A%3Ahash%3D1e1984%26locator%3Dcreate-file-yarn%2540workspace%253A."
-  checksum: 0b0421439096950fcf11979af4332f298b04ad733d4089ca1e00dfedeba884130f3f1919699c7da7e288230bfa08a5b562eccadd8b50c86c6cbe7a5a00b1a795
-  languageName: node
-  linkType: hard
-
-"utils@file:../utils::locator=recipes%40file%3A..%2Frecipes%23..%2Frecipes%3A%3Ahash%3Daf9b09%26locator%3Dcli%2540file%253A.yalc%252Fcli%2523.yalc%252Fcli%253A%253Ahash%253D1e1984%2526locator%253Dcreate-file-yarn%252540workspace%25253A.":
-  version: 0.1.0
-  resolution: "utils@file:../utils#../utils::hash=908799&locator=recipes%40file%3A..%2Frecipes%23..%2Frecipes%3A%3Ahash%3Daf9b09%26locator%3Dcli%2540file%253A.yalc%252Fcli%2523.yalc%252Fcli%253A%253Ahash%253D1e1984%2526locator%253Dcreate-file-yarn%252540workspace%25253A."
-  checksum: 0b0421439096950fcf11979af4332f298b04ad733d4089ca1e00dfedeba884130f3f1919699c7da7e288230bfa08a5b562eccadd8b50c86c6cbe7a5a00b1a795
-  languageName: node
-  linkType: hard
-
-"utils@file:../utils::locator=recipes%40file%3A.yalc%2Frecipes%23.yalc%2Frecipes%3A%3Ahash%3Daf9b09%26locator%3Dcreate-file-yarn%2540workspace%253A.":
-  version: 0.1.0
-  resolution: "utils@file:../utils#../utils::hash=908799&locator=recipes%40file%3A.yalc%2Frecipes%23.yalc%2Frecipes%3A%3Ahash%3Daf9b09%26locator%3Dcreate-file-yarn%2540workspace%253A."
-  checksum: 0b0421439096950fcf11979af4332f298b04ad733d4089ca1e00dfedeba884130f3f1919699c7da7e288230bfa08a5b562eccadd8b50c86c6cbe7a5a00b1a795
   languageName: node
   linkType: hard
 
