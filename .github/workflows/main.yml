@@ -64,7 +64,14 @@ jobs:
 
       - run: npm i pnpm -g
 
-      - run: xvfb-run -a -s '-terminate' yarn test
+      - id: test-linux 
+        run: xvfb-run -a -s '-terminate' yarn test
         if: runner.os == 'Linux'
-      - run: yarn test
+      - id: test
+        run: yarn test
         if: runner.os != 'Linux'
+
+      # TODO: only run debug if the failure was from CLI specifically
+      - run: yarn debug
+        working-directory: packages/cli
+        if: always() && (steps.test.outcome == 'failure' || steps.test-linux.outcome == 'failure')
