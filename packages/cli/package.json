@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json && node esbuild.js",
     "prepare-tests": "tsc -p tsconfig.test.json && yalc publish ../utils && yalc publish ../recipes && yalc publish",
-    "test": "yarn prepare-tests && jest",
+    "test": "yarn prepare-tests && jest --runInBand",
     "debug": "yarn prepare-tests && cross-env FULL_OUTPUT=1 node ../../node_modules/jest/bin/jest.js --runInBand 2>&1 | cat",
     "lint": "eslint . --fix",
     "lint-ci": "eslint ."
