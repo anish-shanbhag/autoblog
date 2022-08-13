@@ -30,7 +30,7 @@ jobs:
 
       - run: yarn build
 
-      - run: yarn lint
+      - run: yarn lint-ci
 
   test:
     name: Run Tests (${{ matrix.os }}, Node ${{ matrix.node-version }})

@@ -12,6 +12,7 @@
     "dev": "turbo run dev --parallel",
     "web": "cd apps/web && yarn dev",
     "lint": "turbo run lint",
+    "lint-ci": "turbo run lint-ci",
     "remote-cache": "turbo link",
     "clean": "git clean -dfX",
     "prepare": "husky install"

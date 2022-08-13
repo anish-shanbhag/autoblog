@@ -1,15 +1,23 @@
 {
   "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": ["$CI"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "build/**", ".next/**"]
+      "outputs": ["dist/**", "build/**", ".next/**"],
+      "outputMode": "new-only"
     },
     "test": {
-      "dependsOn": ["build", "$NODE_VERSION", "$RUNNER_OS"]
+      "dependsOn": ["build", "$NODE_VERSION", "$RUNNER_OS"],
+      "outputMode": "new-only"
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "outputMode": "new-only"
+    },
+    "lint-ci": {
+      "outputs": [],
+      "outputMode": "new-only"
     },
     "dev": {
       "cache": false

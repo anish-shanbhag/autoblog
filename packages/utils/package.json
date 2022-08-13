@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsc && node esbuild.js",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "lint-ci": "eslint ."
   },
   "engines": {
     "node": ">=14"
