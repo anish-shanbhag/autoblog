@@ -1,11 +1,11 @@
-import path from "path";
-import fs from "fs/promises";
 import { existsSync } from "fs";
+import fs from "fs/promises";
+import path from "path";
 
 import {
-  runProcess,
-  getPackageManagerFromPath,
   getPackageJsonFromDirectory,
+  getPackageManagerFromPath,
+  runProcess,
   uncachePackage,
 } from "../src/utils";
 

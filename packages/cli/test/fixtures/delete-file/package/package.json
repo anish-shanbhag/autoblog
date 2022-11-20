@@ -1,0 +1,13 @@
+{
+  "name": "delete-file",
+  "version": "0.1.0",
+  "type": "module",
+  "module": "dist/index.js",
+  "dependencies": {
+    "@cryo/recipes": "file:.yalc/@cryo/recipes"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.4",
+    "@cryo/cli": "file:.yalc/@cryo/cli"
+  }
+}
