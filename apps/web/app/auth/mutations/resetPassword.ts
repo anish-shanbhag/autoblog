@@ -1,4 +1,6 @@
-import { SecurePassword, hash256 } from "@blitzjs/auth";
+/* eslint-disable */
+// TODO: fix above
+import { hash256, SecurePassword } from "@blitzjs/auth";
 
 import { ResetPassword } from "../validations";
 
@@ -13,7 +15,7 @@ export class ResetPasswordError extends Error {
 
 export default async function resetPassword(
   input: { token?: string; password?: string },
-  ctx
+  ctx: any
 ) {
   ResetPassword.parse(input);
   // 1. Try to find this token in the database
@@ -38,7 +40,7 @@ export default async function resetPassword(
   }
 
   // 5. Since token is valid, now we can update the user's password
-  const hashedPassword = await SecurePassword.hash(input.password.trim());
+  const hashedPassword = await SecurePassword.hash(input.password!.trim());
   const user = await db.user.update({
     where: { id: savedToken.userId },
     data: { hashedPassword },
@@ -48,7 +50,7 @@ export default async function resetPassword(
   await db.session.deleteMany({ where: { userId: user.id } });
 
   // 7. Now log the user in with the new credentials
-  await login({ email: user.email, password: input.password }, ctx);
+  await login({ email: user.email, password: input.password! }, ctx);
 
   return true;
 }
