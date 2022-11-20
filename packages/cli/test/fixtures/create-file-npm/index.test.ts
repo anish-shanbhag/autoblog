@@ -8,7 +8,7 @@ import { createTest } from "../../utils";
 const nodeVersion = parseInt(process.version.split(".")[0]);
 
 createTest(__dirname, {
-  testLocalRun: false,
+  testLocalRun: true,
   testInstallRun: nodeVersion > 14,
   testCachedRun: nodeVersion > 14,
   result(ctx) {
