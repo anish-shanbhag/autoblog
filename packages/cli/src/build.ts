@@ -1,48 +1,44 @@
-import fs from "fs/promises";
 import { existsSync } from "fs";
+import fs from "fs/promises";
 import path from "path";
 
+import chalk from "chalk";
 import { build, BuildOptions } from "esbuild";
 import ora, { Ora } from "ora";
-import chalk from "chalk";
 
 import {
-  getPackageJson,
-  getPackageRoot,
+  getBuildEntryPointFromPackage,
+  getPackageJsonFromDirectory,
+  getPackageRootFromPath,
   getRecipesEntryPointFromPath,
   getRecipesFromImport,
   runProcess,
 } from "./utils";
 
-export async function buildRecipes({ clean }: { clean?: string }) {
-  const { packageRoot, fromRoot } = getPackageRoot();
-  const pkg = await getPackageJson();
-
+export async function buildRecipes(
+  options: { path?: string; clean?: string; skipTypecheck?: boolean } = {}
+) {
+  const { packageRoot, fromRoot } = getPackageRootFromPath(
+    options.path ?? process.cwd()
+  );
+  const pkg = await getPackageJsonFromDirectory(packageRoot);
   const { recipesEntryPoint, hasTypeScriptEntryPoint } =
     await getRecipesEntryPointFromPath(packageRoot);
 
-  // TODO: make sure file:// works on all platforms
-  const recipes = await getRecipesFromImport("file://" + recipesEntryPoint);
-
-  if (Object.keys(recipes).length === 0) {
-    throw Error("No recipes were found to be built");
-  }
   const relativeEntryPoint = path
     .relative(packageRoot, recipesEntryPoint)
     .replace(/\\/g, "/");
-  const formattedRecipeNames = Object.keys(recipes)
-    .map((name) => chalk.blue(name))
-    .join(", ");
+
   console.log(
-    `Building the following Recipes exported from ${relativeEntryPoint}: ${formattedRecipeNames}`
+    `Building Recipes exported from ${chalk.yellow(relativeEntryPoint)}`
   );
 
   let spinner: Ora;
-  if (clean) {
-    spinner = ora(`Cleaning up ${chalk.yellow(clean)}...\n`).start();
+  if (options.clean) {
+    spinner = ora(`Cleaning up ${chalk.yellow(options.clean)}...\n`).start();
     // TODO: support globs for the path to clean up
-    await fs.rm(fromRoot(clean), { recursive: true, force: true });
-    spinner.succeed(`Deleted old files in ${chalk.yellow(clean)}`);
+    await fs.rm(fromRoot(options.clean), { recursive: true, force: true });
+    spinner.succeed(`Deleted old files in ${chalk.yellow(options.clean)}`);
   }
 
   let hasTSConfig = false;
@@ -55,6 +51,8 @@ export async function buildRecipes({ clean }: { clean?: string }) {
     searchPath = path.dirname(searchPath);
   }
 
+  // TODO: add another check to make sure that the TSConfig actually includes the entry point
+
   if (hasTypeScriptEntryPoint && !hasTSConfig) {
     console.log(
       "It looks like you're using TypeScript, but you haven't set up a tsconfig.json file."
@@ -63,7 +61,7 @@ export async function buildRecipes({ clean }: { clean?: string }) {
     hasTSConfig = true;
   }
 
-  if (hasTSConfig) {
+  if (hasTypeScriptEntryPoint && hasTSConfig && !options.skipTypecheck) {
     spinner = ora("Checking validity of types...\n").start();
     try {
       await runProcess("tsc", [], { fullOutput: true });
@@ -105,7 +103,18 @@ export async function buildRecipes({ clean }: { clean?: string }) {
   }
   await Promise.all(builds);
 
-  // TODO: include name of package in this message
-  // TODO: only print that the package was also built if the recipes export is the same as "main" in package.json
-  spinner.succeed("Successfully built Recipes");
+  const recipes = await getRecipesFromImport(
+    "file://" + (await getBuildEntryPointFromPackage(packageRoot))
+  );
+
+  if (Object.keys(recipes).length === 0) {
+    spinner.fail(
+      "The package built successfully, but no Recipes were found in the output."
+    );
+  } else {
+    const formattedRecipeNames = Object.keys(recipes)
+      .map((name) => chalk.blue(name))
+      .join(", ");
+    spinner.succeed("Successfully built Recipes: " + formattedRecipeNames);
+  }
 }

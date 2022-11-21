@@ -1,6 +1,6 @@
-import path from "path";
-import fs from "fs/promises";
 import { existsSync } from "fs";
+import fs from "fs/promises";
+import path from "path";
 
 export const cryogenPath = path.join(
   process.env.APPDATA ??

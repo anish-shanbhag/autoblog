@@ -1,0 +1,11 @@
+{
+  "name": "create-file-cjs",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@cryo/recipes": "file:.yalc/@cryo/recipes"
+  },
+  "devDependencies": {
+    "@cryo/cli": "file:.yalc/@cryo/cli"
+  }
+}

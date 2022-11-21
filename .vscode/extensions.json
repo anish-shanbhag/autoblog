@@ -6,7 +6,7 @@
     "mikestead.dotenv",
     "mgmcdermott.vscode-language-babel",
     "prisma.prisma",
-    "amodio.tsl-problem-matcher",
+    "connor4312.esbuild-problem-matchers",
     "orta.vscode-jest"
   ],
   "unwantedRecommendations": []

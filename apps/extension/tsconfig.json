@@ -1,11 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "tsconfig/base.json",
+  "include": ["**/*.ts"],
+  "exclude": ["**/node_modules"],
   "compilerOptions": {
     "baseUrl": "./",
-    "sourceMap": true,
-    "rootDir": "src"
-  },
-  "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+    "module": "esnext",
+    "target": "es2020",
+    "resolveJsonModule": true
+  }
 }

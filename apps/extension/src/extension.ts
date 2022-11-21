@@ -1,35 +1,41 @@
+import {
+  buildRecipes,
+  getBuildEntryPointFromPackage,
+  getRecipesEntryPointFromPath,
+  getRecipesFromImport,
+  runRecipeFromPackage,
+} from "@cryo/cli";
 import * as vscode from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand("catCoding.start", () => {
-      // Create and show panel
-      const panel = vscode.window.createWebviewPanel(
-        "catCoding",
-        "Cat Coding",
-        vscode.ViewColumn.One
+    vscode.commands.registerCommand("cryogen.runLocalRecipe", async () => {
+      const packageRoot =
+        vscode.workspace.workspaceFolders![0].uri.path.replace(/^\/+/g, "");
+      const { hasTypeScriptEntryPoint } = await getRecipesEntryPointFromPath(
+        packageRoot
+      );
+      process.chdir(packageRoot);
+
+      if (hasTypeScriptEntryPoint) {
+        await buildRecipes({ path: packageRoot, skipTypecheck: true });
+      }
+
+      const recipes = await getRecipesFromImport(
+        "file://" + (await getBuildEntryPointFromPackage(packageRoot))
       );
 
-      // And set its HTML content
-      panel.webview.html = getWebviewContent();
+      const recipeName = await vscode.window.showQuickPick(
+        Object.keys(recipes),
+        {
+          title: "Cryogen: Run a local Recipe",
+          placeHolder: "Select a Recipe to run...",
+        }
+      );
+
+      if (recipeName) {
+        await runRecipeFromPackage(packageRoot, recipeName);
+      }
     })
   );
-}
-
-function getWebviewContent() {
-  return `
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Cat Coding</title>
-      </head>
-      <body>
-        <div style="width: 100vw; height: 100vh; background: white">
-          <img src="https://picsum.photos/200/300" />
-        </div>
-      </body>
-    </html>
-  `;
 }

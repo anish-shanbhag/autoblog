@@ -1,23 +1,21 @@
-import fs from "fs/promises";
 import { existsSync } from "fs";
+import fs from "fs/promises";
 
+import { Recipe, runWithRecipeContext } from "@cryo/recipes";
+import { getMetadata, recipeInstallPath, updateMetadata } from "@cryo/utils";
 import chalk from "chalk";
 import ora from "ora";
 import semver from "semver";
 import validate from "validate-npm-package-name";
-import { Recipe, runWithRecipeContext } from "@cryo/recipes";
-import { getMetadata, recipeInstallPath, updateMetadata } from "@cryo/utils";
-
-import cliPkg from "../package.json";
 
 import {
-  runProcess,
+  CACHE_DURATION,
+  getBuildEntryPointFromPackage,
+  getInstalledPackagePath,
   getPackageJson,
   getPackageJsonFromDirectory,
-  CACHE_DURATION,
   getRecipesFromImport,
-  getRecipesEntryPointFromPath,
-  getInstalledPackagePath,
+  runProcess,
   uncachePackage,
 } from "./utils";
 
@@ -142,8 +140,7 @@ export async function runRecipeWithId(
     if (!packageVersion) {
       // write metadata
       await updateMetadata(packageName, {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        cliVersion: cliPkg.version,
+        cliVersion: "0.1.0", // TODO: get this from the package.json
         lastInstalled: Date.now(),
         isLocal: Boolean(localPackage),
       });
@@ -153,11 +150,7 @@ export async function runRecipeWithId(
   }
 
   try {
-    const { recipesEntryPoint } = await getRecipesEntryPointFromPath(
-      packagePath
-    );
-    // TODO: make sure that file:// works on all platforms
-    await runRecipeFromImport("file://" + recipesEntryPoint, recipeName);
+    await runRecipeFromPackage(packagePath, recipeName);
   } catch (e) {
     // remove the package from the cache if it doesn't have an entry point
     // TODO: only handle the error this way if it was from a missing entry
@@ -205,4 +198,14 @@ export async function runRecipeFromImport(importString: string, name?: string) {
   }).start();
   await runWithRecipeContext(recipe);
   spinner.succeed();
+}
+
+export async function runRecipeFromPackage(
+  packagePath: string,
+  recipeName: string
+) {
+  await runRecipeFromImport(
+    "file://" + (await getBuildEntryPointFromPackage(packagePath)),
+    recipeName
+  );
 }

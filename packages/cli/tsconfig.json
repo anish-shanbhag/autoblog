@@ -6,7 +6,6 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "es2020",
-    "resolveJsonModule": true,
-    "noEmit": true
+    "resolveJsonModule": true
   }
 }

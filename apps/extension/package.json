@@ -2,7 +2,7 @@
   "name": "@cryo/extension",
   "displayName": "Cryogen",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.61.0"
   },
@@ -10,15 +10,15 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:catCoding.start"
+    "onCommand:cryogen.runLocalRecipe"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "catCoding.start",
-        "title": "Start new cat coding session",
-        "category": "Cat Coding"
+        "command": "cryogen.runLocalRecipe",
+        "title": "Run a local Recipe",
+        "category": "Cryogen"
       }
     ],
     "viewsContainers": {
@@ -43,15 +43,13 @@
     "files": "**/*.ts"
   },
   "scripts": {
-    "vscode:prepublish": "npm run build",
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "build": "webpack --mode production --devtool hidden-source-map",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
+    "watch": "node watch.js",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && node esbuild.js",
+    "compile-tests": "tsc -p tsconfig.test.json",
+    "watch-tests": "tsc -p tsconfig.test.json -w --outDir out",
     "lint": "eslint . --fix",
     "lint-ci": "eslint .",
-    "test": "npm run compile-tests && npm run compile && node ./out/test/runTest.js"
+    "test": "yarn compile-tests && node ./out/runTest.js"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
@@ -61,6 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
     "@vscode/test-electron": "^2.1.3",
+    "esbuild": "^0.15.14",
     "eslint": "^8.21.0",
     "glob": "^8.0.3",
     "mocha": "^10.0.0",
@@ -68,5 +67,8 @@
     "typescript": "^4.7.4",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@cryo/cli": "workspace:*"
   }
 }

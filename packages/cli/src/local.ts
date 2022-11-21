@@ -1,14 +1,19 @@
-import path from "path";
 import { existsSync } from "fs";
+import path from "path";
 
 import chalk from "chalk";
 
+import { buildRecipes } from "./build";
+import {
+  runRecipeFromImport,
+  runRecipeFromPackage,
+  runRecipeWithId,
+} from "./run";
 import {
   getPackageJsonFromDirectory,
   getPackageRoot,
   getRecipesEntryPointFromPath,
 } from "./utils";
-import { runRecipeFromImport, runRecipeWithId } from "./run";
 
 export async function runLocalRecipe(
   name: string,
@@ -51,13 +56,13 @@ export async function runLocalRecipe(
       version: pkg.version as string,
     });
   } else {
-    const { recipesEntryPoint } = await getRecipesEntryPointFromPath(
-      packageRoot
-    );
-    await runRecipeFromImport("file://" + recipesEntryPoint, name);
-    // TODO: the import above will typecheck the entry file, but this can be disabled
-    // with the transpileOnly option in ts-node. To increase performance we could have
-    // a --skip-typecheck flag which would spawn a new ts-node process with --transpileOnly,
-    // but the need to spawn a process may not be compatible with the way recipes are run.
+    const { recipesEntryPoint, hasTypeScriptEntryPoint } =
+      await getRecipesEntryPointFromPath(packageRoot);
+    if (hasTypeScriptEntryPoint) {
+      await buildRecipes({ path: packageRoot });
+      await runRecipeFromPackage(packageRoot, name);
+    } else {
+      await runRecipeFromImport("file://" + recipesEntryPoint, name);
+    }
   }
 }

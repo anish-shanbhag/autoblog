@@ -5,9 +5,9 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@cryo/cli@file:.yalc/@cryo/cli::locator=create-file-yarn%40workspace%3A.":
+"@cryo/cli@file:.yalc/@cryo/cli::locator=create-file-js%40workspace%3A.":
   version: 0.1.0
-  resolution: "@cryo/cli@file:.yalc/@cryo/cli#.yalc/@cryo/cli::hash=41e8ff&locator=create-file-yarn%40workspace%3A."
+  resolution: "@cryo/cli@file:.yalc/@cryo/cli#.yalc/@cryo/cli::hash=41e8ff&locator=create-file-js%40workspace%3A."
   dependencies:
     "@cryo/recipes": "file:../../@cryo/recipes"
     "@cryo/utils": "file:../../@cryo/utils"
@@ -25,41 +25,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cryo/recipes@file:../../@cryo/recipes::locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D41e8ff%26locator%3Dcreate-file-yarn%2540workspace%253A.":
+"@cryo/recipes@file:../../@cryo/recipes::locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D41e8ff%26locator%3Dcreate-file-js%2540workspace%253A.":
   version: 0.1.0
-  resolution: "@cryo/recipes@file:../../@cryo/recipes#../../@cryo/recipes::hash=e62011&locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D41e8ff%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  resolution: "@cryo/recipes@file:../../@cryo/recipes#../../@cryo/recipes::hash=e62011&locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D41e8ff%26locator%3Dcreate-file-js%2540workspace%253A."
   dependencies:
     "@cryo/utils": "file:../../@cryo/utils"
   checksum: da4f85a46e0499af49e95370b690fed36116d0f75b1abffbfbe98d79eecfbe646a309d0021ba178a0258cde5115b2cd6f2860402e7f78d8b979cf1f82f31a4dc
   languageName: node
   linkType: hard
 
-"@cryo/recipes@file:.yalc/@cryo/recipes::locator=create-file-yarn%40workspace%3A.":
+"@cryo/recipes@file:.yalc/@cryo/recipes::locator=create-file-js%40workspace%3A.":
   version: 0.1.0
-  resolution: "@cryo/recipes@file:.yalc/@cryo/recipes#.yalc/@cryo/recipes::hash=e62011&locator=create-file-yarn%40workspace%3A."
+  resolution: "@cryo/recipes@file:.yalc/@cryo/recipes#.yalc/@cryo/recipes::hash=e62011&locator=create-file-js%40workspace%3A."
   dependencies:
     "@cryo/utils": "file:../../@cryo/utils"
   checksum: da4f85a46e0499af49e95370b690fed36116d0f75b1abffbfbe98d79eecfbe646a309d0021ba178a0258cde5115b2cd6f2860402e7f78d8b979cf1f82f31a4dc
   languageName: node
   linkType: hard
 
-"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D41e8ff%26locator%3Dcreate-file-yarn%2540workspace%253A.":
+"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D41e8ff%26locator%3Dcreate-file-js%2540workspace%253A.":
   version: 0.1.0
-  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=f4bd89&locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D41e8ff%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=f4bd89&locator=%40cryo%2Fcli%40file%3A.yalc%2F%40cryo%2Fcli%23.yalc%2F%40cryo%2Fcli%3A%3Ahash%3D41e8ff%26locator%3Dcreate-file-js%2540workspace%253A."
   checksum: 569a2828636876b872afcccd3ec98f67ca3875460d0d33bfa82279c6682cbaefb9f5c2358dfd93a2bdfcb8da840d36eb14ff0a303b226712c63ef84ff241cae5
   languageName: node
   linkType: hard
 
-"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Frecipes%40file%3A..%2F..%2F%40cryo%2Frecipes%23..%2F..%2F%40cryo%2Frecipes%3A%3Ahash%3De62011%26locator%3D%2540cryo%252Fcli%2540file%253A.yalc%252F%2540cryo%252Fcli%2523.yalc%252F%2540cryo%252Fcli%253A%253Ahash%253D41e8ff%2526locator%253Dcreate-file-yarn%252540workspace%25253A.":
+"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Frecipes%40file%3A..%2F..%2F%40cryo%2Frecipes%23..%2F..%2F%40cryo%2Frecipes%3A%3Ahash%3De62011%26locator%3D%2540cryo%252Fcli%2540file%253A.yalc%252F%2540cryo%252Fcli%2523.yalc%252F%2540cryo%252Fcli%253A%253Ahash%253D41e8ff%2526locator%253Dcreate-file-js%252540workspace%25253A.":
   version: 0.1.0
-  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=f4bd89&locator=%40cryo%2Frecipes%40file%3A..%2F..%2F%40cryo%2Frecipes%23..%2F..%2F%40cryo%2Frecipes%3A%3Ahash%3De62011%26locator%3D%2540cryo%252Fcli%2540file%253A.yalc%252F%2540cryo%252Fcli%2523.yalc%252F%2540cryo%252Fcli%253A%253Ahash%253D41e8ff%2526locator%253Dcreate-file-yarn%252540workspace%25253A."
+  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=f4bd89&locator=%40cryo%2Frecipes%40file%3A..%2F..%2F%40cryo%2Frecipes%23..%2F..%2F%40cryo%2Frecipes%3A%3Ahash%3De62011%26locator%3D%2540cryo%252Fcli%2540file%253A.yalc%252F%2540cryo%252Fcli%2523.yalc%252F%2540cryo%252Fcli%253A%253Ahash%253D41e8ff%2526locator%253Dcreate-file-js%252540workspace%25253A."
   checksum: 569a2828636876b872afcccd3ec98f67ca3875460d0d33bfa82279c6682cbaefb9f5c2358dfd93a2bdfcb8da840d36eb14ff0a303b226712c63ef84ff241cae5
   languageName: node
   linkType: hard
 
-"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Frecipes%40file%3A.yalc%2F%40cryo%2Frecipes%23.yalc%2F%40cryo%2Frecipes%3A%3Ahash%3De62011%26locator%3Dcreate-file-yarn%2540workspace%253A.":
+"@cryo/utils@file:../../@cryo/utils::locator=%40cryo%2Frecipes%40file%3A.yalc%2F%40cryo%2Frecipes%23.yalc%2F%40cryo%2Frecipes%3A%3Ahash%3De62011%26locator%3Dcreate-file-js%2540workspace%253A.":
   version: 0.1.0
-  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=f4bd89&locator=%40cryo%2Frecipes%40file%3A.yalc%2F%40cryo%2Frecipes%23.yalc%2F%40cryo%2Frecipes%3A%3Ahash%3De62011%26locator%3Dcreate-file-yarn%2540workspace%253A."
+  resolution: "@cryo/utils@file:../../@cryo/utils#../../@cryo/utils::hash=f4bd89&locator=%40cryo%2Frecipes%40file%3A.yalc%2F%40cryo%2Frecipes%23.yalc%2F%40cryo%2Frecipes%3A%3Ahash%3De62011%26locator%3Dcreate-file-js%2540workspace%253A."
   checksum: 569a2828636876b872afcccd3ec98f67ca3875460d0d33bfa82279c6682cbaefb9f5c2358dfd93a2bdfcb8da840d36eb14ff0a303b226712c63ef84ff241cae5
   languageName: node
   linkType: hard
@@ -71,136 +71,94 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-android-arm-eabi@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-android-arm-eabi@npm:1.2.228"
-  dependencies:
-    "@swc/wasm": 1.2.122
-  conditions: os=android & cpu=arm
-  languageName: node
-  linkType: hard
-
-"@swc/core-android-arm64@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-android-arm64@npm:1.2.228"
-  dependencies:
-    "@swc/wasm": 1.2.130
-  conditions: os=android & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@swc/core-darwin-arm64@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-darwin-arm64@npm:1.2.228"
+"@swc/core-darwin-arm64@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-darwin-arm64@npm:1.3.19"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-darwin-x64@npm:1.2.228"
+"@swc/core-darwin-x64@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-darwin-x64@npm:1.3.19"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-freebsd-x64@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-freebsd-x64@npm:1.2.228"
-  dependencies:
-    "@swc/wasm": 1.2.130
-  conditions: os=freebsd & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@swc/core-linux-arm-gnueabihf@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.228"
-  dependencies:
-    "@swc/wasm": 1.2.130
+"@swc/core-linux-arm-gnueabihf@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.19"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.2.228"
+"@swc/core-linux-arm64-gnu@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.19"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-linux-arm64-musl@npm:1.2.228"
+"@swc/core-linux-arm64-musl@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-linux-arm64-musl@npm:1.3.19"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-linux-x64-gnu@npm:1.2.228"
+"@swc/core-linux-x64-gnu@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-linux-x64-gnu@npm:1.3.19"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-linux-x64-musl@npm:1.2.228"
+"@swc/core-linux-x64-musl@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-linux-x64-musl@npm:1.3.19"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.2.228"
-  dependencies:
-    "@swc/wasm": 1.2.130
+"@swc/core-win32-arm64-msvc@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.19"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.2.228"
-  dependencies:
-    "@swc/wasm": 1.2.130
+"@swc/core-win32-ia32-msvc@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.19"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.2.228":
-  version: 1.2.228
-  resolution: "@swc/core-win32-x64-msvc@npm:1.2.228"
+"@swc/core-win32-x64-msvc@npm:1.3.19":
+  version: 1.3.19
+  resolution: "@swc/core-win32-x64-msvc@npm:1.3.19"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
 "@swc/core@npm:^1.2.223":
-  version: 1.2.228
-  resolution: "@swc/core@npm:1.2.228"
+  version: 1.3.19
+  resolution: "@swc/core@npm:1.3.19"
   dependencies:
-    "@swc/core-android-arm-eabi": 1.2.228
-    "@swc/core-android-arm64": 1.2.228
-    "@swc/core-darwin-arm64": 1.2.228
-    "@swc/core-darwin-x64": 1.2.228
-    "@swc/core-freebsd-x64": 1.2.228
-    "@swc/core-linux-arm-gnueabihf": 1.2.228
-    "@swc/core-linux-arm64-gnu": 1.2.228
-    "@swc/core-linux-arm64-musl": 1.2.228
-    "@swc/core-linux-x64-gnu": 1.2.228
-    "@swc/core-linux-x64-musl": 1.2.228
-    "@swc/core-win32-arm64-msvc": 1.2.228
-    "@swc/core-win32-ia32-msvc": 1.2.228
-    "@swc/core-win32-x64-msvc": 1.2.228
+    "@swc/core-darwin-arm64": 1.3.19
+    "@swc/core-darwin-x64": 1.3.19
+    "@swc/core-linux-arm-gnueabihf": 1.3.19
+    "@swc/core-linux-arm64-gnu": 1.3.19
+    "@swc/core-linux-arm64-musl": 1.3.19
+    "@swc/core-linux-x64-gnu": 1.3.19
+    "@swc/core-linux-x64-musl": 1.3.19
+    "@swc/core-win32-arm64-msvc": 1.3.19
+    "@swc/core-win32-ia32-msvc": 1.3.19
+    "@swc/core-win32-x64-msvc": 1.3.19
   dependenciesMeta:
-    "@swc/core-android-arm-eabi":
-      optional: true
-    "@swc/core-android-arm64":
-      optional: true
     "@swc/core-darwin-arm64":
       optional: true
     "@swc/core-darwin-x64":
-      optional: true
-    "@swc/core-freebsd-x64":
       optional: true
     "@swc/core-linux-arm-gnueabihf":
       optional: true
@@ -220,21 +178,7 @@ __metadata:
       optional: true
   bin:
     swcx: run_swcx.js
-  checksum: 04d1bea8a8f7a6d0db9f1186670cb60be61df7729c30b6a9d7e64b0627ceaff6e4b111316098bf2e18d682276a99d93e78b2d06011ffe983cbbd8aa2af84a2e0
-  languageName: node
-  linkType: hard
-
-"@swc/wasm@npm:1.2.122":
-  version: 1.2.122
-  resolution: "@swc/wasm@npm:1.2.122"
-  checksum: 563345370c5ad18373d3b403590ab880fe52dcd8fc8c8601be263fcd9886520b28a7f4e46236cf49ca2b136c79d4ef50c960bc34b7cdc2068118b0d84dfca1f4
-  languageName: node
-  linkType: hard
-
-"@swc/wasm@npm:1.2.130":
-  version: 1.2.130
-  resolution: "@swc/wasm@npm:1.2.130"
-  checksum: 02203bfef3e382c64cbbd63c138c8fdf61865e74d923b317e9d9e9f33f5a3f0a9533b5fdbc9505e76d78e864be04a82fc847eb987a1e47ccac5850146c858292
+  checksum: 752499e18f81df789a9737936b2a83ea1db34bb2f983c80b394766796d853fa7d30701b52b9cb30ba943ad15286d8316603149683f4c553a5493aa78d89a76e0
   languageName: node
   linkType: hard
 
@@ -341,15 +285,15 @@ __metadata:
   linkType: hard
 
 "commander@npm:^9.4.0":
-  version: 9.4.0
-  resolution: "commander@npm:9.4.0"
-  checksum: a322de584a6ccd1ea83c24f6a660e52d16ffbe2613fcfbb8d2cc68bc9dec637492456d754fe8bb5b039ad843ed8e04fb0b107e581a75f62cde9e1a0ab1546e09
+  version: 9.4.1
+  resolution: "commander@npm:9.4.1"
+  checksum: bfb18e325a5bdf772763c2213d5c7d9e77144d944124e988bcd8e5e65fb6d45d5d4e86b09155d0f2556c9a59c31e428720e57968bcd050b2306e910a0bf3cf13
   languageName: node
   linkType: hard
 
-"create-file-yarn@workspace:.":
+"create-file-js@workspace:.":
   version: 0.0.0-use.local
-  resolution: "create-file-yarn@workspace:."
+  resolution: "create-file-js@workspace:."
   dependencies:
     "@cryo/cli": "file:.yalc/@cryo/cli"
     "@cryo/recipes": "file:.yalc/@cryo/recipes"
@@ -357,11 +301,11 @@ __metadata:
   linkType: soft
 
 "defaults@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "defaults@npm:1.0.3"
+  version: 1.0.4
+  resolution: "defaults@npm:1.0.4"
   dependencies:
     clone: ^1.0.2
-  checksum: 96e2112da6553d376afd5265ea7cbdb2a3b45535965d71ab8bb1da10c8126d168fdd5268799625324b368356d21ba2a7b3d4ec50961f11a47b7feb9de3d4413e
+  checksum: 3a88b7a587fc076b84e60affad8b85245c01f60f38fc1d259e7ac1d89eb9ce6abb19e27215de46b98568dd5bc48471730b327637e6f20b0f1bc85cf00440c80a
   languageName: node
   linkType: hard
 
@@ -695,13 +639,13 @@ __metadata:
   linkType: hard
 
 "semver@npm:^7.0.0, semver@npm:^7.3.7":
-  version: 7.3.7
-  resolution: "semver@npm:7.3.7"
+  version: 7.3.8
+  resolution: "semver@npm:7.3.8"
   dependencies:
     lru-cache: ^6.0.0
   bin:
     semver: bin/semver.js
-  checksum: 2fa3e877568cd6ce769c75c211beaed1f9fce80b28338cadd9d0b6c40f2e2862bafd62c19a6cff42f3d54292b7c623277bcab8816a2b5521cf15210d43e75232
+  checksum: ba9c7cbbf2b7884696523450a61fee1a09930d888b7a8d7579025ad93d459b2d1949ee5bbfeb188b2be5f4ac163544c5e98491ad6152df34154feebc2cc337c1
   languageName: node
   linkType: hard
 
@@ -740,22 +684,22 @@ __metadata:
   linkType: hard
 
 "typescript@npm:^4.7.4":
-  version: 4.7.4
-  resolution: "typescript@npm:4.7.4"
+  version: 4.9.3
+  resolution: "typescript@npm:4.9.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 5750181b1cd7e6482c4195825547e70f944114fb47e58e4aa7553e62f11b3f3173766aef9c281783edfd881f7b8299cf35e3ca8caebe73d8464528c907a164df
+  checksum: 17b8f816050b412403e38d48eef0e893deb6be522d6dc7caf105e54a72e34daf6835c447735fd2b28b66784e72bfbf87f627abb4818a8e43d1fa8106396128dc
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
-  version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=f456af"
+  version: 4.9.3
+  resolution: "typescript@patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=f456af"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 9096d8f6c16cb80ef3bf96fcbbd055bf1c4a43bd14f3b7be45a9fbe7ada46ec977f604d5feed3263b4f2aa7d4c7477ce5f9cd87de0d6feedec69a983f3a4f93e
+  checksum: ef65c22622d864497d0a0c5db693523329b3284c15fe632e93ad9aa059e8dc38ef3bd767d6f26b1e5ecf9446f49bd0f6c4e5714a2eeaf352805dc002479843d1
   languageName: node
   linkType: hard
 

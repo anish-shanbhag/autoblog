@@ -2,7 +2,7 @@ import fs from "fs/promises";
 
 import { getMetadata } from "@cryo/utils";
 
-import { RecipeParameters, RecipeStep, Recipe } from "./types";
+import { Recipe, RecipeParameters, RecipeStep } from "./types";
 import { isNestedDirectory, updateRunning } from "./utils";
 
 const steps: Record<string, string> = {};

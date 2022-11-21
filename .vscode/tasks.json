@@ -5,7 +5,7 @@
       "type": "npm",
       "script": "watch",
       "path": "apps/extension/",
-      "problemMatcher": ["$ts-webpack-watch", "$tslint-webpack-watch"],
+      "problemMatcher": "$esbuild-watch",
       "isBackground": true,
       "presentation": {
         "reveal": "never",

@@ -19,9 +19,9 @@ export function createTest(
     testLocalRun?: boolean;
     testInstallRun?: boolean;
     testCachedRun?: boolean;
-    result: (ctx: TestCtx) => void;
+    result?: (ctx: TestCtx) => void;
     undo?: (ctx: TestCtx) => void | Promise<void>;
-  }
+  } = {}
 ) {
   const name = path.basename(dir);
   const packageDir = path.join(dir, "package");
@@ -93,7 +93,9 @@ export function createTest(
 
     async function runTest(...args: Parameters<typeof runCommand>) {
       await runCommand(...args);
-      options.result({ relativePath });
+      if (options.result) {
+        options.result({ relativePath });
+      }
       if (options.undo) {
         // TODO: once you write diffing functionality, just use that to revert changes instead
         await options.undo({ relativePath });
@@ -115,5 +117,20 @@ export function createTest(
       it("runs properly when cached", () =>
         runTest("cryo", ["local", "run", "--install"]));
     }
+  });
+}
+
+export function createFileTest(...args: Parameters<typeof createTest>) {
+  createTest(args[0], {
+    testLocalRun: true,
+    testInstallRun: true,
+    testCachedRun: true,
+    result(ctx) {
+      expect(existsSync(ctx.relativePath("test.txt"))).toBe(true);
+    },
+    async undo(ctx) {
+      await fs.rm(ctx.relativePath("test.txt"));
+    },
+    ...args[1],
   });
 }

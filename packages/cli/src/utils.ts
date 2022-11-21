@@ -3,8 +3,8 @@ import { existsSync } from "fs";
 import path from "path";
 
 import { Recipe } from "@cryo/recipes";
-import chalk from "chalk";
 import { deleteMetadata, readJson, recipeInstallPath } from "@cryo/utils";
+import chalk from "chalk";
 
 // TODO: allow this to be customized
 export const CACHE_DURATION = 1000 * 60 * 60 * 24; // 1 day
@@ -74,6 +74,15 @@ export function getPackageManager() {
   return getPackageManagerFromPath(process.cwd());
 }
 
+export async function getBuildEntryPointFromPackage(packagePath: string) {
+  const packageJson = await getPackageJsonFromDirectory(packagePath);
+  const entryPoint = path.join(
+    packagePath,
+    (packageJson.module as string | undefined) ?? (packageJson.main as string)
+  );
+  return entryPoint;
+}
+
 export async function getRecipesEntryPointFromPath(packageRoot: string) {
   const fromRoot = (relativePath: string) =>
     path.join(packageRoot, relativePath);
@@ -100,7 +109,16 @@ export async function getRecipesFromImport(importString: string): Promise<{
 }> {
   // TODO: error handling
   // TODO: filter the exports with Zod so that only recipes are included
-  return (await import(importString)) as { [name: string]: Recipe };
+  const exports = (await import(importString)) as { [name: string]: Recipe };
+  return Object.keys(exports)
+    .filter((key) => key !== "default")
+    .reduce(
+      (recipes, key) => ({
+        ...recipes,
+        [key]: exports[key],
+      }),
+      {}
+    );
 }
 
 export async function uncachePackage(packageName: string) {
@@ -118,7 +136,7 @@ export async function uncachePackage(packageName: string) {
   await deleteMetadata(packageName);
 }
 
-const binPaths: Record<string, string> = {};
+export const binPaths: Record<string, string> = {};
 
 export function runProcess(
   command: string,
