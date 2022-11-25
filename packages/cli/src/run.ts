@@ -1,5 +1,6 @@
 import { existsSync } from "fs";
 import fs from "fs/promises";
+import path from "path";
 
 import { Recipe, runWithRecipeContext } from "@cryo/recipes";
 import { getMetadata, recipeInstallPath, updateMetadata } from "@cryo/utils";
@@ -193,11 +194,51 @@ export async function runRecipeFromImport(importString: string, name?: string) {
       recipe = recipes[name];
     }
   }
+
   const spinner = ora({
     text: recipe.title + "\n",
   }).start();
+
+  const gitArgs = ["--git-dir", ".cryogen", "--work-tree", "."];
+
+  const initializedGit = existsSync(path.join(process.cwd(), ".cryogen"));
+  if (!initializedGit) {
+    await runProcess("git", [...gitArgs, "init"]);
+  }
+  console.log("Adding...");
+  const addArgs = [...gitArgs, "add", "-f", "--", ".", ":!.cryogen"];
+  await runProcess("git", addArgs);
+  function getCommitArgs(options: { amend: boolean } = { amend: false }) {
+    const commitArgs = [...gitArgs, "commit", "-m", "base", "--allow-empty"];
+    if (options.amend) {
+      commitArgs.push("--amend");
+    }
+    return commitArgs;
+  }
+  // TODO: use a more robust way of determining whether a commit already exists
+  // maybe using git rev-list --count
+  console.log("Committing...");
+  await runProcess("git", getCommitArgs({ amend: initializedGit }));
   await runWithRecipeContext(recipe);
+  console.log("before second add");
+  await runProcess("git", addArgs);
+  console.log("after second add");
+  const output = await runProcess("git", [...gitArgs, "diff", "--staged"]);
+  console.log("ran diff");
+  if (output) {
+    await runProcess("git", getCommitArgs({ amend: false }));
+  }
+  await runProcess("git", [
+    ...gitArgs,
+    "show",
+    "--textconv",
+    "HEAD~1:" + path.relative(process.cwd(), "test.txt"),
+    ">",
+    ".cryogen/tmp",
+  ]);
   spinner.succeed();
+
+  console.log("done");
 }
 
 export async function runRecipeFromPackage(

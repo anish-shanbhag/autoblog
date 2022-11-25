@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:cryogen.runLocalRecipe"
+    "*"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -69,6 +69,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "@cryo/bindings": "workspace:*",
     "@cryo/cli": "workspace:*"
   }
 }

@@ -1,3 +1,5 @@
+import path from "path";
+
 import {
   buildRecipes,
   getBuildEntryPointFromPackage,
@@ -7,34 +9,49 @@ import {
 } from "@cryo/cli";
 import * as vscode from "vscode";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const debug = vscode.window.createOutputChannel("Cryogen");
+
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("cryogen.runLocalRecipe", async () => {
-      const packageRoot =
+      const workspaceRoot =
         vscode.workspace.workspaceFolders![0].uri.path.replace(/^\/+/g, "");
       const { hasTypeScriptEntryPoint } = await getRecipesEntryPointFromPath(
-        packageRoot
+        workspaceRoot
       );
-      process.chdir(packageRoot);
+
+      process.chdir(workspaceRoot);
 
       if (hasTypeScriptEntryPoint) {
-        await buildRecipes({ path: packageRoot, skipTypecheck: true });
+        await buildRecipes({ path: workspaceRoot, skipTypecheck: true });
       }
 
       const recipes = await getRecipesFromImport(
-        "file://" + (await getBuildEntryPointFromPackage(packageRoot))
+        "file://" + (await getBuildEntryPointFromPackage(workspaceRoot))
       );
 
-      const recipeName = await vscode.window.showQuickPick(
-        Object.keys(recipes),
+      const recipeTitle = await vscode.window.showQuickPick(
+        Object.values(recipes).map((recipe) => recipe.title),
         {
           title: "Cryogen: Run a local Recipe",
           placeHolder: "Select a Recipe to run...",
         }
       );
 
-      if (recipeName) {
-        await runRecipeFromPackage(packageRoot, recipeName);
+      if (recipeTitle) {
+        await runRecipeFromPackage(
+          workspaceRoot,
+          Object.keys(recipes).find(
+            (recipeName) => recipes[recipeName].title === recipeTitle
+          )!
+        );
+        await vscode.commands.executeCommand(
+          "vscode.diff",
+          vscode.Uri.file(path.join(process.cwd(), ".cryogen/tmp")),
+          vscode.Uri.file(path.join(process.cwd(), "test.txt")),
+          "(*) test.txt"
+        );
       }
     })
   );

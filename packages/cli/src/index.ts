@@ -1,5 +1,5 @@
 export { buildRecipes } from "./build";
-export { runRecipeFromImport, runRecipeFromPackage } from "./run";
+export { runRecipeFromPackage } from "./run";
 export {
   getBuildEntryPointFromPackage,
   getRecipesEntryPointFromPath,
