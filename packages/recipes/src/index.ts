@@ -38,7 +38,6 @@ export function createRecipe({ run, ...params }: RecipeParameters): Recipe {
   );
 }
 
-// TODO: should this even be a thing? Could be pretty dangerous since you can accidentally delete files
 export async function runWithRecipeContext(
   recipe: RecipeStep,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -49,6 +48,10 @@ export async function runWithRecipeContext(
   // TODO: options for running in the context of a different directory
   // TODO: prompt to install the extension if it's not installed
   // TODO: implement confirmDirectory functionality, which should prompt for the directory context for the Recipe if true
+
+  // TODO: should this running logic be here? There might be a case where
+  // a Recipe calls another Recipe in a different directory context, but this current
+  // logic won't allow a Recipe to call another Recipe in the same directory anyway
   const running = await getMetadata<Record<string, boolean>>("_running");
   for (const dir in running) {
     // TODO: this should use the directory context, not process.cwd()
