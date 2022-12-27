@@ -1,0 +1,25 @@
+<!--
+Copied from Vite's usual index.html, except all script sources have been prepended
+with the full localhost URL since VS Code incorrectly resolves them to the wrong path.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="module">
+      import { injectIntoGlobalHook } from "http://localhost:5173/@react-refresh";
+      injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+    </script>
+
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="root">Connecting to Vite server...</div>
+    <script type="module" src="http://localhost:5173/main.tsx"></script>
+  </body>
+</html>

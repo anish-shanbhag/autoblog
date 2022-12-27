@@ -1,3 +1,4 @@
 dist/**
 out/**
+**/build/**
 .vscode-test/**
