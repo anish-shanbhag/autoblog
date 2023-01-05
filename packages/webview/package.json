@@ -1,0 +1,40 @@
+{
+  "name": "@cryo/webview",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/main.tsx",
+  "types": "src/main.tsx",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --fix",
+    "lint-ci": "eslint .",
+    "depcheck": "depcheck --skip-missing --ignores '@types/*,config,tsconfig,tslib,path-browserify'"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/vscode-webview": "^1.57.0",
+    "@vitejs/plugin-react-swc": "^3.0.1",
+    "config": "workspace:*",
+    "depcheck": "^1.4.3",
+    "eslint": "^8.21.0",
+    "tsconfig": "workspace:*",
+    "tslib": "^2.4.1",
+    "typescript": "^4.7.4",
+    "vite": "^4.0.3"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.4.5",
+    "@cryo/ui": "workspace:^",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "framer-motion": "^8.0.2",
+    "jotai": "^1.12.0",
+    "jotai-optics": "^0.2.0",
+    "path-browserify": "^1.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

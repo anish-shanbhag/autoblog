@@ -6,6 +6,7 @@
     "composite": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
     "inlineSources": false,
     "isolatedModules": true,
     "moduleResolution": "node",

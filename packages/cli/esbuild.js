@@ -1,6 +1,6 @@
-import { build } from "esbuild";
+const { build } = require("esbuild");
 
-import pkg from "./package.json" assert { type: "json" };
+const pkg = require("./package.json");
 
 const commonOptions = {
   bundle: true,

@@ -25,6 +25,8 @@ jobs:
 
       - run: yarn --immutable
 
+      - run: yarn depcheck
+
       - run: yarn build
 
       - run: yarn lint-ci

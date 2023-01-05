@@ -43,13 +43,11 @@ export async function runRecipeWithId(
       packageSpec = splitId[0] + "/" + splitId[1];
       recipeName = splitId[2];
     }
+  } else if (splitId.length > 2) {
+    throw invalidError;
   } else {
-    if (splitId.length > 2) {
-      throw invalidError;
-    } else {
-      packageSpec = splitId[0];
-      recipeName = splitId[1];
-    }
+    packageSpec = splitId[0];
+    recipeName = splitId[1];
   }
 
   let packageName = packageSpec;
@@ -109,13 +107,11 @@ export async function runRecipeWithId(
       ) {
         matched = true;
       }
-    } else {
-      if (Date.now() - metadata.lastInstalled < CACHE_DURATION) {
-        matched = true;
-        // TODO: check for updates in the background and write to metadata if there is one
-        // don't necessarily install the new package right away (as that might interfere with
-        // the running recipe). Instead, install it the next time the recipe is run.
-      }
+    } else if (Date.now() - metadata.lastInstalled < CACHE_DURATION) {
+      matched = true;
+      // TODO: check for updates in the background and write to metadata if there is one
+      // don't necessarily install the new package right away (as that might interfere with
+      // the running recipe). Instead, install it the next time the recipe is run.
     }
   }
 
@@ -180,19 +176,17 @@ export async function runRecipeFromImport(importString: string, name?: string) {
     } else {
       recipe = Object.values(recipes)[0];
     }
+  } else if (!(name in recipes)) {
+    throw Error(
+      "No recipe with the name " +
+        chalk.yellow(name) +
+        " was found in this package. The available recipes in this package are: " +
+        Object.keys(recipes)
+          .map((name) => chalk.blue(name))
+          .join(", ")
+    );
   } else {
-    if (!(name in recipes)) {
-      throw Error(
-        "No recipe with the name " +
-          chalk.yellow(name) +
-          " was found in this package. The available recipes in this package are: " +
-          Object.keys(recipes)
-            .map((name) => chalk.blue(name))
-            .join(", ")
-      );
-    } else {
-      recipe = recipes[name];
-    }
+    recipe = recipes[name];
   }
 
   const spinner = ora({
@@ -200,45 +194,38 @@ export async function runRecipeFromImport(importString: string, name?: string) {
   }).start();
 
   const gitArgs = ["--git-dir", ".cryogen", "--work-tree", "."];
-
-  const initializedGit = existsSync(path.join(process.cwd(), ".cryogen"));
-  if (!initializedGit) {
+  const commitArgs = [...gitArgs, "commit", "-m", "base", "--allow-empty"];
+  // TODO: use a more robust way of determining whether a commit already exists
+  // maybe using git rev-list --count
+  const alreadyInitializedGit = existsSync(
+    path.join(process.cwd(), ".cryogen")
+  );
+  if (!alreadyInitializedGit) {
     await runProcess("git", [...gitArgs, "init"]);
   }
   console.log("Adding...");
   const addArgs = [...gitArgs, "add", "-f", "--", ".", ":!.cryogen"];
   await runProcess("git", addArgs);
-  function getCommitArgs(options: { amend: boolean } = { amend: false }) {
-    const commitArgs = [...gitArgs, "commit", "-m", "base", "--allow-empty"];
-    if (options.amend) {
-      commitArgs.push("--amend");
-    }
-    return commitArgs;
+  await runProcess("git", commitArgs);
+  if (alreadyInitializedGit) {
+    const initialCommit = (
+      await runProcess("git", [
+        ...gitArgs,
+        "rev-list",
+        "--max-parents=0",
+        "HEAD",
+      ])
+    ).trim();
+    await runProcess("git", [...gitArgs, "reset", "--soft", initialCommit]);
+    await runProcess("git", [...commitArgs, "--amend"]);
   }
-  // TODO: use a more robust way of determining whether a commit already exists
-  // maybe using git rev-list --count
-  console.log("Committing...");
-  await runProcess("git", getCommitArgs({ amend: initializedGit }));
-  await runWithRecipeContext(recipe);
-  console.log("before second add");
-  await runProcess("git", addArgs);
-  console.log("after second add");
-  const output = await runProcess("git", [...gitArgs, "diff", "--staged"]);
-  console.log("ran diff");
-  if (output) {
-    await runProcess("git", getCommitArgs({ amend: false }));
-  }
-  await runProcess("git", [
-    ...gitArgs,
-    "show",
-    "--textconv",
-    "HEAD~1:" + path.relative(process.cwd(), "test.txt"),
-    ">",
-    ".cryogen/tmp",
-  ]);
-  spinner.succeed();
 
-  console.log("done");
+  await runWithRecipeContext(recipe);
+
+  await runProcess("git", addArgs);
+  await runProcess("git", commitArgs);
+
+  spinner.succeed();
 }
 
 export async function runRecipeFromPackage(

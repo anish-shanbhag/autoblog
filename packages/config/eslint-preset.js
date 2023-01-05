@@ -77,7 +77,12 @@ module.exports = (directory, allowConsole = true, isNextJS = false) => ({
     "@typescript-eslint/no-unsafe-argument": "warn",
     "@typescript-eslint/no-unused-vars": [
       "error",
-      { args: "after-used", ignoreRestSiblings: true, argsIgnorePattern: "^_" },
+      {
+        args: "after-used",
+        ignoreRestSiblings: true,
+        argsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+      },
     ],
     "@typescript-eslint/consistent-type-definitions": "error",
     "@typescript-eslint/consistent-type-assertions": "error",

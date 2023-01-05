@@ -13,6 +13,7 @@
     "web": "cd apps/web && yarn dev",
     "lint": "turbo run lint",
     "lint-ci": "turbo run lint-ci",
+    "depcheck": "turbo run depcheck",
     "remote-cache": "turbo link",
     "clean": "git clean -dfX",
     "postinstall": "husky install && cd apps/web && yarn generate"

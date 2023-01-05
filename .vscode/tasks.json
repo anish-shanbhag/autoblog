@@ -3,19 +3,19 @@
   "tasks": [
     {
       "type": "npm",
-      "script": "watch",
+      "script": "dev",
       "path": "apps/extension/",
       "problemMatcher": "$esbuild-watch",
       "isBackground": true,
       "presentation": {
-        "reveal": "never",
-        "group": "watchers"
+        "reveal": "always",
+        "panel": "shared"
       },
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "label": "npm: watch"
+      "label": "Extension Watcher"
     },
     {
       "type": "npm",

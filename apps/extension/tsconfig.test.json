@@ -1,11 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "tsconfig/base.json",
-  "compilerOptions": {
-    "baseUrl": "./",
-    "sourceMap": true,
-    "outDir": "out"
-  },
-  "exclude": ["node_modules"],
+  "extends": "./tsconfig.json",
   "include": ["test/**/*.ts"]
 }

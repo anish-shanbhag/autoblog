@@ -18,7 +18,7 @@ const steps: Record<string, string> = {};
 export function createRecipe({ run, ...params }: RecipeParameters): Recipe {
   // TODO: figure out how to do this without Object.assign (same for below functions)
   // right now this is an anonymous function so it won't have a name when printed
-  // eslint-disable-next-line prefer-object-spread
+
   return Object.assign(
     async () => {
       const running = await getMetadata<Record<string, boolean>>("_running");

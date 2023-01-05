@@ -1,6 +1,7 @@
-import { ExplorerView } from "@cryo/ui";
 import React from "react";
 import { createRoot } from "react-dom/client";
+
+import DiffViewContainer from "./DiffViewContainer";
 
 const vscode = acquireVsCodeApi();
 
@@ -18,6 +19,6 @@ if (import.meta.hot) {
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ExplorerView />
+    <DiffViewContainer vscode={vscode} />
   </React.StrictMode>
 );

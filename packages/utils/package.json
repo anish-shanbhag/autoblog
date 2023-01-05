@@ -12,13 +12,15 @@
   "scripts": {
     "build": "rm -rf dist && tsc && node esbuild.js",
     "lint": "eslint . --fix",
-    "lint-ci": "eslint ."
+    "lint-ci": "eslint .",
+    "depcheck": "depcheck --skip-missing --ignores '@types/*,config,tsconfig,tslib'"
   },
   "engines": {
     "node": ">=14"
   },
   "devDependencies": {
     "config": "workspace:*",
+    "depcheck": "^1.4.3",
     "esbuild": "^0.14.53",
     "eslint": "^8.21.0",
     "tsconfig": "workspace:*",

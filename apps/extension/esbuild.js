@@ -1,19 +1,20 @@
-const { build } = require("esbuild");
+import { build } from "esbuild";
 
-const commonOptions = {
-  entryPoints: ["src/extension.ts"],
+export const commonOptions = {
   bundle: true,
   platform: "node",
   format: "cjs",
-  outfile: "dist/extension.js",
+  outExtension: { ".js": ".cjs" },
   external: ["vscode", "esbuild"],
   logLevel: "info",
 };
 
-(async () => {
-  await build(commonOptions);
-})();
-
-module.exports = {
-  commonOptions,
+export const buildOptions = {
+  ...commonOptions,
+  entryPoints: ["src/extension.ts"],
+  outfile: "dist/extension.cjs",
 };
+
+(async () => {
+  await build(buildOptions);
+})();

@@ -1,9 +1,9 @@
-const { build } = require("esbuild");
-const { commonOptions } = require("./esbuild.js");
+import { build } from "esbuild";
+import { buildOptions } from "./esbuild.js";
 
 (async () => {
   await build({
-    ...commonOptions,
+    ...buildOptions,
     watch: true,
     sourcemap: true,
   });
