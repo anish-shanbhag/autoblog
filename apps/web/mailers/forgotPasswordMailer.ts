@@ -5,10 +5,10 @@
  * and use it straight away.
  */
 
-type ResetPasswordMailer = {
+interface ResetPasswordMailer {
   to: string;
   token: string;
-};
+}
 
 export function forgotPasswordMailer({ to, token }: ResetPasswordMailer) {
   // In production, set APP_ORIGIN to your production server origin

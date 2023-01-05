@@ -1,3 +1,5 @@
+/* eslint-disable etc/no-commented-out-code */
+
 // import db from "./index"
 
 /*

@@ -1,5 +1,3 @@
-/* eslint-disable */
-// TODO: fix above
 import { hash256, SecurePassword } from "@blitzjs/auth";
 
 import { ResetPassword } from "../validations";

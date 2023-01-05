@@ -1,12 +1,12 @@
-import { Suspense } from "react";
+import { Routes } from "@blitzjs/next";
+import { useMutation } from "@blitzjs/rpc";
 import Image from "next/image";
 import Link from "next/link";
-import { useMutation } from "@blitzjs/rpc";
-import { Routes } from "@blitzjs/next";
+import { Suspense } from "react";
 
-import Layout from "app/core/layouts/Layout";
-import { useCurrentUser } from "app/core/hooks/useCurrentUser";
 import logout from "app/auth/mutations/logout";
+import { useCurrentUser } from "app/core/hooks/useCurrentUser";
+import Layout from "app/core/layouts/Layout";
 import logo from "public/logo.png";
 
 /*
@@ -145,7 +145,6 @@ function Home() {
             Powered by Blitz.js
           </a>
         </footer>
-        {/* @ts-ignore */}
         <style jsx global>{`
           @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700&display=swap");
 

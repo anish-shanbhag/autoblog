@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable react/function-component-definition */
 
 import Head from "next/head";
 import React, { FC } from "react";
