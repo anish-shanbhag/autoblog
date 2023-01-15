@@ -2,8 +2,15 @@ import { existsSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 
+import {
+  commitArgs,
+  getMetadata,
+  git,
+  recipeInstallPath,
+  runProcess,
+  updateMetadata,
+} from "@cryo/node-utils";
 import { Recipe, runWithRecipeContext } from "@cryo/recipes";
-import { getMetadata, recipeInstallPath, updateMetadata } from "@cryo/utils";
 import chalk from "chalk";
 import ora from "ora";
 import semver from "semver";
@@ -16,7 +23,6 @@ import {
   getPackageJson,
   getPackageJsonFromDirectory,
   getRecipesFromImport,
-  runProcess,
   uncachePackage,
 } from "./utils";
 
@@ -192,38 +198,29 @@ export async function runRecipeFromImport(importString: string, name?: string) {
   const spinner = ora({
     text: recipe.title + "\n",
   }).start();
-
-  const gitArgs = ["--git-dir", ".cryogen", "--work-tree", "."];
-  const commitArgs = [...gitArgs, "commit", "-m", "base", "--allow-empty"];
   // TODO: use a more robust way of determining whether a commit already exists
   // maybe using git rev-list --count
   const alreadyInitializedGit = existsSync(
     path.join(process.cwd(), ".cryogen")
   );
   if (!alreadyInitializedGit) {
-    await runProcess("git", [...gitArgs, "init"]);
+    await git("init");
   }
-  console.log("Adding...");
-  const addArgs = [...gitArgs, "add", "-f", "--", ".", ":!.cryogen"];
-  await runProcess("git", addArgs);
-  await runProcess("git", commitArgs);
+  const addArgs = ["add", "-f", "--", ".", ":!.cryogen"];
+  await git(...addArgs);
+  await git(...commitArgs);
   if (alreadyInitializedGit) {
     const initialCommit = (
-      await runProcess("git", [
-        ...gitArgs,
-        "rev-list",
-        "--max-parents=0",
-        "HEAD",
-      ])
+      await git("rev-list", "--max-parents=0", "HEAD")
     ).trim();
-    await runProcess("git", [...gitArgs, "reset", "--soft", initialCommit]);
-    await runProcess("git", [...commitArgs, "--amend"]);
+    await git("reset", "--soft", initialCommit);
+    await git(...commitArgs, "--amend");
   }
 
   await runWithRecipeContext(recipe);
 
-  await runProcess("git", addArgs);
-  await runProcess("git", commitArgs);
+  await git(...addArgs);
+  await git(...commitArgs);
 
   spinner.succeed();
 }

@@ -1,10 +1,11 @@
-import { build } from "esbuild";
-import { buildOptions } from "./esbuild.js";
+const { build } = require("esbuild");
+const { buildOptions } = require("./esbuild.js");
 
 (async () => {
   await build({
     ...buildOptions,
     watch: true,
     sourcemap: true,
+    minify: false,
   });
 })();

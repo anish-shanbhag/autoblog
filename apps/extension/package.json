@@ -3,8 +3,7 @@
   "displayName": "Cryogen",
   "description": "",
   "version": "0.1.0",
-  "main": "./dist/extension.cjs",
-  "type": "module",
+  "main": "dist/extension.js",
   "engines": {
     "vscode": "^1.61.0"
   },
@@ -50,7 +49,7 @@
     "build": "rm -rf dist && tsc -p tsconfig.build.json && node esbuild.js && cp -r ../../packages/webview/dist dist/webview",
     "compile-tests": "tsc -p tsconfig.test.json && rm -rf test/out && node test.esbuild.js",
     "watch-tests": "tsc -p tsconfig.test.json -w --outDir out",
-    "test": "yarn compile-tests && node test/out/runTest.cjs",
+    "test": "yarn compile-tests && node test/out/runTest.js",
     "lint": "eslint . --fix",
     "lint-ci": "eslint .",
     "depcheck": "depcheck --skip-missing --ignores '@types/*,config,tsconfig,tslib'"
@@ -73,6 +72,9 @@
   },
   "dependencies": {
     "@cryo/cli": "workspace:*",
-    "@cryo/ui": "workspace:*"
+    "@cryo/node-utils": "workspace:*",
+    "@cryo/ui": "workspace:*",
+    "@cryo/utils": "workspace:*",
+    "@parcel/watcher": "^2.1.0"
   }
 }

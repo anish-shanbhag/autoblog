@@ -1,3 +1,3 @@
-# Utils
+# @cryo/utils
 
-Miscellaneous utilities used by `@cryo/recipes` and `@cryo/cli`. Not meant to be installed on its own.
+This package contains miscellaneous utilities which don't depend on any particular environment (i.e. Node.js or the browser). It's not meant to be installed on its own.

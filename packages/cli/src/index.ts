@@ -4,5 +4,4 @@ export {
   getBuildEntryPointFromPackage,
   getRecipesEntryPointFromPath,
   getRecipesFromImport,
-  runProcess,
 } from "./utils";

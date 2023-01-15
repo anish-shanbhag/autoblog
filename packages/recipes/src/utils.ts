@@ -1,7 +1,5 @@
 import path from "path";
 
-import { updateMetadata } from "@cryo/utils";
-
 export function isNestedDirectory(dir1: string, dir2: string) {
   const originalDir1 = dir1;
   while (dir1 !== path.parse(dir1).root) {
@@ -18,10 +16,4 @@ export function isNestedDirectory(dir1: string, dir2: string) {
     dir2 = path.dirname(dir1);
   }
   return false;
-}
-
-export async function updateRunning(value?: boolean) {
-  await updateMetadata<Record<string, boolean | undefined>>("_running", {
-    [process.cwd()]: value,
-  });
 }

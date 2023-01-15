@@ -1,9 +1,9 @@
 import fs from "fs/promises";
 
-import { getMetadata } from "@cryo/utils";
+import { getRunning, updateRunning } from "@cryo/node-utils";
 
 import { Recipe, RecipeParameters, RecipeStep } from "./types";
-import { isNestedDirectory, updateRunning } from "./utils";
+import { isNestedDirectory } from "./utils";
 
 const steps: Record<string, string> = {};
 
@@ -21,8 +21,8 @@ export function createRecipe({ run, ...params }: RecipeParameters): Recipe {
 
   return Object.assign(
     async () => {
-      const running = await getMetadata<Record<string, boolean>>("_running");
-      if (!running?.[process.cwd()]) {
+      const running = await getRunning();
+      if (!running[process.cwd()]) {
         throw Error(
           "It looks like you're trying to run a Recipe without the CLI or the `runWithRecipeContext` function, which isn't allowed because it might be dangerous."
         );
@@ -52,7 +52,7 @@ export async function runWithRecipeContext(
   // TODO: should this running logic be here? There might be a case where
   // a Recipe calls another Recipe in a different directory context, but this current
   // logic won't allow a Recipe to call another Recipe in the same directory anyway
-  const running = await getMetadata<Record<string, boolean>>("_running");
+  const running = await getRunning();
   for (const dir in running) {
     // TODO: this should use the directory context, not process.cwd()
     if (isNestedDirectory(process.cwd(), dir)) {

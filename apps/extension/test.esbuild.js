@@ -1,6 +1,6 @@
-import { build } from "esbuild";
-import glob from "glob";
-import { commonOptions } from "./esbuild.js";
+const { build } = require("esbuild");
+const glob = require("glob");
+const { commonOptions } = require("./esbuild.js");
 (async () => {
   await build({
     ...commonOptions,

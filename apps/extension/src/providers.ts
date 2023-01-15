@@ -1,8 +1,11 @@
 import path from "path";
 
-import { runProcess } from "@cryo/cli";
-import * as vscode from "vscode";
+import { git } from "@cryo/node-utils";
+import vscode from "vscode";
 
+/**
+ * Provides a previous version of a file to the diff view.
+ */
 export class PreviousStepProvider
   implements vscode.TextDocumentContentProvider
 {
@@ -10,21 +13,22 @@ export class PreviousStepProvider
   onDidChange = this._onDidChange.event;
 
   async provideTextDocumentContent(uri: vscode.Uri) {
-    const gitArgs = ["--git-dir", ".cryogen", "--work-tree", "."];
-    console.log("here");
-
     try {
-      const result = await runProcess("git", [
-        ...gitArgs,
+      const result = await git(
         "show",
         "--textconv",
-        "HEAD~1:" +
-          path.relative(process.cwd(), uri.path).replaceAll("\\", "/"),
-      ]);
-      console.log(result);
+        "HEAD~1:" + path.posix.relative(process.cwd(), uri.path)
+      );
       return result;
     } catch (e) {
       return "";
     }
   }
+}
+
+export function createPreviousStepProvider() {
+  return vscode.workspace.registerTextDocumentContentProvider(
+    "cryogen",
+    new PreviousStepProvider()
+  );
 }

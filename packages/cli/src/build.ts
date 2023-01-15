@@ -2,6 +2,7 @@ import { existsSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 
+import { runProcess } from "@cryo/node-utils";
 import chalk from "chalk";
 import { build, BuildOptions } from "esbuild";
 import ora, { Ora } from "ora";
@@ -12,7 +13,6 @@ import {
   getPackageRootFromPath,
   getRecipesEntryPointFromPath,
   getRecipesFromImport,
-  runProcess,
 } from "./utils";
 
 export async function buildRecipes(
@@ -25,9 +25,10 @@ export async function buildRecipes(
   const { recipesEntryPoint, hasTypeScriptEntryPoint } =
     await getRecipesEntryPointFromPath(packageRoot);
 
-  const relativeEntryPoint = path
-    .relative(packageRoot, recipesEntryPoint)
-    .replace(/\\/g, "/");
+  const relativeEntryPoint = path.posix.relative(
+    packageRoot,
+    recipesEntryPoint
+  );
 
   console.log(
     `Building Recipes exported from ${chalk.yellow(relativeEntryPoint)}`

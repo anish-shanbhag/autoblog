@@ -40,8 +40,8 @@
     "yalc": "^1.0.0-pre.53"
   },
   "dependencies": {
+    "@cryo/node-utils": "workspace:*",
     "@cryo/recipes": "workspace:*",
-    "@cryo/utils": "workspace:*",
     "chalk": "^4.1.2",
     "commander": "^9.4.0",
     "esbuild": "^0.14.53",

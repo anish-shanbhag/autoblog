@@ -2,10 +2,11 @@ import { existsSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 
+import { runProcess } from "@cryo/node-utils";
+
 import {
   getPackageJsonFromDirectory,
   getPackageManagerFromPath,
-  runProcess,
   uncachePackage,
 } from "../src/utils";
 
