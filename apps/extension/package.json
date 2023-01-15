@@ -73,7 +73,6 @@
   "dependencies": {
     "@cryo/cli": "workspace:*",
     "@cryo/node-utils": "workspace:*",
-    "@cryo/ui": "workspace:*",
     "@cryo/utils": "workspace:*",
     "@parcel/watcher": "^2.1.0"
   }
