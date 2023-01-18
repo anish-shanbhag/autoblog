@@ -5,7 +5,10 @@ import * as vscode from "vscode";
 import { createRunLocalRecipeCommand } from "./commands";
 import { createExplorerWebview, createRunningWatcher } from "./explorer/state";
 import { createExplorerWatcher } from "./explorer/watch";
-import { createPreviousStepProvider } from "./providers";
+import {
+  createEmptyFileProvider,
+  createPreviousStepProvider,
+} from "./providers";
 
 export let workspaceRoot: string;
 
@@ -22,6 +25,7 @@ export async function activate(context: vscode.ExtensionContext) {
     await createExplorerWatcher(),
     await createExplorerWebview(context),
     createPreviousStepProvider(),
+    createEmptyFileProvider(),
     createRunLocalRecipeCommand()
   );
 }

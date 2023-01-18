@@ -1,3 +1,4 @@
+import { existsSync } from "fs";
 import path from "path";
 
 import type { FileTree } from "@cryo/utils";
@@ -40,13 +41,17 @@ export async function handleMessage(
       }
       break;
     }
-    case "open":
+    case "open": {
+      const absolutePath = path.join(workspaceRoot, message.path);
       await vscode.commands.executeCommand(
         "vscode.diff",
         vscode.Uri.parse("cryogen:" + message.path),
-        vscode.Uri.file(path.join(workspaceRoot, message.path)),
+        existsSync(absolutePath)
+          ? vscode.Uri.file(absolutePath)
+          : vscode.Uri.parse("empty:"),
         `(*) ${path.basename(message.path)}`
       );
       break;
+    }
   }
 }
