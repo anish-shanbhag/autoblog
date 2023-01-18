@@ -52,7 +52,7 @@
     "test": "yarn compile-tests && node test/out/runTest.js",
     "lint": "eslint . --fix",
     "lint-ci": "eslint .",
-    "depcheck": "depcheck --skip-missing --ignores '@types/*,config,tsconfig,tslib'"
+    "depcheck": "depcheck --skip-missing --ignores '@types/*,config,tsconfig,tslib,@cryo/webview'"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
@@ -74,6 +74,7 @@
     "@cryo/cli": "workspace:*",
     "@cryo/node-utils": "workspace:*",
     "@cryo/utils": "workspace:*",
+    "@cryo/webview": "workspace:*",
     "@parcel/watcher": "^2.1.0"
   }
 }

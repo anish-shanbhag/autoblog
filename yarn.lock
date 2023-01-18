@@ -2754,6 +2754,7 @@ __metadata:
     "@cryo/cli": "workspace:*"
     "@cryo/node-utils": "workspace:*"
     "@cryo/utils": "workspace:*"
+    "@cryo/webview": "workspace:*"
     "@parcel/watcher": ^2.1.0
     "@types/glob": ^7.2.0
     "@types/mocha": ^9.1.1
@@ -2872,7 +2873,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cryo/webview@workspace:packages/webview":
+"@cryo/webview@workspace:*, @cryo/webview@workspace:packages/webview":
   version: 0.0.0-use.local
   resolution: "@cryo/webview@workspace:packages/webview"
   dependencies:
